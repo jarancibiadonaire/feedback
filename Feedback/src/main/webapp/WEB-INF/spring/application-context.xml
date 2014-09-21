@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/data/cassandra http://www.springframework.org/schema/data/cassandra/spring-cassandra-1.0.xsd
+		http://www.springframework.org/schema/cql http://www.springframework.org/schema/cql/spring-cql-1.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
+
+	<context:property-placeholder location="classpath:META-INF/datasource.properties" />
+	<!-- Datasource -->
+	<bean id="datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="${postgresql.url}" />
+		<property name="username" value="${postgresql.username}" />
+		<property name="password" value="${postgresql.password}" />
+	</bean>
+	
+	<!-- Entity Manager -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<property name="persistenceUnitName" value="feedback-persistence-unit" />
+	</bean>
+	
+	<!-- Transaccion Manager -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<jpa:repositories base-package="cl.uchile.dcc.feedback.repositories"/>
+	<!-- Loads the properties into the Spring Context and uses them to fill 
+		in placeholders in the bean definitions -->
+
+	<!-- REQUIRED: The Cassandra Cluster -->
+	<cassandra:cluster contact-points="${cassandra.contactpoints}"
+		port="${cassandra.port}" />
+
+	<!-- REQUIRED: The Cassandra Session, built from the Cluster, and attaching 
+		to a keyspace -->
+	<cassandra:session keyspace-name="${cassandra.keyspace}" />
+
+	<!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
+	<cassandra:mapping />
+
+	<!-- REQUIRED: The Default Cassandra Converter used by CassandraTemplate -->
+	<cassandra:converter />
+
+	<!-- REQUIRED: The Cassandra Template is the building block of all Spring 
+		Data Cassandra -->
+	<cassandra:template id="cassandraTemplate" />
+
+	<!-- OPTIONAL: If you are using Spring Data Cassandra Repositories, add 
+		your base packages to scan here 
+	<cassandra:repositories base-package="cl.uchile.dcc.feedback.cassandra.repositories" />-->
+	<context:component-scan base-package="cl.uchile.dcc.feedback.cassandra.repositories,
+										cl.uchile.dcc.feedback.services"/>
+	<import resource="spring-security.xml"/>							
+	</beans>
