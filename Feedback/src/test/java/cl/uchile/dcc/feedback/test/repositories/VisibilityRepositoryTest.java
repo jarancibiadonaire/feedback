@@ -1,8 +1,6 @@
 package cl.uchile.dcc.feedback.test.repositories;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,10 +24,9 @@ public class VisibilityRepositoryTest {
 		v.setType("Público");
 		visibilityRepo.save(v);
 		
-		List<Visibility> v2=visibilityRepo.findByType("Público");
+		Visibility v2=visibilityRepo.findByType("Público");
 		assertNotNull(v2);
-		assertEquals(v2.size(),1);
-		System.out.println(v2.get(0).getId());
+		System.out.println(v2.getId());
 	}
 
 }

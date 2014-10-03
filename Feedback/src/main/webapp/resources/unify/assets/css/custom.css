@@ -2,3 +2,19 @@
 #registration-form{
 	border:none;
 }
+.green{
+	color:#72c02c !important;
+}
+.content-without-padding{
+	padding-top:1%;
+	padding-bottom:1%;
+}
+.logo-header{
+	margin:-5%;
+}
+.login-index{
+	margin-top:1.5%;
+}
+.extended{
+	width:initial;
+}

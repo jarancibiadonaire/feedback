@@ -10,7 +10,7 @@
 			</button>
 			<a class="navbar-brand" href="welcome"> <img id="logo-header"
 				src="<c:url value="/resources/assets/img/logo1-default.png"/>"
-				alt="Logo">
+				alt="Logo" class="logo-header">
 			</a>
 		</div>
 

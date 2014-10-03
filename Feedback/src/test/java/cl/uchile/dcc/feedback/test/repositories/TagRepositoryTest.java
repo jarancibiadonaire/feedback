@@ -30,7 +30,7 @@ public class TagRepositoryTest {
 	
 	@Test
 	public void test() {
-		Visibility v=visibilityRepo.findByTypeIgnoreCase("público").get(0);
+		Visibility v=visibilityRepo.findByTypeIgnoreCase("público");
 		Tag t=new Tag();
 		t.setName("test 1");
 		t.setDescription("probando app-context");

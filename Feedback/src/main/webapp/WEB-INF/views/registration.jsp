@@ -58,11 +58,11 @@
 
 <body>
 	<sec:authorize access="isAuthenticated()">
-		<c:redirect url="/" />
+		<c:redirect url="/welcome" />
 	</sec:authorize>
 	<!--=== Content Part ===-->
 	<div class="container">
-		<a class="navbar-brand" href="welcome"> <img id="logo-header"
+		<a class="navbar-brand" href="index"> <img id="logo-header"
 			src="<c:url value="/resources/assets/img/logo1-default.png"/>"
 			alt="Logo">
 		</a>
@@ -160,8 +160,8 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
 	<script type="text/javascript">
-		$.backstretch([ "<c:url value='/resources/assets/img/bg/5.jpg'/>",
-				"<c:url value='/resources/assets/img/bg/4.jpg'/>", ], {
+		$.backstretch([ "<c:url value='/resources/assets/img/city/7188510829_1b062674c2_k.jpg'/>",
+						"<c:url value='/resources/assets/img/city/1035906164_bcb96a45ba_o.jpg'/>", ], {
 			fade : 1000,
 			duration : 7000
 		});

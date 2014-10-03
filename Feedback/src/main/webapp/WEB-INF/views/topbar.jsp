@@ -19,13 +19,13 @@
 				</script>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<i class="fa fa-user"></i>
-					<li>Bienvenido ${pageContext.request.userPrincipal.name}</li>
+					<li>Bienvenid@ <span class="green">${pageContext.request.userPrincipal.name}</span></li>
 					<li class="topbar-devider"></li>
-					<li><a href="javascript:formSubmit()"> Salir</a></li>
+					<li><a href="javascript:formSubmit()" class="green"> Salir</a></li>
 				</c:if>
 			</sec:authorize>
 			<sec:authorize access="!isAuthenticated()">
-				<li><a href="<c:url value="/login"/>">Ingresar</a></li>
+				<li><a href="<c:url value="/login"/>" class="green">Ingresar</a></li>
 			</sec:authorize>
 
 		</ul>

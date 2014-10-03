@@ -1,8 +1,6 @@
 package cl.uchile.dcc.feedback.test.repositories;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +23,9 @@ public class OriginRepositoryTest {
 		o.setType("Foursquare");
 		originRepo.save(o);
 		
-		List<Origin> o2=originRepo.findByType("Foursquare");
+		Origin o2=originRepo.findByType("Foursquare");
 		assertNotNull(o2);
-		assertEquals(o2.size(),1);
-		System.out.println(o2.get(0).getId());		
+		System.out.println(o2.getId());		
 	}
 
 }

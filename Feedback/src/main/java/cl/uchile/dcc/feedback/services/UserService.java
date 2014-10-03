@@ -31,6 +31,9 @@ public class UserService implements UserServiceRemote{
 	@Override
 	public Integer createUser(UserVO u){
 		if(validateNewUser(u)){			
+			Role role=roleRepo.findByRole("ROLE_USER");
+			Set<Role> set=new HashSet<Role>();
+			set.add(role);
 			User newUser=new User();
 			newUser.setFirstName(u.getFirstName());
 			newUser.setLastName(u.getLastName());
@@ -40,13 +43,9 @@ public class UserService implements UserServiceRemote{
 			newUser.setPassword(u.getPassword());
 			newUser.setEmail(u.getEmail());
 			newUser.setEnabled(true);
-			newUser.setCreatedDate(new Date());
-			userRepo.save(newUser);
-			Role role=roleRepo.findByRole("ROLE_USER");
-			Set<Role> set=new HashSet<Role>();
-			set.add(role);
+			newUser.setCreatedDate(new Date());			
 			newUser.setRoles(set);
-			userRepo.save(newUser);
+			userRepo.save(newUser);			
 			return newUser.getId();
 		}else{
 			return null;

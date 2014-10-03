@@ -1,9 +1,12 @@
 package cl.uchile.feedback;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,38 +20,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cl.uchile.dcc.feedback.comparators.FeedComparator;
+import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.SexVO;
 import cl.uchile.dcc.feedback.model.UserVO;
-import cl.uchile.dcc.feedback.services.UserService;
+import cl.uchile.dcc.feedback.services.FeedServiceRemote;
+import cl.uchile.dcc.feedback.services.UserServiceRemote;
 
 @Controller
 public class HomeController {
 
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
-	UserService userService;
-
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	UserServiceRemote userService;
+	
+	@Autowired
+	FeedServiceRemote feedService;
+	
+	@RequestMapping(value = { "/" ,"index"}, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title",
-				"Spring Security Login Form - Database Authentication");
-		model.addObject("message", "This is default page!");
-		model.setViewName("home");
+		model.setViewName("index");
 		return model;
 
 	}
 
-	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
-	public ModelAndView adminPage() {
-
-		ModelAndView model = new ModelAndView();
-		model.addObject("title",
-				"Spring Security Login Form - Database Authentication");
-		model.addObject("message", "This page is for ROLE_ADMIN only!");
-		model.setViewName("admin");
+	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
+	public ModelAndView home(String var) {
+		List<FeedVO> feeds=feedService.getAllFeeds();
+		Collections.sort(feeds, new FeedComparator());
+		ModelAndView model =  new ModelAndView("feed", "command", new FeedVO());
+		model.setViewName("home");
+		model.addObject("feeds", feeds);
+		model.addObject("var", var);
 		return model;
 
 	}
@@ -119,5 +124,17 @@ public class HomeController {
 					+ " ya registrado. Pruebe con otro nombre de usuario");
 		userService.createUser(user);
 		return login(null, null, "success");
+	}
+	@RequestMapping(value = "/publish_feed", method = RequestMethod.POST)
+	public ModelAndView publishFeed(@ModelAttribute("feed") FeedVO feed,
+			BindingResult result) {
+		if(feed.getTitle()==null || feed.getUser()==null || 
+				feed.getTitle().compareTo("")==0 || feed.getUser().compareTo("")==0)
+			return home("error");
+		Integer var=feedService.createFeed(feed);
+		if(var==null)
+			return home("error");
+		else
+			return home("success");
 	}
 }

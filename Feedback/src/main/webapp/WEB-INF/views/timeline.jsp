@@ -52,6 +52,9 @@
 	href="<c:url value="/resources/assets/css/custom.css"/>">
 </head>
 <body>
+	<sec:authorize access="!isAuthenticated()">
+		<c:redirect url="/" />
+	</sec:authorize>
 	<div class="wrapper">
 		<!--=== Header ===-->
 		<div class="header">
@@ -66,8 +69,7 @@
 		<!--=== End Header ===-->
 
 		<!--=== Content ===-->
-		<div class="container content">
-		</div>
+		<div class="container content"></div>
 		<!--/container-->
 		<!--=== End Content ===-->
 
@@ -92,7 +94,7 @@
 			App.init();
 			activeNavbar();
 		});
-		function activeNavbar(){
+		function activeNavbar() {
 			//borrar los anteriores
 			$("#welcome").removeClass("active");
 			$("#timeline").removeClass("active");
@@ -100,7 +102,7 @@
 			$("#conceptmap").removeClass("active");
 			$("#statistics").removeClass("active");
 			//activar el actual
-			$("#timeline").addClass("active");			
+			$("#timeline").addClass("active");
 		}
 	</script>
 	<!--[if lt IE 9]>

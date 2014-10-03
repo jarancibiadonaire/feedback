@@ -37,8 +37,8 @@
 
 /*Parallax Counter Block*/
 .parallax-counter {
-	padding: 60px 0;
-	background: url(../img/bg/9.jpg) 50% 0 no-repeat fixed;	
+	/*padding: 60px 0;
+	background: url(../img/city/12280756903_c130de591e_k.jpg) 50% 0 no-repeat fixed;	*/
 }
 
 .parallax-counter h4 {
@@ -1981,9 +1981,10 @@ ul.labels-demo li {
 ------------------------------------*/
 .map {
 	width: 100%; 
-	height: 350px;
+	height: 500px;
 	border-top: solid 1px #eee;
 	border-bottom: solid 1px #eee;
+	margin-bottom:0%;
 }
 
 .gm-style-iw {

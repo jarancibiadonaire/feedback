@@ -7,6 +7,8 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page session="true"%>
 <head>
 <title>Feedback</title>
@@ -40,7 +42,7 @@
 
 <!-- CSS Page Style -->
 <link rel="stylesheet"
-	href="<c:url value="/resources/assets/css/pages/page_search.css"/>">
+	href="<c:url value="/resources/assets/css/pages/feature_timeline1.css"/>">
 
 <!-- CSS Theme -->
 <link rel="stylesheet"
@@ -52,6 +54,9 @@
 	href="<c:url value="/resources/assets/css/custom.css"/>">
 </head>
 <body>
+	<sec:authorize access="!isAuthenticated()">
+		<c:redirect url="/" />
+	</sec:authorize>
 	<div class="wrapper">
 		<!--=== Header ===-->
 		<div class="header">
@@ -63,276 +68,166 @@
 			<jsp:include page="navbar.jsp"></jsp:include>
 			<!-- End Navbar -->
 		</div>
-		<!--=== End Header ===-->
-
-		<!--=== Search Block ===-->
-		<div class="search-block parallaxBg">
-			<div class="container">
-				<div class="col-md-6 col-md-offset-3">
-					<h1>
-						Discover <span class="color-green">new</span> things ...
-					</h1>
-
-					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Search words with regular expressions ...">
-						<span class="input-group-btn">
-							<button class="btn-u" type="button">
-								<i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-
-					<form action="" class="sky-form page-search-form">
-						<div class="inline-group">
-							<label class="checkbox"><input type="checkbox"
-								name="checkbox-inline" checked><i></i>Recent</label> <label
-								class="checkbox"><input type="checkbox"
-								name="checkbox-inline"><i></i>Related</label> <label
-								class="checkbox"><input type="checkbox"
-								name="checkbox-inline"><i></i>Popular</label> <label
-								class="checkbox"><input type="checkbox"
-								name="checkbox-inline"><i></i>Most Common</label>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<!--/container-->
-		<!--=== End Search Block ===-->
-
-		<!--=== Content ===-->
+		<!--=== Content Part ===-->
 		<div class="container content">
-			<!-- Begin Service Block -->
-			<div class="row margin-bottom-40">
-				<div class="col-md-4">
-					<div class="easy-block-v3 service-or">
-						<div class="service-bg"></div>
-						<i class="fa fa-globe"></i>
-						<div class="inner-faq-b">
-							<h2>Web Search</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Vivamus dapibus justo vel tincidunt consectetur.</p>
+			<div class="row">
+				<!-- Begin Sidebar Menu -->
+				<div class="col-md-3 margin-bottom-20">
+					<div class="servive-block servive-block-u rounded-2x">
+						<i class="icon-custom icon-color-light rounded-x icon-user"></i>
+						<h2 class="heading-md">${pageContext.request.userPrincipal.name}</h2>
+						<div>
+							<ul class="list-unstyled labels-demo">
+								<li><span class="label rounded-2x label-light">Feeds
+										<span class="badge rounded-2x badge-u">123</span>
+								</span></li>
+								<li><span class="label rounded-2x label-light">Tags
+										<span class="badge rounded-2x badge-u">312</span>
+								</span></li>
+								<li><span class="label rounded-2x label-light">Comentarios
+										<span class="badge rounded-2x badge-u">145</span>
+								</span></li>
+								<li><span class="label rounded-2x label-light">Votos
+										<span class="badge rounded-2x badge-u">12</span>
+								</span></li>
+
+							</ul>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="easy-block-v3 service-or">
-						<div class="service-bg"></div>
-						<i class="icon-camera"></i>
-						<div class="inner-faq-b">
-							<h2>Photos &amp; Video</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Vivamus dapibus justo vel tincidunt consectetur.</p>
+					<form:form action='${pageContext.request.contextPath}/publish_feed'
+						class="sky-form" id="feed-form">
+						<header>Ingresa un feed</header>
+						<div class="hidden">
+							<form:input path="user"
+								value="${pageContext.request.userPrincipal.name}" />
+							<form:input path="origin" value="feedback" />
+							<form:input path="location.lat" value="11.1111" />
+							<form:input path="location.lng" value="33.3333" />
+							<form:input path="location.address" value="avenida siempre viva" />
+							<form:input path="location.comuna" value="santiago" />
 						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="easy-block-v3 service-or">
-						<div class="service-bg"></div>
-						<i class="fa fa-map-marker"></i>
-						<div class="inner-faq-b">
-							<h2>Map Location</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Vivamus dapibus justo vel tincidunt consectetur.</p>
+						<fieldset>
+							<section>
+								<label class="input"> <form:input type="text" id="title"
+										name="title" placeholder="Título" path="title" />
+								</label>
+							</section>
+							<section>
+								<label class="textarea textarea-expandable"> <form:textarea
+										name="description" rows="3" placeholder="Descripción"
+										path="description" />
+								</label>
+							</section>
+							<section>
+								<label class="label">Visibilidad</label>
+								<div class="inline-group">
+									<label class="radio"><form:radiobutton value="Público"
+											path="visibility" checked="true"></form:radiobutton><i
+										class="rounded-x"></i>Público</label> <label class="radio"><form:radiobutton
+											value="Privado" path="visibility"></form:radiobutton><i
+										class="rounded-x"></i>Privado</label>
+								</div>
+							</section>
+							<section>
+								<div class="text-center">
+									<button type="submit" class="btn-u">Publicar</button>
+								</div>
+							</section>
+						</fieldset>
+					</form:form>
+					<c:if test="${not empty var and var == 'success'}">
+						<div class="alert alert-success fade in alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-hidden="true">×</button>
+							Su feed se a publicado exitosamente
 						</div>
-					</div>
+					</c:if>
+					<c:if test="${not empty var and var == 'error'}">
+						<div class="alert alert-danger fade in alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-hidden="true">×</button>
+							Hubo un error. Vuelva a ingresar un feed
+						</div>
+					</c:if>
 				</div>
+				<!-- End Sidebar Menu -->
+
+				<!-- Begin Content -->
+				<div class="col-md-9">
+					<ul class="timeline-v1">
+						<c:if test="${not empty feeds}">
+							<c:forEach items="${feeds}" var="feed" varStatus="loopStatus">
+								<c:if test="${loopStatus.index % 2 == 0}">
+									<li>
+										<div class="timeline-badge primary">
+											<i class="glyphicon glyphicon-record"></i>
+										</div>
+										<div class="timeline-panel">
+											<div class="timeline-body text-justify">
+												<h2>
+													<a href="#">${feed.title}</a>
+												</h2>
+												<p>${feed.description}</p>
+												<a class="btn-u btn-u-sm" href="#">Revisar</a>
+											</div>
+											<div class="timeline-footer">
+												<ul class="list-unstyled list-inline blog-info">
+													<li><i class="fa fa-user"></i>${feed.user}</li>
+												</ul>
+												<br />
+												<ul class="list-unstyled list-inline blog-info">
+													<li><i class="fa fa-clock-o"></i> <fmt:formatDate
+															type="both" dateStyle="medium" timeStyle="short"
+															value="${feed.createdDate }" /></li>
+													<li><i class="fa fa-comments-o"></i> <a href="#">${feed.id}
+															Comentarios</a></li>
+												</ul>
+												<a class="likes" href="#"><i class="fa fa-heart"></i>${feed.id}</a>
+											</div>
+										</div>
+									</li>
+								</c:if>
+								<c:if test="${loopStatus.index % 2 != 0}">
+									<li class="timeline-inverted">
+										<div class="timeline-badge primary">
+											<i class="glyphicon glyphicon-record invert"></i>
+										</div>
+										<div class="timeline-panel">
+											<div class="timeline-body text-justify">
+												<h2>
+													<a href="#">${feed.title}</a>
+												</h2>
+												<p>${feed.description}</p>
+												<a class="btn-u btn-u-sm" href="#">Revisar</a>
+											</div>
+											<div class="timeline-footer">
+												<ul class="list-unstyled list-inline blog-info">
+													<li><i class="fa fa-user"></i>${feed.user}</li>
+												</ul>
+												<br />
+												<ul class="list-unstyled list-inline blog-info">
+													<li><i class="fa fa-clock-o"></i> <fmt:formatDate
+															type="both" dateStyle="medium" timeStyle="short"
+															value="${feed.createdDate }" /></li>
+													<li><i class="fa fa-comments-o"></i> <a href="#">${feed.id}
+															Comentarios</a></li>
+												</ul>
+												<a class="likes" href="#"><i class="fa fa-heart"></i>${feed.id}</a>
+											</div>
+										</div>
+									</li>
+								</c:if>
+							</c:forEach>
+						</c:if>
+						<li class="clearfix" style="float: none;"></li>
+					</ul>
+				</div>
+				<!-- End Content -->
 			</div>
-			<!-- End Service Block -->
 
-			<!-- Top Categories -->
-			<div class="headline">
-				<h2>Top Categories</h2>
-			</div>
-			<div class="row category margin-bottom-20">
-				<!-- Info Blocks -->
-				<div class="col-md-4">
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey icon-line icon-badge"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Top 100 templates</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey fa fa-hdd-o"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Wikipedia</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey fa fa-mobile"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Web design</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey icon-line icon-graduation"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Education</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-				</div>
-				<!-- End Info Blocks -->
-
-				<!-- Info Blocks -->
-				<div class="col-md-4">
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey fa fa-bell-o"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Hi-Tech</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey fa fa-thumbs-o-up"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Yahoo</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey icon-line icon-playlist"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Music</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-					<div class="content-boxes-v3">
-						<i
-							class="icon-custom icon-sm rounded-x icon-bg-light-grey fa fa-lightbulb-o"></i>
-						<div class="content-boxes-in-v3">
-							<h3>
-								<a href="#"> Engineering</a>
-							</h3>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-					</div>
-				</div>
-				<!-- End Info Blocks -->
-
-				<div class="col-md-4">
-					<!-- Begin Section-Block -->
-					<div class="section-block">
-						<div class="text-center">
-							<i
-								class="icon-custom icon-sm icon-bg-light-grey line-icon icon-graph"></i>
-							<h2>Popular Search</h2>
-							<p>At vero eos et accusamus et iusto odio dignissimos ducimus
-								qui blanditiis praesentium</p>
-						</div>
-
-						<!-- Progress Bar -->
-						<h3 class="heading-xs no-top-space">
-							Web Design <span class="pull-right">88%</span>
-						</h3>
-						<div class="progress progress-u progress-xs">
-							<div style="width: 88%" aria-valuemax="100" aria-valuemin="0"
-								aria-valuenow="88" role="progressbar"
-								class="progress-bar progress-bar-u"></div>
-						</div>
-
-						<h3 class="heading-xs no-top-space">
-							PHP/WordPress <span class="pull-right">76%</span>
-						</h3>
-						<div class="progress progress-u progress-xs">
-							<div style="width: 76%" aria-valuemax="100" aria-valuemin="0"
-								aria-valuenow="76" role="progressbar"
-								class="progress-bar progress-bar-u"></div>
-						</div>
-
-						<h3 class="heading-xs no-top-space">
-							HTML/CSS <span class="pull-right">97%</span>
-						</h3>
-						<div class="progress progress-u progress-xs">
-							<div style="width: 97%" aria-valuemax="100" aria-valuemin="0"
-								aria-valuenow="97" role="progressbar"
-								class="progress-bar progress-bar-u"></div>
-						</div>
-						<!-- End Progress Bar -->
-
-						<button type="button"
-							class="btn-u btn-u-sm btn-brd btn-brd-hover btn-u-light-grey">View
-							More</button>
-					</div>
-					<!-- End Section-Block -->
-				</div>
-			</div>
-			<!-- End Top Categories -->
 		</div>
 		<!--/container-->
-		<!--=== End Content ===-->
-
-		<!--=== Parallax Counter ===-->
-		<div class="parallax-counter parallaxBg margin-bottom-50">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-3 col-xs-6">
-						<div class="counters">
-							<span class="counter">52147</span>
-							<h4>Images</h4>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="counters">
-							<span class="counter">24583</span>
-							<h4>Daily news</h4>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="counters">
-							<span class="counter">7349</span>
-							<h4>Visitors per minute</h4>
-						</div>
-					</div>
-					<div class="col-sm-3 col-xs-6">
-						<div class="counters">
-							<span class="counter">87904</span>
-							<h4>Results</h4>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--=== End Parallax Counter ===-->
-
-		<!--=== Footer ===-->
-		<jsp:include page="footer.jsp"></jsp:include>
-		<!--=== End Footer ===-->
-
+		<!--=== End Content Part ===-->
 		<!--=== Copyright ===-->
 		<jsp:include page="copyright.jsp"></jsp:include>
 		<!--=== End Copyright ===-->
@@ -347,23 +242,29 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
 	<!-- JS Implementing Plugins -->
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/jquery.parallax.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/counter/waypoints.min.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
+	<!-- Checkout Form -->
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.maskedinput.min.js"/>"></script>
+	<!-- Order Form -->
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"/>"></script>
+
 	<!-- JS Page Level -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/app.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/js/forms/publish_feed.js"/>"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
-			App.initCounter();
-			App.initParallaxBg();
+			FeedForm.initFeedForm();
 			activeNavbar();
 		});
-		function activeNavbar(){
+		function activeNavbar() {
 			//borrar los anteriores
 			$("#welcome").removeClass("active");
 			$("#timeline").removeClass("active");
@@ -371,12 +272,11 @@
 			$("#conceptmap").removeClass("active");
 			$("#statistics").removeClass("active");
 			//activar el actual
-			$("#welcome").addClass("active");			
+			$("#welcome").addClass("active");
 		}
 	</script>
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>
 <![endif]-->
-
 </body>
 </html>

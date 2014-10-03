@@ -18,7 +18,7 @@ public class FeedVO implements Serializable {
 
 	private LocationVO location;
 
-	private UserVO user;
+	private String user;
 	
 	private String origin;
 
@@ -33,6 +33,10 @@ public class FeedVO implements Serializable {
 	private List<TagVO> tags;
 	
 	private List<RatingVO> ratings;
+	
+	public FeedVO(){
+		this.location=new LocationVO();
+	}
 
 	public Integer getId() {
 		return id;
@@ -74,11 +78,11 @@ public class FeedVO implements Serializable {
 		this.location = location;
 	}
 
-	public UserVO getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(UserVO user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
