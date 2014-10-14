@@ -2,7 +2,10 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:social="http://spring.io/springsocial"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
 <!--<![endif]-->
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
@@ -59,12 +62,14 @@
 		<!--Reg Block-->
 		<div class="reg-block">
 			<div class="reg-block-header">
-				<h2>Ingresa a Feedback</h2>
+				<h2>Ingresa a Feedback</h2>	
 				<ul class="social-icons text-center">
 					<li><a class="rounded-x social_facebook"
-						data-original-title="Facebook" href="#"></a></li>
+						data-original-title="Facebook"
+						href="<c:url value="/auth/facebook"/>"></a></li>
 					<li><a class="rounded-x social_twitter"
-						data-original-title="Twitter" href="#"></a></li>
+						data-original-title="Twitter"
+						href="<c:url value="/auth/twitter"/>"></a></li>
 					<li><a class="rounded-x social_googleplus"
 						data-original-title="Google Plus" href="#"></a></li>
 					<li><a class="rounded-x social_linkedin"
@@ -128,11 +133,15 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
 	<script type="text/javascript">
-		$.backstretch([ "<c:url value='/resources/assets/img/city/1035906164_bcb96a45ba_o.jpg'/>",
-				"<c:url value='/resources/assets/img/city/7188510829_1b062674c2_k.jpg'/>", ], {
-			fade : 1000,
-			duration : 7000
-		});
+		$
+				.backstretch(
+						[
+								"<c:url value='/resources/assets/img/city/1035906164_bcb96a45ba_o.jpg'/>",
+								"<c:url value='/resources/assets/img/city/7188510829_1b062674c2_k.jpg'/>", ],
+						{
+							fade : 1000,
+							duration : 7000
+						});
 	</script>
 
 	<!-- JS Page Level -->

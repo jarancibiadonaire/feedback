@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xml>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-    <persistence-unit name="feedback-persistence-unit" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+    	<class>org.springframework.social.connect.jpa.hibernate.UserConnection</class> 
     	<properties>
     		<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
     		<property name="hibernate.hbm2ddl.auto" value="validate"/>

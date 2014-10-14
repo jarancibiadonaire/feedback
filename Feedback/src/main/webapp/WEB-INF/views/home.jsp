@@ -69,29 +69,37 @@
 			<!-- End Navbar -->
 		</div>
 		<!--=== Content Part ===-->
-		<div class="container content">
+		<div class="container content content-without-padding">
 			<div class="row">
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-3 margin-bottom-20">
 					<div class="servive-block servive-block-u rounded-2x">
 						<i class="icon-custom icon-color-light rounded-x icon-user"></i>
 						<h2 class="heading-md">${pageContext.request.userPrincipal.name}</h2>
-						<div>
-							<ul class="list-unstyled labels-demo">
-								<li><span class="label rounded-2x label-light">Feeds
-										<span class="badge rounded-2x badge-u">123</span>
-								</span></li>
-								<li><span class="label rounded-2x label-light">Tags
-										<span class="badge rounded-2x badge-u">312</span>
-								</span></li>
-								<li><span class="label rounded-2x label-light">Comentarios
-										<span class="badge rounded-2x badge-u">145</span>
-								</span></li>
-								<li><span class="label rounded-2x label-light">Votos
-										<span class="badge rounded-2x badge-u">12</span>
-								</span></li>
-
-							</ul>
+						<hr class="devider devider-db">
+						<div class="grey rounded-2x">
+							<ul class="list-inline badge-lists badge-icons">
+                                <li>
+                                    <a href="#"><i class="fa fa-envelope"></i></a>
+                                    <span class="badge badge-blue rounded-x">2</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-cog"></i></a>
+                                    <span class="badge badge-blue rounded-x">9</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-gift"></i></a>
+                                    <span class="badge badge-blue rounded-x">4</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-exclamation-triangle"></i></a>
+                                    <span class="badge badge-blue rounded-x">3</span>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-comments"></i></a>
+                                    <span class="badge badge-blue rounded-x">3</span>
+                                </li>
+                            </ul>
 						</div>
 					</div>
 					<form:form action='${pageContext.request.contextPath}/publish_feed'
@@ -101,21 +109,22 @@
 							<form:input path="user"
 								value="${pageContext.request.userPrincipal.name}" />
 							<form:input path="origin" value="feedback" />
-							<form:input path="location.lat" value="11.1111" />
-							<form:input path="location.lng" value="33.3333" />
-							<form:input path="location.address" value="avenida siempre viva" />
-							<form:input path="location.comuna" value="santiago" />
+							<form:input path="location.lat" id="lat" />
+							<form:input path="location.lng" id="lng" />
+							<form:input path="location.address" id="address" />
+							<form:input path="location.comuna" id="comuna" />
 						</div>
 						<fieldset>
 							<section>
 								<label class="input"> <form:input type="text" id="title"
-										name="title" placeholder="Título" path="title" />
+										name="title" placeholder="Título" path="title"
+										cssClass="rounded-2x" />
 								</label>
 							</section>
 							<section>
 								<label class="textarea textarea-expandable"> <form:textarea
 										name="description" rows="3" placeholder="Descripción"
-										path="description" />
+										cssClass="rounded-2x" path="description" />
 								</label>
 							</section>
 							<section>
@@ -130,7 +139,7 @@
 							</section>
 							<section>
 								<div class="text-center">
-									<button type="submit" class="btn-u">Publicar</button>
+									<button type="submit" class="btn-u rounded-2x">Publicar</button>
 								</div>
 							</section>
 						</fieldset>
@@ -157,10 +166,9 @@
 					<ul class="timeline-v1">
 						<c:if test="${not empty feeds}">
 							<c:forEach items="${feeds}" var="feed" varStatus="loopStatus">
-								<c:if test="${loopStatus.index % 2 == 0}">
-									<li>
+									<li class="${loopStatus.index % 2 == 0 ? '':'timeline-inverted'}">
 										<div class="timeline-badge primary">
-											<i class="glyphicon glyphicon-record"></i>
+											<i class="glyphicon glyphicon-record ${loopStatus.index % 2 == 0 ? '':'invert'}"></i>
 										</div>
 										<div class="timeline-panel">
 											<div class="timeline-body text-justify">
@@ -168,12 +176,12 @@
 													<a href="#">${feed.title}</a>
 												</h2>
 												<p>${feed.description}</p>
-												<a class="btn-u btn-u-sm" href="#">Revisar</a>
 											</div>
 											<div class="timeline-footer">
 												<ul class="list-unstyled list-inline blog-info">
-													<li><i class="fa fa-user"></i>${feed.user}</li>
+													<li><i class="fa fa-user"></i> ${feed.user}</li>
 												</ul>
+												<span class="label rounded label-u likes">${feed.location.comuna}</span>
 												<br />
 												<ul class="list-unstyled list-inline blog-info">
 													<li><i class="fa fa-clock-o"></i> <fmt:formatDate
@@ -186,37 +194,6 @@
 											</div>
 										</div>
 									</li>
-								</c:if>
-								<c:if test="${loopStatus.index % 2 != 0}">
-									<li class="timeline-inverted">
-										<div class="timeline-badge primary">
-											<i class="glyphicon glyphicon-record invert"></i>
-										</div>
-										<div class="timeline-panel">
-											<div class="timeline-body text-justify">
-												<h2>
-													<a href="#">${feed.title}</a>
-												</h2>
-												<p>${feed.description}</p>
-												<a class="btn-u btn-u-sm" href="#">Revisar</a>
-											</div>
-											<div class="timeline-footer">
-												<ul class="list-unstyled list-inline blog-info">
-													<li><i class="fa fa-user"></i>${feed.user}</li>
-												</ul>
-												<br />
-												<ul class="list-unstyled list-inline blog-info">
-													<li><i class="fa fa-clock-o"></i> <fmt:formatDate
-															type="both" dateStyle="medium" timeStyle="short"
-															value="${feed.createdDate }" /></li>
-													<li><i class="fa fa-comments-o"></i> <a href="#">${feed.id}
-															Comentarios</a></li>
-												</ul>
-												<a class="likes" href="#"><i class="fa fa-heart"></i>${feed.id}</a>
-											</div>
-										</div>
-									</li>
-								</c:if>
 							</c:forEach>
 						</c:if>
 						<li class="clearfix" style="float: none;"></li>
@@ -275,6 +252,9 @@
 			$("#welcome").addClass("active");
 		}
 	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/home.js"/>"></script>
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>
 <![endif]-->

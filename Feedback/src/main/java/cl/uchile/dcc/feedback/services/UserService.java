@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import cl.uchile.dcc.feedback.entities.Role;
@@ -34,13 +35,14 @@ public class UserService implements UserServiceRemote{
 			Role role=roleRepo.findByRole("ROLE_USER");
 			Set<Role> set=new HashSet<Role>();
 			set.add(role);
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			User newUser=new User();
 			newUser.setFirstName(u.getFirstName());
 			newUser.setLastName(u.getLastName());
 			if(u.getSex()!=0)
 				newUser.setSex(sexRepo.findOne(u.getSex()));
 			newUser.setUserName(u.getUserName());
-			newUser.setPassword(u.getPassword());
+			newUser.setPassword(passwordEncoder.encode(u.getPassword()));
 			newUser.setEmail(u.getEmail());
 			newUser.setEnabled(true);
 			newUser.setCreatedDate(new Date());			

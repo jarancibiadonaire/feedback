@@ -1,11 +1,13 @@
-var santiago = new google.maps.LatLng(-33.43711, -70.634185);
 var marker;
 var map;
+var feeds;
+var markers=[];
 var infowindow = new google.maps.InfoWindow();
-var geocoder;
+var bounds = new google.maps.LatLngBounds();
+var geocoder = new google.maps.Geocoder();
+var santiago = new google.maps.LatLng(-33.43711, -70.634185);
 
 function initialize() {
-	geocoder = new google.maps.Geocoder();
 	var mapOptions = {
 		zoom : 13,
 		center : santiago
@@ -18,6 +20,7 @@ function initialize() {
 		position : santiago
 	});
 	google.maps.event.addListener(marker, 'dragend', toggleBounce);
+	getFeeds();
 }
 function toggleBounce() {
 	var latlng = marker.getPosition();
@@ -42,5 +45,30 @@ function toggleBounce() {
 			alert("Geocoder failed due to: " + status);
 		}
 	});
+}
+function getFeeds(){
+	$.ajax({
+		  url: 'http://localhost:8080/feedback/microblogging/feeds/1',
+		  type: 'get',
+		  async: true,
+		  success: loadFeeds,
+		  error: error
+		});
+}
+function loadFeeds(message){
+	feeds=message;
+	for(var i=0;i<feeds.length;i++){
+		var ll=new google.maps.LatLng(feeds[i].location.lat, feeds[i].location.lng);
+		markers[i]= new google.maps.Marker({
+			map : map,
+			animation : google.maps.Animation.DROP,
+			position : ll
+		});
+		bounds.extend(ll);
+	}
+	map.fitBounds(bounds);
+}
+function error(message){
+	console.log("error",message);
 }
 google.maps.event.addDomListener(window, 'load', initialize);

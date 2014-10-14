@@ -72,63 +72,99 @@
 
 		<!--=== Content ===-->
 		<div class="container content content-without-padding">
-			<div id="map" class="map"></div>
-		</div>
-		<div class="modal fade" id="responsive" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title text-center" id="myModalLabel">Nuevo
-							feed</h4>
+			<div class="row">
+				<div class="col-md-3 margin-bottom-20">
+					<div class="servive-block servive-block-u rounded-2x">
+						<i class="icon-custom icon-color-light rounded-x icon-user"></i>
+						<h2 class="heading-md">${pageContext.request.userPrincipal.name}</h2>
+						<hr class="devider devider-db">
+						<div class="grey rounded-2x">
+							<ul class="list-inline badge-lists badge-icons">
+								<li><a href="#"><i class="fa fa-envelope"></i></a> <span
+									class="badge badge-blue rounded-x">2</span></li>
+								<li><a href="#"><i class="fa fa-cog"></i></a> <span
+									class="badge badge-blue rounded-x">9</span></li>
+								<li><a href="#"><i class="fa fa-gift"></i></a> <span
+									class="badge badge-blue rounded-x">4</span></li>
+								<li><a href="#"><i class="fa fa-exclamation-triangle"></i></a>
+									<span class="badge badge-blue rounded-x">3</span></li>
+								<li><a href="#"><i class="fa fa-comments"></i></a> <span
+									class="badge badge-blue rounded-x">3</span></li>
+							</ul>
+						</div>
 					</div>
-					<form id="addFeed" action="add_feed" class="sky-form" method="get">
-						<div class="modal-body">
-							<div>
-								<div class="servive-block servive-block-default">
-									<fieldset>
-										<section>
-											<label class="label">Título</label> <label class="input">
-												<input type="text" name="title">
-											</label>
-										</section>
-										<section>
-											<label class="label">Descripción</label> <label
-												class="textarea textarea-expandable"> <textarea
-													rows="3" name="description"></textarea>
-											</label>
-										</section>
-										<section>
-											<label class="label">Visibilidad del feed</label>
-											<div class="inline-group">
-												<label class="radio"><input type="radio"
-													value="public" name="visibility" checked><i
-													class="rounded-x"></i>Público</label> <label class="radio"><input
-													type="radio" value="private" name="visibility"><i
-													class="rounded-x"></i>Privado</label>
-											</div>
-										</section>
-									</fieldset>
+					<form:form action='${pageContext.request.contextPath}/publish_feed'
+						class="sky-form" id="feed-form">
+						<header>Ingresa un feed</header>
+						<div class="hidden">
+							<form:input path="user"
+								value="${pageContext.request.userPrincipal.name}" />
+							<form:input path="origin" value="feedback" />
+							<form:input path="location.lat" id="lat" />
+							<form:input path="location.lng" id="lng" />
+							<form:input path="location.address" id="address" />
+							<form:input path="location.comuna" id="comuna" />
+						</div>
+						<fieldset>
+							<section>
+								<label class="input"> <form:input type="text" id="title"
+										name="title" placeholder="Título" path="title"
+										cssClass="rounded-2x" />
+								</label>
+							</section>
+							<section>
+								<label class="textarea textarea-expandable"> <form:textarea
+										name="description" rows="3" placeholder="Descripción"
+										cssClass="rounded-2x" path="description" />
+								</label>
+							</section>
+							<section>
+								<label class="label">Visibilidad</label>
+								<div class="inline-group">
+									<label class="radio"><form:radiobutton value="Público"
+											path="visibility" checked="true"></form:radiobutton><i
+										class="rounded-x"></i>Público</label> <label class="radio"><form:radiobutton
+											value="Privado" path="visibility"></form:radiobutton><i
+										class="rounded-x"></i>Privado</label>
 								</div>
-							</div>
+							</section>
+							<section>
+								<div class="text-center">
+									<button type="submit" class="btn-u rounded-2x">Publicar</button>
+								</div>
+							</section>
+						</fieldset>
+					</form:form>
+					<c:if test="${not empty var and var == 'success'}">
+						<div class="alert alert-success fade in alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-hidden="true">×</button>
+							Su feed se a publicado exitosamente
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn-u btn-u-default"
-								data-dismiss="modal">Salir</button>
-							<button type="submit" class="btn-u btn-u-primary">Ingresar</button>
+					</c:if>
+					<c:if test="${not empty var and var == 'error'}">
+						<div class="alert alert-danger fade in alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert"
+								aria-hidden="true">×</button>
+							Hubo un error. Vuelva a ingresar un feed
 						</div>
-					</form>
+					</c:if>
+				</div>
+				<!-- End Sidebar Menu -->
+
+				<!-- Begin Content -->
+				<div class="col-md-9">
+					<div id="map" class="map"></div>
 				</div>
 			</div>
 		</div>
+
 
 		<!--/container-->
 		<!--=== End Content ===-->
 
 		<!--=== Copyright ===-->
-		<%-- <jsp:include page="copyright.jsp"></jsp:include> --%>
+		<jsp:include page="copyright.jsp"></jsp:include>
 		<!--=== End Copyright ===-->
 	</div>
 	<!--/End Wrapper-->

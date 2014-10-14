@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="socialAuthenticationFilter"
+		class="org.springframework.social.security.SocialAuthenticationFilter"
+		c:_0-ref="authenticationManager" c:_1-ref="userIdSource" c:_2-ref="usersConnectionRepository"
+		c:_3-ref="connectionFactoryLocator" p:signupUrl="/signup" /> <!-- TODO: Figure out how to wire this without this name -->
+
+	<bean id="socialAuthenticationProvider"
+		class="org.springframework.social.security.SocialAuthenticationProvider"
+		c:_0-ref="usersConnectionRepository" c:_1-ref="socialUsersDetailService" />
+
+	<bean id="socialUsersDetailService"
+		class="cl.uchile.dcc.feedback.social.SimpleSocialUsersDetailService"
+		c:_-ref="userDetailsService" />
+	
+</beans>

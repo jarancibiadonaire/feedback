@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
 
-	<context:property-placeholder location="classpath:META-INF/datasource.properties" />
+	<context:property-placeholder location="classpath:META-INF/datasource.properties,classpath:META-INF/application.properties" />
 	<!-- Datasource -->
 	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -47,7 +47,7 @@
 
 	<!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
 	<cassandra:mapping />
-
+	
 	<!-- REQUIRED: The Default Cassandra Converter used by CassandraTemplate -->
 	<cassandra:converter />
 
@@ -60,5 +60,6 @@
 	<cassandra:repositories base-package="cl.uchile.dcc.feedback.cassandra.repositories" />-->
 	<context:component-scan base-package="cl.uchile.dcc.feedback.cassandra.repositories,
 										cl.uchile.dcc.feedback.services"/>
-	<import resource="spring-security.xml"/>							
+	<import resource="spring-security.xml"/>	
+	<context:component-scan base-package="cl.uchile.dcc.feedback.social.controllers"/>			
 	</beans>

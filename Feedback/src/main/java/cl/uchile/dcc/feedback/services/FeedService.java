@@ -72,7 +72,7 @@ public class FeedService implements FeedServiceRemote {
 		List<FeedVO> feeds=new ArrayList<FeedVO>();
 		FeedMapper mapper=new FeedMapper();
 		LocationMapper mapperL=new LocationMapper();
-		Iterable<Feed> f=feedRepo.findAll();
+		Iterable<Feed> f=feedRepo.findByVisibilityIdOrderByCreatedDateDesc(2);
 		for(Feed feed:f){
 			FeedVO fvo=mapper.getBasic(feed);
 			fvo.setLocation(mapperL.getBasic(feed.getLocation()));

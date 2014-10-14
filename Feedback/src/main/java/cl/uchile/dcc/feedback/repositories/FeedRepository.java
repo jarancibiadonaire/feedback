@@ -25,5 +25,5 @@ public interface FeedRepository extends CrudRepository<Feed, Integer> {
 	List<Feed> findByUserId(Integer id);
 	List<Feed> findByUserIdAndVisibilityId(Integer id,Integer vid);
 	List<Feed> findByOriginId(Integer id);
-	List<Feed> findByVisibilityId(Integer id);
+	List<Feed> findByVisibilityIdOrderByCreatedDateDesc(Integer id);
 }
