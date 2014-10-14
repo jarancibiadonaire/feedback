@@ -100,10 +100,6 @@
 					<div class="alert alert-danger fade in">${error}</div>
 				</c:if>
 				<hr>
-				<label class="checkbox"> <input type="checkbox">
-					Recuérdame
-				</label>
-
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 						<button type="submit" class="btn-u btn-block">Ingresar</button>
