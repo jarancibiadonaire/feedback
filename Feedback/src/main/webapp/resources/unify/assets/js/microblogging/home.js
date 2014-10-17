@@ -9,7 +9,6 @@ function loadPosition(position) {
 	var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	geocoder.geocode({'latLng' : latlng}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-			console.log(results);
 			var comuna;
 			var address;
 			if (results[0]) {

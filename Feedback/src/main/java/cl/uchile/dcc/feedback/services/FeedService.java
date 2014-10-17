@@ -1,19 +1,26 @@
 package cl.uchile.dcc.feedback.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import cl.uchile.dcc.feedback.comparators.CommentComparator;
+import cl.uchile.dcc.feedback.entities.Comment;
 import cl.uchile.dcc.feedback.entities.Feed;
 import cl.uchile.dcc.feedback.entities.Location;
+import cl.uchile.dcc.feedback.entities.User;
 import cl.uchile.dcc.feedback.entities.Visibility;
+import cl.uchile.dcc.feedback.mappers.CommentMapper;
 import cl.uchile.dcc.feedback.mappers.FeedMapper;
 import cl.uchile.dcc.feedback.mappers.LocationMapper;
+import cl.uchile.dcc.feedback.model.CommentVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.VisibilityVO;
+import cl.uchile.dcc.feedback.repositories.CommentRepository;
 import cl.uchile.dcc.feedback.repositories.ComunaRepository;
 import cl.uchile.dcc.feedback.repositories.FeedRepository;
 import cl.uchile.dcc.feedback.repositories.LocationRepository;
@@ -36,6 +43,8 @@ public class FeedService implements FeedServiceRemote {
 	VisibilityRepository visibilityRepo;
 	@Autowired
 	ComunaRepository comunaRepo;
+	@Autowired 
+	CommentRepository commentRepo;
 	
 	@Override
 	public Integer createFeed(FeedVO feedVO){
@@ -72,12 +81,37 @@ public class FeedService implements FeedServiceRemote {
 		List<FeedVO> feeds=new ArrayList<FeedVO>();
 		FeedMapper mapper=new FeedMapper();
 		LocationMapper mapperL=new LocationMapper();
+		CommentMapper mapperC=new CommentMapper();
 		Iterable<Feed> f=feedRepo.findByVisibilityIdOrderByCreatedDateDesc(2);
 		for(Feed feed:f){
 			FeedVO fvo=mapper.getBasic(feed);
 			fvo.setLocation(mapperL.getBasic(feed.getLocation()));
+			List<CommentVO> comments=new ArrayList<CommentVO>();
+			for(Comment comment:feed.getComments())
+				comments.add(mapperC.getBasic(comment));
+			Collections.sort(comments, new CommentComparator());
+			fvo.setComments(comments);
+			fvo.setTotalComments(comments.size());
 			feeds.add(fvo);
-		}			
+		}		
 		return feeds;
+	}
+	
+	@Override
+	public Integer commentFeed(CommentVO commentVO){
+		if(commentVO==null || commentVO.getFeed()==null || commentVO.getUser()==null)
+			return null;
+		User u=userRepo.findByUserName(commentVO.getUser());
+		Feed f=feedRepo.findOne(commentVO.getFeed());
+		if(u==null || f==null)
+			return null;
+		Comment c=new Comment();
+		c.setComment(commentVO.getComment());
+		c.setUser(u);
+		c.setFeed(f);
+		c.setCreatedDate(new Date());
+		c.setLevel(commentVO.getLevel());
+		commentRepo.save(c);
+		return c.getId();
 	}
 }

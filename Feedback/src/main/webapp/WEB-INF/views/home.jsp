@@ -187,7 +187,7 @@
 													<li><i class="fa fa-clock-o"></i> <fmt:formatDate
 															type="both" dateStyle="medium" timeStyle="short"
 															value="${feed.createdDate }" /></li>
-													<li><i class="fa fa-comments-o"></i> <a href="#">${feed.id}
+													<li><i class="fa fa-comments-o"></i> <a href="#">${feed.totalComments}
 															Comentarios</a></li>
 												</ul>
 												<a class="likes" href="#"><i class="fa fa-heart"></i>${feed.id}</a>

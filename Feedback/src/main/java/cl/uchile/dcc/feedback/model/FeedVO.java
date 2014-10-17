@@ -34,6 +34,8 @@ public class FeedVO implements Serializable {
 	
 	private List<RatingVO> ratings;
 	
+	private Integer totalComments;
+	
 	public FeedVO(){
 		this.location=new LocationVO();
 	}
@@ -140,6 +142,14 @@ public class FeedVO implements Serializable {
 
 	public void setRatings(List<RatingVO> ratings) {
 		this.ratings = ratings;
+	}
+
+	public Integer getTotalComments() {
+		return totalComments;
+	}
+
+	public void setTotalComments(Integer totalComments) {
+		this.totalComments = totalComments;
 	}
 	
 }

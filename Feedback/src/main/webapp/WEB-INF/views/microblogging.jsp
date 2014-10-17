@@ -35,13 +35,15 @@
 	href="<c:url value="/resources/assets/plugins/font-awesome/css/font-awesome.min.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/assets/plugins/scrollbar/src/perfect-scrollbar.css"/>">
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="<c:url value="/resources/assets/css/sky-forms-ie8.css"/>">
     <![endif]-->
 
 <!-- CSS Page Style -->
 <link rel="stylesheet"
-	href="<c:url value="/resources/assets/css/pages/page_search.css"/>">
+	href="<c:url value="/resources/assets/css/pages/profile.css"/>">
 
 <!-- CSS Theme -->
 <link rel="stylesheet"
@@ -52,6 +54,8 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/custom.css"/>">
 
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
 <body>
 	<sec:authorize access="!isAuthenticated()">
@@ -71,7 +75,8 @@
 		<!--=== End Header ===-->
 
 		<!--=== Content ===-->
-		<div class="container content content-without-padding">
+		<div class="container content content-without-padding" ng-app="myApp"
+			ng-controller="mapController">
 			<div class="row">
 				<div class="col-md-3 margin-bottom-20">
 					<div class="servive-block servive-block-u rounded-2x">
@@ -93,8 +98,9 @@
 							</ul>
 						</div>
 					</div>
-					<form:form action='${pageContext.request.contextPath}/publish_feed'
-						class="sky-form" id="feed-form">
+					<form:form
+						action='${pageContext.request.contextPath}/microblogging/publish_feed'
+						class="sky-form" id="feed-form" modelAttribute="feed">
 						<header>Ingresa un feed</header>
 						<div class="hidden">
 							<form:input path="user"
@@ -155,11 +161,65 @@
 				<!-- Begin Content -->
 				<div class="col-md-9">
 					<div id="map" class="map"></div>
+					<div ng-show="show_panel"
+						class="funny-boxes funny-box-custom funny-boxes-top-sea panel-map hidden">
+						<ul
+							class="list-unstyled contentHolder margin-bottom-20 ps-container contentHolder-custom">
+							<li class="notification">
+								<h2>{{currentFeed.title}}</h2>
+								<p>{{currentFeed.description}}</p> <i class="fa fa-user"></i>
+								{{currentFeed.user}}
+								<hr class="devider devider-dashed hr-custom">
+								<div>
+									<i class="fa fa-clock-o"></i> <span>{{currentFeed.createdDate
+										| date:'medium'}}</span>
+								</div>
+								<div>
+									<span class="label rounded label-u likes">{{currentFeed.location.comuna}}</span>
+								</div>
+								<hr class="devider devider-dashed hr-custom"> <form:form
+									action='${pageContext.request.contextPath}/microblogging/comment_feed'
+									id="comment-form" modelAttribute="comment"
+									class="sky-form sky-form-panel">
+									<div class="hidden">
+										<form:input path="user"
+											value="${pageContext.request.userPrincipal.name}" />
+										<form:input path="level" value="0" />
+										<form:input path="feed" id="commentFeed" />
+									</div>
+									<div class="text-center">
+										<label class="textarea"> <form:textarea
+												row="2" id="comment" name="comment" placeholder="Coméntalo!"
+												path="comment" cssClass="rounded" />
+										</label>
+									</div>
+									<div class="text-center">
+										<button type="submit" class="btn-u btn-u-xs rounded">Enviar</button>
+									</div>
+								</form:form>
+								<hr class="devider devider-dashed hr-custom">
+								<div>
+									<i class="fa fa-comments-o"></i> <a href="#">{{currentFeed.totalComments}}
+										Comentarios</a>
+								</div>
+								<div id="testimonials-4"
+									class="carousel slide testimonials testimonials-v2 testimonials-bg-default">
+									<div class="carousel-inner">
+										<div class="item active" ng-repeat="comment in currentFeed.comments">
+											<p class="rounded-3x">{{comment.comment}}</p>
+											<div class="testimonial-info">
+												<i class="fa fa-user"></i><span class="testimonial-author">{{comment.user}}</span>
+												<em>{{comment.createdDate | date:'medium'}}</em>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-
-
 		<!--/container-->
 		<!--=== End Content ===-->
 
@@ -176,13 +236,28 @@
 		src="<c:url value="/resources/assets/plugins/jquery-migrate-1.2.1.min.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/plugins/bootstrap/js/bootstrap.min.js"/>"></script>
+	<!-- Scrollbar -->
+	<script
+		src="<c:url value="/resources/assets/plugins/scrollbar/src/jquery.mousewheel.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/plugins/scrollbar/src/perfect-scrollbar.js"/>"></script>
+	<!-- Checkout Form -->
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.validate.min.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.maskedinput.min.js"/>"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/app.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/js/forms/publish_feed.js"/>"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
 			activeNavbar();
+			FeedForm.initFeedForm();
+			"use strict";
+			$('.contentHolder').perfectScrollbar();
 		});
 		function activeNavbar() {
 			//borrar los anteriores
@@ -198,8 +273,13 @@
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>
 <![endif]-->
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3kOYMhNbartGm75c_O2XioYUTnbiEsu4&sensor=true&libraries=drawing,places"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/home.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/microblogging/microblogging.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/appAngular.js"/>"></script>
 </body>
 </html>

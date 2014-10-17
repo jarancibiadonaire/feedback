@@ -13,38 +13,12 @@ function initialize() {
 		center : santiago
 	};
 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	marker = new google.maps.Marker({
-		map : map,
-		draggable : true,
-		animation : google.maps.Animation.DROP,
-		position : santiago
-	});
-	google.maps.event.addListener(marker, 'dragend', toggleBounce);
+	google.maps.event.addListener(map, 'click', function(event) {
+		var a=angular.element($(".panel-map")).scope();
+		a.$apply(function(){a.reset();});
+	  });
+	getCurrentPosition();
 	getFeeds();
-}
-function toggleBounce() {
-	var latlng = marker.getPosition();
-	geocoder.geocode({'latLng' : latlng}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			console.log(results);
-			var comuna;
-			if (results[0]) {
-				for(var i = 0;results[0].address_components.length;i++){
-					if(results[0].address_components[i].types[0]=="administrative_area_level_3"){
-						comuna=results[0].address_components[i].long_name;
-						break;
-					}						
-				}
-				var button="<button class='btn-u btn-brd btn-brd-hover btn-u' type='button' data-toggle='modal' data-target='#responsive'>Ingresar</button>";
-				infowindow.setContent(results[0].formatted_address+" <br/>"+comuna+"<br/>"+
-						button);
-				infowindow.open(map, marker);
-				map.panTo(latlng);
-			}
-		} else {
-			alert("Geocoder failed due to: " + status);
-		}
-	});
 }
 function getFeeds(){
 	$.ajax({
@@ -64,11 +38,45 @@ function loadFeeds(message){
 			animation : google.maps.Animation.DROP,
 			position : ll
 		});
-		bounds.extend(ll);
+		putHandlers(markers[i],i);
 	}
-	map.fitBounds(bounds);
+	var a=angular.element($(".panel-map")).scope();
+	a.$apply(function(){a.feeds=feeds;});
 }
 function error(message){
 	console.log("error",message);
+}
+function putHandlers(marker,i){
+	google.maps.event.addListener(marker, 'click', function(event) {
+		var a=angular.element($(".panel-map")).scope();
+		a.$apply(function(){a.toggle(i);});
+	  });
+}
+function getCurrentPosition(){
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+          if(marker==null)
+              marker = new google.maps.Marker({
+                        clickable: false,
+                        position: pos,
+                        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+                                                                        new google.maps.Size(22,22),
+                                                                        new google.maps.Point(0,18),
+                                                                        new google.maps.Point(11,11)),
+                        shadow: null,
+                        zIndex: 999,
+                        map: map 
+                    });
+          else
+              marker.setPosition(pos);
+          map.setCenter(marker.getPosition());
+        }, function() {
+          handleNoGeolocation();
+        });
+      } else {
+        // Browser/GPS doesn't support Geolocation
+        handleNoGeolocation();
+      }    
 }
 google.maps.event.addDomListener(window, 'load', initialize);

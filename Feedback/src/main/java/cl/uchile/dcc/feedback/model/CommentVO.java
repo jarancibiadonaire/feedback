@@ -11,13 +11,15 @@ public class CommentVO implements Serializable {
 	
 	private String comment;
 	
-	private UserVO user;
+	private String user;
 		
 	private Date createdDate;
 	
-	private CommentVO responseTo;
+	private String responseTo;
 	
 	private Integer level;
+	
+	private Integer feed;
 
 	public Integer getId() {
 		return id;
@@ -35,11 +37,11 @@ public class CommentVO implements Serializable {
 		this.comment = comment;
 	}
 
-	public UserVO getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(UserVO user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -51,11 +53,11 @@ public class CommentVO implements Serializable {
 		this.createdDate = createdDate;
 	}
 
-	public CommentVO getResponseTo() {
+	public String getResponseTo() {
 		return responseTo;
 	}
 
-	public void setResponseTo(CommentVO responseTo) {
+	public void setResponseTo(String responseTo) {
 		this.responseTo = responseTo;
 	}
 
@@ -65,6 +67,14 @@ public class CommentVO implements Serializable {
 
 	public void setLevel(Integer level) {
 		this.level = level;
+	}
+
+	public Integer getFeed() {
+		return feed;
+	}
+
+	public void setFeed(Integer feed) {
+		this.feed = feed;
 	}
 
 }

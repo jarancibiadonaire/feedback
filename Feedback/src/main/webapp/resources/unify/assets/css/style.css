@@ -18,7 +18,7 @@
 /*Boxed Layout
 ------------------------------------*/
 .wrapper {
-  background: #fff;
+  background: #F8F8F8;
 }
 
 .boxed-layout {
@@ -1981,7 +1981,7 @@ ul.labels-demo li {
 ------------------------------------*/
 .map {
 	width: 100%; 
-	height: 500px;
+	height: 525px;
 	border-top: solid 1px #eee;
 	border-bottom: solid 1px #eee;
 	margin-bottom:0%;

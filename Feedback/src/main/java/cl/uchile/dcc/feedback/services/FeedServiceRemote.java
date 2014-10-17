@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import cl.uchile.dcc.feedback.model.CommentVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.VisibilityVO;
 
@@ -22,5 +23,6 @@ public interface FeedServiceRemote {
 	Integer createFeed(FeedVO feed);
 	List<VisibilityVO> getVisibilities();
 	List<FeedVO> getAllFeeds();
+	Integer commentFeed(CommentVO commentVO);
 
 }
