@@ -53,7 +53,8 @@
 <!-- CSS Customization -->
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/custom.css"/>">
-
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3kOYMhNbartGm75c_O2XioYUTnbiEsu4&sensor=true&libraries=drawing,places"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
@@ -125,7 +126,10 @@
 								</label>
 							</section>
 							<section>
-								<label class="label">Visibilidad</label>
+								<label class="toggle"><input type="checkbox"
+									name="checkbox-toggle" onclick="activeDrawingManager()" checked><i
+									class="rounded-4x" data-toggle="tooltip" data-placement="top"
+									title="Activa el marcador para personalizar la ubicación del feed"></i>Marcador:</label>
 								<div class="inline-group">
 									<label class="radio"><form:radiobutton value="Público"
 											path="visibility" checked="true"></form:radiobutton><i
@@ -188,8 +192,8 @@
 										<form:input path="feed" id="commentFeed" />
 									</div>
 									<div class="text-center">
-										<label class="textarea"> <form:textarea
-												row="2" id="comment" name="comment" placeholder="Coméntalo!"
+										<label class="textarea"> <form:textarea row="2"
+												id="comment" name="comment" placeholder="Coméntalo!"
 												path="comment" cssClass="rounded" />
 										</label>
 									</div>
@@ -205,7 +209,8 @@
 								<div id="testimonials-4"
 									class="carousel slide testimonials testimonials-v2 testimonials-bg-default">
 									<div class="carousel-inner">
-										<div class="item active" ng-repeat="comment in currentFeed.comments">
+										<div class="item active"
+											ng-repeat="comment in currentFeed.comments">
 											<p class="rounded-3x">{{comment.comment}}</p>
 											<div class="testimonial-info">
 												<i class="fa fa-user"></i><span class="testimonial-author">{{comment.user}}</span>
@@ -273,8 +278,6 @@
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>
 <![endif]-->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3kOYMhNbartGm75c_O2XioYUTnbiEsu4&sensor=true&libraries=drawing,places"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/microblogging/home.js"/>"></script>
 	<script type="text/javascript"

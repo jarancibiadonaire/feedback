@@ -1,4 +1,8 @@
 var geocoder = new google.maps.Geocoder();
+var myLat=undefined;
+var myLng=undefined;
+var myAddress=undefined;
+var myComuna=undefined;
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(loadPosition);
 } else { 
@@ -20,6 +24,10 @@ function loadPosition(position) {
 						break;
 					}						
 				}
+				myLat=latlng.lat();
+				myLng=latlng.lng();
+				myAddress=address;
+				myComuna=comuna;
 				$("#lat").val(latlng.lat());
 				$("#lng").val(latlng.lng());
 				$("#address").val(address);
