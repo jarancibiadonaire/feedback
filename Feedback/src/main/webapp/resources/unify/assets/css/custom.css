@@ -1,42 +1,74 @@
 /* Add here all your css styles (customizations) */
-#registration-form{
-	border:none;
+#registration-form {
+	border: none;
 }
-.green{
-	color:#72c02c !important;
+
+.green {
+	color: #72c02c !important;
 }
-.content-without-padding{
-	padding-top:1%;
-	padding-bottom:1%;
+
+.content-without-padding {
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
-.logo-header{
-	margin:-5%;
+
+.logo-header {
+	margin: -5%;
 }
-.login-index{
-	margin-top:1.5%;
+
+.login-index {
+	margin-top: 1.5%;
 }
-.extended{
-	width:initial;
+
+.extended {
+	width: initial;
 }
-.grey{
-	background:#ecf0f1;
-	padding-top:7%;
+
+.grey {
+	background: #ecf0f1;
+	padding-top: 7%;
 }
-.panel-map{
-	position: absolute; 
-	top: 10%; 
-	right: 3%; 
-	width: 25%;
-	z-index: 99; 
+
+.panel-map {
+	position: absolute;
+	top: 10%;
+	right: 3%;
+	width: 28%;
+	z-index: 99;
+	background: white;
 }
-.funny-box-custom{
-	padding:5px 5px;
+
+.funny-box-custom {
+	padding: 5px 5px;
 }
-.hr-custom{
+
+.hr-custom {
 	margin: 10px 0;
-}.contentHolder-custom{
-	height:400px;
 }
-.sky-form-panel{
-	border:none;
+
+.contentHolder-custom {
+	height: 400px;
+}
+
+.sky-form-panel {
+	border: none;
+}
+
+.silver {
+	background: silver;
+}
+
+.scrollFix {
+	line-height: 1.35;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.panel-home {
+	z-index:10;
+	position: absolute;
+	right:3%;
+}
+.form-inline-home{
+	display:inline-block;
 }

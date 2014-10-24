@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cl.uchile.dcc.feedback.model.CommentVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
+import cl.uchile.dcc.feedback.model.RatingVO;
+import cl.uchile.dcc.feedback.model.TagVO;
 import cl.uchile.dcc.feedback.services.FeedServiceRemote;
 import cl.uchile.dcc.feedback.services.UserServiceRemote;
 
@@ -26,9 +28,12 @@ public class MicrobloggingController {
 
 	@RequestMapping(value = { "/microblogging"}, method = RequestMethod.GET)
 	public ModelAndView microblogging(String var) {
+		List<TagVO> listTags=feedService.getAllTags();
 		ModelAndView model = new ModelAndView();
 		model.addObject("feed", new FeedVO());
 		model.addObject("comment", new CommentVO());
+		model.addObject("rating", new RatingVO());
+		model.addObject("listTags", listTags);
 		model.addObject("var", var);
 		model.setViewName("microblogging");		
 		return model;
@@ -49,7 +54,6 @@ public class MicrobloggingController {
 	
 	@RequestMapping(value = { "/microblogging/feeds/{type}" }, method = RequestMethod.GET)
 	public @ResponseBody List<FeedVO> getFeeds(@PathVariable String type) {
-		System.out.println(type);
 		List<FeedVO> feeds=feedService.getAllFeeds();
 		return feeds;
 	}
@@ -64,6 +68,15 @@ public class MicrobloggingController {
 			return microblogging("success");
 		else
 			return microblogging("error");
+	}
+	
+	@RequestMapping(value="/microblogging/vote" , method= RequestMethod.POST)
+	public ModelAndView voteFeed(@ModelAttribute("rating") RatingVO rating,
+			BindingResult result){
+		if(rating.getUser()!=null && rating.getFeed()!=null && rating.getScore()!=null){
+			feedService.voteFeed(rating);
+		}			
+		return microblogging(null);
 	}
 	
 }

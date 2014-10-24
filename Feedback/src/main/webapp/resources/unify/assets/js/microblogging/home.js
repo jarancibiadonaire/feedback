@@ -3,10 +3,12 @@ var myLat=undefined;
 var myLng=undefined;
 var myAddress=undefined;
 var myComuna=undefined;
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(loadPosition);
-} else { 
-   alert("Su navegador no soporta Geolocalización.");
+function initializeHome(){
+	if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(loadPosition);
+	} else { 
+	   alert("Su navegador no soporta Geolocalización.");
+	}
 }
 
 function loadPosition(position) {
@@ -38,3 +40,4 @@ function loadPosition(position) {
 		}
 	});
 }
+google.maps.event.addDomListener(window, 'load', initializeHome);

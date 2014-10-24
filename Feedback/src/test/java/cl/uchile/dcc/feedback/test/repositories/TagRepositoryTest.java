@@ -37,7 +37,7 @@ public class TagRepositoryTest {
 		t.setVisibility(v);
 		tagRepo.save(t);
 		
-		Tag t2=tagRepo.findByNameIgnoreCase("test 1").get(0);
+		Tag t2=tagRepo.findByNameIgnoreCase("test 1");
 		assertNotNull(t2);
 		assertTrue(t2.getDescription().contains("prob"));
 		

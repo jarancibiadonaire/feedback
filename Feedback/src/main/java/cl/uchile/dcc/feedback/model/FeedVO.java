@@ -30,11 +30,15 @@ public class FeedVO implements Serializable {
 	
 	private List<CommentVO> comments;
 	
-	private List<TagVO> tags;
+	private List<String> tags;
 	
 	private List<RatingVO> ratings;
 	
 	private Integer totalComments;
+	
+	private Integer totalLikes;
+	
+	private Integer totalDislikes;
 	
 	public FeedVO(){
 		this.location=new LocationVO();
@@ -128,11 +132,11 @@ public class FeedVO implements Serializable {
 		this.comments = comments;
 	}
 
-	public List<TagVO> getTags() {
+	public List<String> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<TagVO> tags) {
+	public void setTags(List<String> tags) {
 		this.tags = tags;
 	}
 
@@ -150,6 +154,22 @@ public class FeedVO implements Serializable {
 
 	public void setTotalComments(Integer totalComments) {
 		this.totalComments = totalComments;
+	}
+
+	public Integer getTotalLikes() {
+		return totalLikes;
+	}
+
+	public void setTotalLikes(Integer totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+
+	public Integer getTotalDislikes() {
+		return totalDislikes;
+	}
+
+	public void setTotalDislikes(Integer totalDislikes) {
+		this.totalDislikes = totalDislikes;
 	}
 	
 }

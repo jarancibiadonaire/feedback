@@ -9,11 +9,13 @@ public class RatingVO implements Serializable {
 	
 	private Integer id;
 	
-	private UserVO user;
+	private String user;
 	
 	private Integer score;
 	
 	private Date createdDate;
+	
+	private Integer feed;
 
 	public Integer getId() {
 		return id;
@@ -23,11 +25,11 @@ public class RatingVO implements Serializable {
 		this.id = id;
 	}
 
-	public UserVO getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(UserVO user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -45,6 +47,14 @@ public class RatingVO implements Serializable {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public Integer getFeed() {
+		return feed;
+	}
+
+	public void setFeed(Integer feed) {
+		this.feed = feed;
 	}
 
 }

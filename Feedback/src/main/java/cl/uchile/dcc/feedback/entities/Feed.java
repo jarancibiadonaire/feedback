@@ -65,10 +65,10 @@ public class Feed implements Serializable{
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
 	private List<Comment> comments;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "feed")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
 	private List<Rating> rates;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "feed")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
 	private List<FeedTag> feedTags;
 
 	public Integer getId() {

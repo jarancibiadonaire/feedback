@@ -3,7 +3,7 @@ var newMarker;
 var map;
 var feeds;
 var markers=[];
-var infowindow = new google.maps.InfoWindow();
+var infowindow = new google.maps.InfoWindow({content:"<div class='scrollFix'><button class='btn-u' type='button' onclick='activeDrawingManager()'><i class='fa fa-times'></i> Borrar</button></div>"});
 var bounds = new google.maps.LatLngBounds();
 var drawingManager=new google.maps.drawing.DrawingManager();
 var geocoder = new google.maps.Geocoder();
@@ -35,6 +35,9 @@ function setDrawingListener(){
              drawingControl: false
            });
          updatePosition(newMarker.getPosition());
+         google.maps.event.addListener(newMarker, 'click', function() {
+        	    infowindow.open(map,newMarker);
+        	  });
          google.maps.event.addListener(newMarker, 'dragend', updatePosition);
      });
 }
@@ -67,17 +70,14 @@ function updatePosition(event){
 	});
 }
 function activeDrawingManager(){
-	drawingShow= !drawingShow;
     drawingManager.setOptions({
-        drawingControl: drawingShow
+        drawingControl: true
       });
-    if(!drawingShow){
-    	newMarker.setMap(null);
-    	$("#lat").val(myLat);
-		$("#lng").val(myLng);
-		$("#address").val(myAddress);
-		$("#comuna").val(myComuna);
-    }    
+    newMarker.setMap(null);
+   	$("#lat").val(myLat);
+	$("#lng").val(myLng);
+	$("#address").val(myAddress);
+	$("#comuna").val(myComuna);
 }
 function getDrawingManager(){
 	return new google.maps.drawing.DrawingManager({
@@ -112,8 +112,7 @@ function loadFeeds(message){
 		markers[i]= new google.maps.Marker({
 			map : map,
 			animation : google.maps.Animation.DROP,
-			position : ll,
-			icon: "http://maps.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png"
+			position : ll
 		});
 		putHandlers(markers[i],i);
 	}

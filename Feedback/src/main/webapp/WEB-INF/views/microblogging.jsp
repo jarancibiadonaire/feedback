@@ -37,6 +37,8 @@
 	href="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/plugins/scrollbar/src/perfect-scrollbar.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/assets/css/plugins/bootstrap-tag-cloud.css"/>">
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="<c:url value="/resources/assets/css/sky-forms-ie8.css"/>">
     <![endif]-->
@@ -44,7 +46,10 @@
 <!-- CSS Page Style -->
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/pages/profile.css"/>">
-
+<link rel="stylesheet"
+	href="<c:url value="/resources/assets/css/pages/feature_timeline1.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/assets/css/pages/feature_timeline1_custom.css"/>">
 <!-- CSS Theme -->
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/themes/default.css"/>"
@@ -126,16 +131,27 @@
 								</label>
 							</section>
 							<section>
-								<label class="toggle"><input type="checkbox"
-									name="checkbox-toggle" onclick="activeDrawingManager()" checked><i
-									class="rounded-4x" data-toggle="tooltip" data-placement="top"
-									title="Activa el marcador para personalizar la ubicación del feed"></i>Marcador:</label>
 								<div class="inline-group">
 									<label class="radio"><form:radiobutton value="Público"
 											path="visibility" checked="true"></form:radiobutton><i
 										class="rounded-x"></i>Público</label> <label class="radio"><form:radiobutton
 											value="Privado" path="visibility"></form:radiobutton><i
 										class="rounded-x"></i>Privado</label>
+								</div>
+								<label class="label">Tags</label>
+								<div class="row">
+									<div id="tag-info">
+										<input type="text" list="list">
+										<datalist id="list">
+											<c:forEach items="${listTags}" var="tag">
+												<option value="${tag.name}"></option>
+											</c:forEach>
+										</datalist>
+										<button class="btn" type="button">
+											<i class="fa fa-plus"></i>
+										</button>
+									</div>
+									<ul id="tag-cloud"></ul>
 								</div>
 							</section>
 							<section>
@@ -166,8 +182,113 @@
 				<div class="col-md-9">
 					<div id="map" class="map"></div>
 					<div ng-show="show_panel"
-						class="funny-boxes funny-box-custom funny-boxes-top-sea panel-map hidden">
-						<ul
+						class="timeline-v1-custom panel-map hidden contentHolder contentHolder-custom">
+						<div class="timeline-panel">
+							<div class="text-justify">
+								<div class="tab-v2" id="feed-">
+									<ul class="nav nav-tabs">
+										<li class="active"><a href="#home-" data-toggle="tab">Feed</a></li>
+										<li><a href="#profile-" data-toggle="tab">Comentarios</a></li>
+										<li><a href="#messages-" data-toggle="tab">Tags</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane fade in active" id="home-">
+											<h4>{{currentFeed.title}}</h4>
+											<p>{{currentFeed.description}}</p>
+										</div>
+										<div class="tab-pane fade in" id="profile-">
+											<form:form
+												action='${pageContext.request.contextPath}/microblogging/comment_feed'
+												id="comment-form" modelAttribute="comment"
+												class="sky-form sky-form-panel">
+												<div class="hidden">
+													<form:input path="user"
+														value="${pageContext.request.userPrincipal.name}" />
+													<form:input path="level" value="0" />
+													<form:input path="feed" value="{{currentFeed.id}}" />
+												</div>
+												<div class="text-center">
+													<label class="textarea"> <form:textarea row="2"
+															id="comment" name="comment" placeholder="Coméntalo!"
+															path="comment" cssClass="rounded" />
+													</label>
+												</div>
+												<div class="text-center">
+													<button type="submit" class="btn-u btn-u-xs rounded">Enviar</button>
+												</div>
+											</form:form>
+											<hr class="devider devider-dashed hr-custom">
+											<div id="testimonials-4"
+												class="testimonials testimonials-v2 testimonials-bg-default">
+												<div class="carousel-inner">
+													<div class="item active"
+														ng-repeat="comment in currentFeed.comments">
+														<p class="rounded-3x">{{comment.comment}}</p>
+														<div class="testimonial-info">
+															<i class="fa fa-user"></i><span
+																class="testimonial-author">{{comment.user}}</span> <em>
+																{{comment.createdDate | date:'medium'}}</em>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade in" id="messages-">
+											<div id="whatever">
+												<button ng-repeat="tag in currentFeed.tags"
+													class="btn-u btn-brd btn-brd-hover rounded-2x btn-u-xs btn-u-blue"
+													type="button">
+													<i class="fa fa-tag"></i> {{tag}}
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="timeline-footer">
+								<ul class="list-unstyled list-inline blog-info">
+									<li><i class="fa fa-user"></i> {{currentFeed.user}}</li>
+								</ul>
+								<span class="label rounded label-u likes">{{currentFeed.location.comuna}}</span>
+								<br />
+								<ul class="list-unstyled list-inline blog-info">
+									<li><i class="fa fa-clock-o"></i>
+										{{currentFeed.createdDate | date:'medium'}}</li>
+									<li><i class="fa fa-comments-o"></i> <a href="#">{{currentFeed.totalComments}}
+											Comentarios</a></li>
+								</ul>
+								<div class="text-right">
+									<form:form method="post" class="form-inline-home"
+										modelAttribute="rating"
+										action="${pageContext.request.contextPath}/microblogging/vote">
+										<form:input name="feed" path="feed" value="{{currentFeed.id}}"
+											class="hidden" />
+										<form:input name="score" path="score" value="1" class="hidden" />
+										<form:input name="user" path="user"
+											value="${pageContext.request.userPrincipal.name}"
+											class="hidden" />
+										<button class="btn-link likes" type="submit">
+											<i class="fa fa-thumbs-up">{{currentFeed.totalLikes}} </i>
+										</button>
+									</form:form>
+									<form:form method="post" class="form-inline-home"
+										modelAttribute="rating"
+										action="${pageContext.request.contextPath}/microblogging/vote">
+										<form:input name="feed" path="feed" value="{{currentFeed.id}}"
+											class="hidden" />
+										<form:input name="score" path="score" value="-1"
+											class="hidden" />
+										<form:input name="user" path="user"
+											value="${pageContext.request.userPrincipal.name}"
+											class="hidden" />
+										<button class="btn-link likes" type="submit">
+											<i class="fa fa-thumbs-down">{{currentFeed.totalDislikes}}</i>
+										</button>
+									</form:form>
+								</div>
+							</div>
+						</div>
+						<%-- <ul
 							class="list-unstyled contentHolder margin-bottom-20 ps-container contentHolder-custom">
 							<li class="notification">
 								<h2>{{currentFeed.title}}</h2>
@@ -220,7 +341,7 @@
 									</div>
 								</div>
 							</li>
-						</ul>
+						</ul> --%>
 					</div>
 				</div>
 			</div>
@@ -284,5 +405,9 @@
 		src="<c:url value="/resources/assets/js/microblogging/microblogging.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/microblogging/appAngular.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/jquery.tagcloud.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/bootstrap-tag-cloud.js"/>"></script>
 </body>
 </html>
