@@ -2,7 +2,7 @@
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="es">
 <!--<![endif]-->
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
@@ -58,7 +58,7 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
 </head>
-<body>
+<body data-spy="scroll" data-target=".tab-v2">
 	<sec:authorize access="!isAuthenticated()">
 		<c:redirect url="/" />
 	</sec:authorize>
