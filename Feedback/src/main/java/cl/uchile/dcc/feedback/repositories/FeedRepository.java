@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import cl.uchile.dcc.feedback.entities.Feed;
 
 public interface FeedRepository extends CrudRepository<Feed, Integer> {
+	Feed findById(Integer id);
 	List<Feed> findByTitleContaining(String title);
 	List<Feed> findByTitleContainingIgnoreCase(String title);
 	List<Feed> findByDescriptionContaining(String description);

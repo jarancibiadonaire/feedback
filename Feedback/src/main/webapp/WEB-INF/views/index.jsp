@@ -55,46 +55,11 @@
 		<c:redirect url="/welcome" />
 	</sec:authorize>
 	<div class="wrapper">
-		<!--=== Header Version 3 ===-->
-		<div class="header header-v3">
-			<!-- Navbar -->
-			<div class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target=".navbar-responsive-collapse">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="fa fa-bars"></span>
-						</button>
-						<a class="navbar-brand" href="index.html"> <img
-							id="logo-header" class="logo-header"
-							src="<c:url value="/resources/assets/img/logo1-default.png"/>"
-							alt="Logo">
-						</a>
-					</div>
-					<div class="text-right login-index">
-						<form class="form-inline sky-form"
-							action="<c:url value='/j_spring_security_check' />" method='POST'>
-							<div class="form-group">
-								<input type="text" class="form-control" name="username"
-									placeholder="Nombre usuario">
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" name="password"
-									placeholder="Contraseña">
-							</div>
-							<button type="submit" class="form-group btn-u">Ingresar</button>
-							<input type="hidden" name="${_csrf.parameterName}"
-								value="${_csrf.token}" />
-						</form>
-					</div>
-				</div>
-			</div>
-			<!-- End Navbar -->
+		<!--=== topbar ===-->
+		<div class="header">
+			<jsp:include page="topbar.jsp"></jsp:include>
 		</div>
-		<!--=== End Header Version 3 ===-->
-
+		<!-- End topbar -->
 		<!--=== Slider ===-->
 		<div class="tp-banner-container">
 			<div class="tp-banner">
@@ -102,8 +67,8 @@
 					<!-- SLIDE -->
 					<li class="revolution-mch-1" data-transition="fade"
 						data-slotamount="5" data-masterspeed="1000">
-						<!-- MAIN IMAGE --> <img
-						src="<c:url value="/resources/assets/img/city/9866770624_6751e90a89_o.jpg"/>"
+						<!-- MAIN IMAGE --> <img                      
+						src="<c:url value="/resources/assets/img/city/4444205136_c014dd5f26_o.jpg"/>"
 						alt="darkblurbg" data-bgfit="cover" data-bgposition="left center"
 						data-bgrepeat="no-repeat">
 
@@ -134,7 +99,7 @@
 					<li class="revolution-mch-1" data-transition="fade"
 						data-slotamount="5" data-masterspeed="1000">
 						<!-- MAIN IMAGE --> <img
-						src="<c:url value="/resources/assets/img/city/4444205136_c014dd5f26_o.jpg"/>"
+						src="<c:url value="/resources/assets/img/city/9866770624_6751e90a89_o.jpg"/>"
 						alt="darkblurbg" data-bgfit="cover" data-bgposition="left center"
 						data-bgrepeat="no-repeat">
 
@@ -255,26 +220,26 @@
 					<div class="row">
 						<div class="col-sm-3 col-xs-6">
 							<div class="counters">
-								<span class="counter">52147</span>
+								<span class="counter">${indexSummary.totalFeeds}</span>
 								<h4>Feeds</h4>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6">
 							<div class="counters">
-								<span class="counter">24583</span>
+								<span class="counter">${indexSummary.totalComments}</span>
 								<h4>Comentarios</h4>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6">
 							<div class="counters">
-								<span class="counter">7349</span>
+								<span class="counter">${indexSummary.totalUsers}</span>
 								<h4>Usuarios</h4>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6">
 							<div class="counters">
-								<span class="counter">87904</span>
-								<h4>Votos</h4>
+								<span class="counter">${indexSummary.totalTags}</span>
+								<h4>Tags</h4>
 							</div>
 						</div>
 					</div>

@@ -15,7 +15,7 @@
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse navbar-responsive-collapse">
+		<%-- <div class="collapse navbar-collapse navbar-responsive-collapse">
 			<ul class="nav navbar-nav">
 				<!-- Home -->
 				<li id="welcome"><a href='<c:url value="/welcome"/>'> Inicio </a></li>
@@ -26,7 +26,7 @@
 				<!-- End Microblogging -->
 
 				<!-- Timeline -->
-				<%-- <li id="timeline"><a href='<c:url value="/timeline"/>'> Timeline </a></li> --%>
+				<li id="timeline"><a href='<c:url value="/timeline"/>'> Timeline </a></li>
 				<!-- End Timeline -->
 
 				<!-- ConceptMap -->
@@ -37,7 +37,7 @@
 				<li id="statistics"><a href='<c:url value="/statistics"/>'> Estadística </a></li>
 				<!-- End Statistics -->
 			</ul>
-		</div>
+		</div> --%>
 		<!--/navbar-collapse-->
 	</div>
 </div>

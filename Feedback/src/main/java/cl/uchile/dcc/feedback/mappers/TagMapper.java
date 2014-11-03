@@ -19,6 +19,10 @@ public class TagMapper implements Mapper<Tag, TagVO> {
 		tag.setName(entity.getName());
 		tag.setDescription(entity.getDescription());
 		tag.setVisibility(entity.getVisibility().getType());
+		if(entity.getVisibility().getId()==2)
+			tag.setRootTag(true);
+		else
+			tag.setRootTag(false);
 		return tag;
 	}
 

@@ -1,0 +1,9 @@
+
+#sitemap{
+/*  margin:8px 0 0 0;*/
+}
+
+#sitemap.linkable{
+  cursor:pointer;
+}
+

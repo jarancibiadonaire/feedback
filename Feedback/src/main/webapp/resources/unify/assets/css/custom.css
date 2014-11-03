@@ -13,7 +13,7 @@
 }
 
 .logo-header {
-	margin: -5%;
+	margin-top: 3%;
 }
 
 .login-index {
@@ -49,7 +49,10 @@
 .contentHolder-custom {
 	height: 400px;
 }
-
+.contentHolder-leftPanel {
+	padding-left: 7%;
+	height: 500px;
+}
 .sky-form-panel {
 	border: none;
 }
@@ -71,4 +74,13 @@
 }
 .form-inline-home{
 	display:inline-block;
+}
+.tags{
+	margin: 0 0px !important;
+}
+.without-border{
+	border:none !important;
+}
+.select-div{
+	background-color: #C6FFAB;
 }

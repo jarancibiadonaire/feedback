@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import cl.uchile.dcc.feedback.model.CommentVO;
+import cl.uchile.dcc.feedback.model.FeedGraphVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.RatingVO;
 import cl.uchile.dcc.feedback.model.TagVO;
@@ -29,5 +30,7 @@ public interface FeedServiceRemote {
 	FeedVO findFeedById(Integer id);
 	Integer voteFeed(RatingVO rating);
 	List<TagVO> getAllTags();
+	CommentVO findCommentById(Integer id);
+	FeedGraphVO getFeedGraph();
 
 }

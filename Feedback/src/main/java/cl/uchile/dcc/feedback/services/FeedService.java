@@ -1,14 +1,16 @@
 package cl.uchile.dcc.feedback.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import cl.uchile.dcc.feedback.comparators.CommentComparator;
 import cl.uchile.dcc.feedback.entities.Comment;
 import cl.uchile.dcc.feedback.entities.Feed;
 import cl.uchile.dcc.feedback.entities.FeedTag;
@@ -19,10 +21,12 @@ import cl.uchile.dcc.feedback.entities.User;
 import cl.uchile.dcc.feedback.entities.Visibility;
 import cl.uchile.dcc.feedback.mappers.CommentMapper;
 import cl.uchile.dcc.feedback.mappers.FeedMapper;
-import cl.uchile.dcc.feedback.mappers.LocationMapper;
 import cl.uchile.dcc.feedback.mappers.TagMapper;
 import cl.uchile.dcc.feedback.model.CommentVO;
+import cl.uchile.dcc.feedback.model.EdgeVO;
+import cl.uchile.dcc.feedback.model.FeedGraphVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
+import cl.uchile.dcc.feedback.model.NodeVO;
 import cl.uchile.dcc.feedback.model.RatingVO;
 import cl.uchile.dcc.feedback.model.TagVO;
 import cl.uchile.dcc.feedback.model.VisibilityVO;
@@ -85,7 +89,7 @@ public class FeedService implements FeedServiceRemote {
 			if(t==null){
 				t=new Tag();
 				t.setName(tag);
-				t.setVisibility(visibilityRepo.findByType("Público"));
+				t.setVisibility(visibilityRepo.findByType("Privado"));
 				tagRepo.save(t);
 			}
 			FeedTag ft=new FeedTag();
@@ -111,32 +115,9 @@ public class FeedService implements FeedServiceRemote {
 	public List<FeedVO> getAllFeeds(){
 		List<FeedVO> feeds=new ArrayList<FeedVO>();
 		FeedMapper mapper=new FeedMapper();
-		LocationMapper mapperL=new LocationMapper();
-		CommentMapper mapperC=new CommentMapper();
 		Iterable<Feed> f=feedRepo.findByVisibilityIdOrderByCreatedDateDesc(2);
 		for(Feed feed:f){
-			FeedVO fvo=mapper.getBasic(feed);
-			fvo.setLocation(mapperL.getBasic(feed.getLocation()));
-			List<CommentVO> comments=new ArrayList<CommentVO>();
-			for(Comment comment:feed.getComments())
-				comments.add(mapperC.getBasic(comment));
-			Collections.sort(comments, new CommentComparator());
-			fvo.setComments(comments);
-			fvo.setTotalComments(comments.size());
-			int likes=0;
-			int dislikes=0;
-			for(Rating r:feed.getRates()){
-				if(r.getScore()==1)
-					likes++;
-				else
-					dislikes++;
-			}			
-			fvo.setTotalLikes(likes);
-			fvo.setTotalDislikes(dislikes);
-			List<String> tags=new ArrayList<String>();
-			for(FeedTag ft:feed.getFeedTags())
-				tags.add(ft.getTag().getName());
-			fvo.setTags(tags);
+			FeedVO fvo=mapper.getBasic(feed);			
 			feeds.add(fvo);
 		}		
 		return feeds;
@@ -163,20 +144,10 @@ public class FeedService implements FeedServiceRemote {
 	public FeedVO findFeedById(Integer id){
 		if(id==null)
 			return null;
-		Feed f=feedRepo.findOne(id);
+		Feed f=feedRepo.findById(id);
 		if(f!=null){
-			FeedMapper mapper=new FeedMapper();
-			LocationMapper mapperL=new LocationMapper();
-			CommentMapper mapperC=new CommentMapper();
-			FeedVO fvo=mapper.getBasic(f);
-			fvo.setLocation(mapperL.getBasic(f.getLocation()));
-			List<CommentVO> comments=new ArrayList<CommentVO>();
-			for(Comment comment:f.getComments())
-				comments.add(mapperC.getBasic(comment));
-			Collections.sort(comments, new CommentComparator());
-			fvo.setComments(comments);
-			fvo.setTotalComments(comments.size());
-			return fvo;
+			FeedMapper mapper=new FeedMapper();			
+			return mapper.getBasic(f);		
 		}else{
 			return null;
 		}
@@ -206,5 +177,42 @@ public class FeedService implements FeedServiceRemote {
 		for(Tag t:tags)
 			list.add(mapper.getBasic(t));
 		return list;
+	}
+	@Override
+	public CommentVO findCommentById(Integer id){
+		Comment c=commentRepo.findOne(id);
+		CommentMapper mapper=new CommentMapper();
+		CommentVO comment=mapper.getBasic(c);
+		return comment;
+	}
+	@Override 
+	public FeedGraphVO getFeedGraph(){
+		FeedGraphVO graph=new FeedGraphVO();
+		List<NodeVO> nodes=new ArrayList<NodeVO>();
+		List<EdgeVO> edges=new ArrayList<EdgeVO>();
+		Set<String> set = new HashSet<String>();
+		List<Tag> tags=tagRepo.findByVisibilityId(2);
+		for(Tag t:tags){
+			nodes.add(new NodeVO(t.getName(), -1));
+			List<FeedTag> feedTags=feedTagRepo.findByTagIdAndTagVisibilityId(t.getId(), 2);
+			if(feedTags!=null && feedTags.size()>0){
+				List<String> list=new ArrayList<String>();
+				for(FeedTag ft:feedTags){
+					set.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+					list.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");					
+				}
+				edges.add(new EdgeVO(t.getName(), list));				
+			}
+		}
+		for(String s:set){
+			Matcher m=Pattern.compile("\\[([^\\]]+)]").matcher(s);
+			while(m.find()) {
+				nodes.add(new NodeVO(s, Integer.parseInt(m.group(1)))); 
+				break;
+			}			
+		}
+		graph.setNodes(nodes);
+		graph.setEdges(edges);		
+		return graph;			
 	}
 }

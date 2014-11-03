@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import cl.uchile.dcc.feedback.model.IndexSummaryVO;
 import cl.uchile.dcc.feedback.model.SexVO;
 import cl.uchile.dcc.feedback.model.UserVO;
+import cl.uchile.dcc.feedback.services.StatisticsServiceRemote;
 import cl.uchile.dcc.feedback.services.UserServiceRemote;
 import cl.uchile.dcc.feedback.social.SignInUtils;
 
@@ -27,10 +29,15 @@ public class IndexController {
 
 	@Autowired
 	UserServiceRemote userService;
+	
+	@Autowired
+	StatisticsServiceRemote statService;
 
 	@RequestMapping(value = { "/", "index" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 		ModelAndView model = new ModelAndView();
+		IndexSummaryVO i=statService.getIndexSummary();
+		model.addObject("indexSummary", i);
 		model.setViewName("index");
 		return model;
 	}

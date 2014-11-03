@@ -1,6 +1,7 @@
 package cl.uchile.dcc.feedback.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class FeedVO implements Serializable {
 	private Integer totalLikes;
 	
 	private Integer totalDislikes;
+	
+	private List<TagVO> tagsData;
 	
 	public FeedVO(){
 		this.location=new LocationVO();
@@ -133,7 +136,10 @@ public class FeedVO implements Serializable {
 	}
 
 	public List<String> getTags() {
-		return tags;
+		if(this.tags==null)
+			return new ArrayList<String>();
+		else
+			return tags;
 	}
 
 	public void setTags(List<String> tags) {
@@ -170,6 +176,14 @@ public class FeedVO implements Serializable {
 
 	public void setTotalDislikes(Integer totalDislikes) {
 		this.totalDislikes = totalDislikes;
+	}
+
+	public List<TagVO> getTagsData() {
+		return tagsData;
+	}
+
+	public void setTagsData(List<TagVO> tagsData) {
+		this.tagsData = tagsData;
 	}
 	
 }

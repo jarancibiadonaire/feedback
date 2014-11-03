@@ -2,8 +2,19 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="topbar">
-	<div class="container">
+	<div class="container margin-bottom-20">
 		<!-- Topbar Navigation -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-responsive-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="fa fa-bars"></span>
+			</button>
+			<a class="navbar-brand" href='<c:url value="/"/>'> <img id="logo-header"
+				src="<c:url value="/resources/assets/img/logo1-default.png"/>"
+				alt="Logo" class="logo-header">
+			</a>
+		</div>
 		<ul class="loginbar pull-right">
 			<sec:authorize access="isAuthenticated()">
 				<!-- For login user -->
@@ -25,7 +36,22 @@
 				</c:if>
 			</sec:authorize>
 			<sec:authorize access="!isAuthenticated()">
-				<li><a href="<c:url value="/login"/>" class="green">Ingresar</a></li>
+				<div class="text-right login-index">
+						<form class="form-inline sky-form"
+							action="<c:url value='/j_spring_security_check' />" method='POST'>
+							<div class="form-group">
+								<input type="text" class="form-control" name="username"
+									placeholder="Nombre usuario">
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" name="password"
+									placeholder="Contraseña">
+							</div>
+							<button type="submit" class="form-group btn-u">Ingresar</button>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
+					</div>
 			</sec:authorize>
 
 		</ul>

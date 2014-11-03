@@ -13,6 +13,8 @@ public class TagVO implements Serializable {
 	private String description;
 	
 	private String visibility;
+	
+	private Boolean rootTag;
 
 	public Integer getId() {
 		return id;
@@ -44,6 +46,14 @@ public class TagVO implements Serializable {
 
 	public void setVisibility(String visibility) {
 		this.visibility = visibility;
+	}
+
+	public Boolean getRootTag() {
+		return rootTag;
+	}
+
+	public void setRootTag(Boolean rootTag) {
+		this.rootTag = rootTag;
 	}
 
 

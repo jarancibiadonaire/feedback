@@ -1,7 +1,17 @@
 package cl.uchile.dcc.feedback.mappers;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import cl.uchile.dcc.feedback.comparators.CommentComparator;
+import cl.uchile.dcc.feedback.entities.Comment;
 import cl.uchile.dcc.feedback.entities.Feed;
+import cl.uchile.dcc.feedback.entities.FeedTag;
+import cl.uchile.dcc.feedback.entities.Rating;
+import cl.uchile.dcc.feedback.model.CommentVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
+import cl.uchile.dcc.feedback.model.TagVO;
 
 public class FeedMapper implements Mapper<Feed,FeedVO> {
 
@@ -14,6 +24,10 @@ public class FeedMapper implements Mapper<Feed,FeedVO> {
 	public FeedVO getBasic(Feed entity) {
 		if(entity==null)
 			return null;
+		LocationMapper mapperL=new LocationMapper();
+		CommentMapper mapperC=new CommentMapper();
+		TagMapper mapperT=new TagMapper();
+		
 		FeedVO vo = new FeedVO();
 		vo.setId(entity.getId());
 		vo.setTitle(entity.getTitle());
@@ -24,7 +38,32 @@ public class FeedMapper implements Mapper<Feed,FeedVO> {
 			vo.setOrigin(entity.getOrigin().getType());
 		if(entity.getVisibility()!=null)
 			vo.setVisibility(entity.getVisibility().getType());
-		vo.setCreatedDate(entity.getCreatedDate());		
+		vo.setCreatedDate(entity.getCreatedDate());			
+		vo.setLocation(mapperL.getBasic(entity.getLocation()));
+		List<CommentVO> comments=new ArrayList<CommentVO>();
+		for(Comment comment:entity.getComments())
+			comments.add(mapperC.getBasic(comment));
+		Collections.sort(comments, new CommentComparator());
+		vo.setComments(comments);
+		vo.setTotalComments(comments.size());
+		int likes=0;
+		int dislikes=0;
+		for(Rating r:entity.getRates()){
+			if(r.getScore()==1)
+				likes++;
+			else
+				dislikes++;
+		}			
+		vo.setTotalLikes(likes);
+		vo.setTotalDislikes(dislikes);
+		List<String> tags=new ArrayList<String>();
+		List<TagVO> tagsData=new ArrayList<TagVO>();
+		for(FeedTag ft:entity.getFeedTags()){
+			tags.add(ft.getTag().getName());
+			tagsData.add(mapperT.getBasic(ft.getTag()));
+		}
+		vo.setTags(tags);
+		vo.setTagsData(tagsData);
 		return vo;
 	}
 

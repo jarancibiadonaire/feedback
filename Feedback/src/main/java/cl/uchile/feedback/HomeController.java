@@ -3,8 +3,6 @@ package cl.uchile.feedback;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.uchile.dcc.feedback.model.CommentVO;
+import cl.uchile.dcc.feedback.model.FeedGraphVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.RatingVO;
 import cl.uchile.dcc.feedback.model.TagVO;
@@ -30,7 +29,6 @@ public class HomeController {
 	public ModelAndView home(String var) {
 		List<FeedVO> feeds=feedService.getAllFeeds();
 		List<TagVO> listTags=feedService.getAllTags();
-		String username=getUsername();
 		ModelAndView model =  new ModelAndView();
 		model.setViewName("home");
 		model.addObject("feed", new FeedVO());
@@ -55,12 +53,6 @@ public class HomeController {
 			return home("success");
 	}
 	
-	@RequestMapping(value = { "/home/feed/{id}" }, method = RequestMethod.GET)
-	public @ResponseBody FeedVO getFeeds(@PathVariable Integer id) {
-		FeedVO feed=feedService.findFeedById(id);
-		return feed;
-	}
-	
 	@RequestMapping(value = "/home/comment_feed", method = RequestMethod.POST)
 	public ModelAndView commentFeed(@ModelAttribute("feed") CommentVO comment,
 			BindingResult result) {
@@ -81,12 +73,52 @@ public class HomeController {
 		}			
 		return home(null);
 	}
-	private String getUsername(){
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails) {			
-		  return ((UserDetails)principal).getUsername();
-		} else {			
-		  return principal.toString();
+	
+	@RequestMapping(value = { "/home/feeds/{type}" }, method = RequestMethod.GET)
+	public @ResponseBody List<FeedVO> getFeeds(@PathVariable String type) {
+		List<FeedVO> feeds=feedService.getAllFeeds();
+		return feeds;
+	}
+		
+	@RequestMapping(value = "/ajax/publish_feed", method = RequestMethod.POST)
+	public @ResponseBody FeedVO publishFeedAJAX(@ModelAttribute("feed") FeedVO feed,
+			BindingResult result) {
+		if(feed.getTitle()==null || feed.getUser()==null || 
+				feed.getTitle().compareTo("")==0 || feed.getUser().compareTo("")==0)
+			return null;
+		Integer var=feedService.createFeed(feed);
+		if(var==null)
+			return null;
+		else
+			return feedService.findFeedById(var);
+	}
+	
+	@RequestMapping(value = "/ajax/comment_feed", method = RequestMethod.POST)
+	public @ResponseBody CommentVO commentFeedAJAX(@ModelAttribute("feed") CommentVO comment,
+			BindingResult result) {
+		if(comment.getFeed()==null || comment.getComment()==null || 
+				comment.getComment().compareTo("")==0|| comment.getUser()==null)
+			return null;
+		Integer id=feedService.commentFeed(comment);
+		if(id!=null)
+			return feedService.findCommentById(id);
+		else
+			return null;
+	}
+	
+	@RequestMapping(value="/ajax/vote" , method= RequestMethod.POST)
+	public @ResponseBody FeedVO voteFeedAJAX(@ModelAttribute("rating") RatingVO rating,
+			BindingResult result){
+		if(rating.getUser()!=null && rating.getFeed()!=null && rating.getScore()!=null){
+			feedService.voteFeed(rating);
+			return feedService.findFeedById(rating.getFeed());
+		}else{
+			return null;
 		}
+	}
+	@RequestMapping(value="/ajax/feed_graph", method=RequestMethod.GET)
+	public @ResponseBody FeedGraphVO getGraph(){
+		FeedGraphVO graph=feedService.getFeedGraph();
+		return graph;
 	}
 }

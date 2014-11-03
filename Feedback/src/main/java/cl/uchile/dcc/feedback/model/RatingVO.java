@@ -16,7 +16,7 @@ public class RatingVO implements Serializable {
 	private Date createdDate;
 	
 	private Integer feed;
-
+	
 	public Integer getId() {
 		return id;
 	}

@@ -3,29 +3,30 @@ var newMarker;
 var map;
 var feeds;
 var markers=[];
-var infowindow = new google.maps.InfoWindow({content:"<div class='scrollFix'><button class='btn-u' type='button' onclick='activeDrawingManager()'><i class='fa fa-times'></i> Borrar</button></div>"});
+var infowindow = new google.maps.InfoWindow();
 var bounds = new google.maps.LatLngBounds();
 var drawingManager=new google.maps.drawing.DrawingManager();
 var geocoder = new google.maps.Geocoder();
 var santiago = new google.maps.LatLng(-33.43711, -70.634185);
-var drawingShow=true;
+var drawingShow=false;
 
 function initialize() {
+	$("#map").width(.55 * $(window).width());
+	$("#map").height(.40 * $(window).height());
 	var mapOptions = {
 		zoom : 13,
 		center : santiago
 	};
 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	google.maps.event.addListener(map, 'click', function(event) {
-		var a=angular.element($(".panel-map")).scope();
+		var a=angular.element($(".home-container")).scope();
 		a.$apply(function(){a.reset();});
 	  });
 	drawingManager = getDrawingManager();
 	drawingManager.setMap(map);
 	setDrawingListener();
 	getCurrentPosition();
-	getFeeds();
-	
+	getFeeds();	
 }
 function setDrawingListener(){
 	 google.maps.event.addListener(drawingManager, 'overlaycomplete', function(event) {
@@ -70,18 +71,22 @@ function updatePosition(event){
 	});
 }
 function activeDrawingManager(){
+	drawingShow=!drawingShow;
     drawingManager.setOptions({
-        drawingControl: true
-      });
-    newMarker.setMap(null);
-   	$("#lat").val(myLat);
-	$("#lng").val(myLng);
-	$("#address").val(myAddress);
-	$("#comuna").val(myComuna);
+        drawingControl: drawingShow
+      }); 
+    if(!drawingShow){
+	   	$("#lat").val(myLat);
+		$("#lng").val(myLng);
+		$("#address").val(myAddress);
+		$("#comuna").val(myComuna);
+		if(newMarker!=undefined)
+			newMarker.setMap(null);
+    }
 }
 function getDrawingManager(){
 	return new google.maps.drawing.DrawingManager({
-        drawingControl: true,
+        drawingControl: false,
         drawingControlOptions: {
           position: google.maps.ControlPosition.TOP_CENTER,
           drawingModes: [
@@ -98,7 +103,7 @@ function getDrawingManager(){
 }
 function getFeeds(){
 	$.ajax({
-		  url: 'http://localhost:8080/feedback/microblogging/feeds/1',
+		  url: 'http://localhost:8080/feedback/home/feeds/1',
 		  type: 'get',
 		  async: true,
 		  success: loadFeeds,
@@ -109,23 +114,27 @@ function loadFeeds(message){
 	feeds=message;
 	for(var i=0;i<feeds.length;i++){
 		var ll=new google.maps.LatLng(feeds[i].location.lat, feeds[i].location.lng);
-		markers[i]= new google.maps.Marker({
-			map : map,
-			animation : google.maps.Animation.DROP,
-			position : ll
-		});
-		putHandlers(markers[i],i);
+		var newMark={marker:new google.maps.Marker({
+								map : map,
+								animation : google.maps.Animation.DROP,
+								position : ll
+							}),
+					feed:feeds[i].id};
+		markers.push(newMark);
+		putHandlers(newMark);		
 	}
-	var a=angular.element($(".panel-map")).scope();
+	var a=angular.element($(".home-container")).scope();
 	a.$apply(function(){a.feeds=feeds;});
+	$(".contentHolder-leftPanel").removeClass("hidden");
 }
 function error(message){
 	console.log("error",message);
+	alert("Ha ocurrido un error, por favor recargue la página.");
 }
-function putHandlers(marker,i){
-	google.maps.event.addListener(marker, 'click', function(event) {
-		var a=angular.element($(".panel-map")).scope();
-		a.$apply(function(){a.toggle(i);});
+function putHandlers(marker,id){
+	google.maps.event.addListener(marker.marker, 'click', function(event) {
+		var a=angular.element($(".home-container")).scope();
+		a.$apply(function(){a.toggle(marker.feed);});				
 	  });
 }
 function getCurrentPosition(){
@@ -158,4 +167,97 @@ function getCurrentPosition(){
 function handleNoGeolocation(){
 	console.log("No es posible obtener la geolocalización");
 }
+function clickMap(){
+	google.maps.event.trigger(map, 'click');
+}
+$("#feed-form").submit(function(e){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax({
+    	url : formURL,
+		type: "POST",
+		data : postData,
+		success:function(data, textStatus, jqXHR){
+			if(data!=""){				
+				var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
+				var newMark={marker:new google.maps.Marker({
+										map : map,
+										animation : google.maps.Animation.DROP,
+										position : ll
+									}),
+							feed:data.id};
+				markers.unshift(newMark);
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.addFeed(data)});
+				putHandlers(newMark);				
+				$("#title").val("");
+				$("#description").val("");
+				$("#tag-cloud").empty();
+				activeDrawingManager();
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+		    console.log(jqXHR);    
+		}
+	});
+	e.preventDefault();
+});
+$(".comment-form").live('submit',function(e){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax({
+    	url : formURL,
+		type: "POST",
+		data : postData,
+		success:function(data, textStatus, jqXHR){
+			if(data!=""){
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.addComment(data)});
+				$(".comment").val("");
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+		    console.log(jqXHR);    
+		}
+	});
+    e.preventDefault();
+});
+$(".like-form").live('submit',function(e){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax({
+    	url : formURL,
+		type: "POST",
+		data : postData,
+		success:function(data, textStatus, jqXHR){
+			if(data!=""){
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.reloadRating(data)});
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+		    console.log(jqXHR);    
+		}
+	});
+    e.preventDefault();
+});
+$(".dislike-form").live('submit',function(e){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax({
+    	url : formURL,
+		type: "POST",
+		data : postData,
+		success:function(data, textStatus, jqXHR){
+			if(data!=""){
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.reloadRating(data)});
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+		    console.log(jqXHR);    
+		}
+	});
+    e.preventDefault();
+});
 google.maps.event.addDomListener(window, 'load', initialize);
