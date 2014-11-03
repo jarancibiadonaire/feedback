@@ -84,3 +84,8 @@
 .select-div{
 	background-color: #C6FFAB;
 }
+.search-bar{
+	width: 30%;
+	position: absolute;
+	margin-left: 27%;
+}

@@ -52,6 +52,8 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/pages/feature_timeline2.css"/>">
 <link rel="stylesheet"
+	href="<c:url value="/resources/assets/css/pages/page_search_inner.css"/>">
+<link rel="stylesheet"
 	href="<c:url value="/resources/assets/css/arbor/site.css"/>">
 
 <!-- CSS Theme -->

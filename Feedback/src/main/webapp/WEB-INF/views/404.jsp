@@ -53,9 +53,11 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="error-v4">
-					<a href="#"><img
-						src="<c:url value="/resources/assets/img/logo2-default.png"/>"
-						alt=""></a>
+					<div>
+						<a href="#"><img
+							src="<c:url value="/resources/assets/img/logo1-default.png"/>"
+							alt=""></a>
+					</div>
 					<h1>404</h1>
 					<span class="sorry">Ups, la página que buscas no se
 						encuentra!</span>
@@ -90,7 +92,8 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/plugins/backstretch/jquery.backstretch.min.js"/>"></script>
 	<script type="text/javascript">
-		$.backstretch([ "<c:url value='/resources/assets/img/blur/img2.jpg'/>" ])
+		$
+				.backstretch([ "<c:url value='/resources/assets/img/blur/img2.jpg'/>" ])
 	</script>
 	<!-- JS Page Level -->
 	<script type="text/javascript"
