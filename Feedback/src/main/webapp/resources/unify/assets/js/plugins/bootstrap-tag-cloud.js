@@ -26,6 +26,15 @@
 // Add listener for tag removals
 $(document).on('click','.tag-cloud', function removeTag(){ $(this).remove(); });
 
+$(document).on('click','.btn-add-tag', function addTag(){ 
+	var input=$(this).parent().find(".newTag");	
+	if(input!=null && input.val()!=""){
+		var ul=$(this).parent().parent().find(".tag-cloud-form");
+		$('<li class="tag-cloud tag-cloud-info"><input type="text" name="tags" value="'+input.val()+'" class="hidden"/>'+input.val()+'</li>').appendTo(ul); 
+		$(this).parent().find(".newTag").val("");
+	}
+});
+
 
 // Find out which containers we have on this document and setup proper bindings
 $(document).ready(function() {

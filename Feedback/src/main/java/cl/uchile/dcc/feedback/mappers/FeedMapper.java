@@ -58,12 +58,21 @@ public class FeedMapper implements Mapper<Feed,FeedVO> {
 		vo.setTotalDislikes(dislikes);
 		List<String> tags=new ArrayList<String>();
 		List<TagVO> tagsData=new ArrayList<TagVO>();
+		List<TagVO> othersTagsData=new ArrayList<TagVO>();
 		for(FeedTag ft:entity.getFeedTags()){
 			tags.add(ft.getTag().getName());
-			tagsData.add(mapperT.getBasic(ft.getTag()));
+			TagVO tag=mapperT.getBasic(ft.getTag());
+			if(ft.getUser().getId()==entity.getUser().getId()){
+				tag.setByOwner(true);
+				tagsData.add(tag);
+			}else{
+				tag.setByOwner(false);
+				othersTagsData.add(tag);
+			}			
 		}
 		vo.setTags(tags);
 		vo.setTagsData(tagsData);
+		vo.setOthersTagsData(othersTagsData);
 		return vo;
 	}
 

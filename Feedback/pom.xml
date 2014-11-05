@@ -23,6 +23,13 @@
 	</repositories>
 
 	<dependencies>
+		<!--Servidor de objetos acoplados  -->
+		<dependency>
+			<groupId>cl.uchile.cos</groupId>
+			<artifactId>CoupledObjectWebServerClient</artifactId>
+			<version>1.2</version>
+		</dependency>
+	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

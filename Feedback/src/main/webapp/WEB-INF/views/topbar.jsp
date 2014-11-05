@@ -1,7 +1,7 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div class="topbar">
+<div class="topbar wrapper">
 	<div class="container margin-bottom-20">
 		<!-- Topbar Navigation -->
 		<div class="navbar-header">
@@ -19,7 +19,7 @@
 		<sec:authorize access="isAuthenticated()">
 			<div class="input-group search-bar">
 				<input type="text" class="form-control"
-					placeholder="Busca lo que necesitas"> <span
+					placeholder="Busca lo que necesitas ..."> <span
 					class="input-group-btn">
 					<button class="btn-u" type="button">
 						<i class="fa fa-search"></i>

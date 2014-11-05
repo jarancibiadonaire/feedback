@@ -150,7 +150,9 @@
 															<ul id="tag-cloud"></ul>
 														</div>
 														<div class="text-center">
-															<button type="submit" class="btn-u btn-u-sm rounded">Publicar</button>
+															<button type="submit"
+																ng-click="btnClass='fa-plus';show_panel = false;"
+																class="btn-u btn-u-sm rounded">Publicar</button>
 														</div>
 													</form:form>
 												</div>
@@ -166,8 +168,12 @@
 											<ul class="nav nav-tabs">
 												<li class="active"><a href="#home-{{feed.id}}"
 													data-toggle="tab">Feed</a></li>
-												<li><a href="#profile-{{feed.id}}" data-toggle="tab">Comentarios <span class="badge rounded-2x badge-blue">{{feed.comments.length}}</span></a></li>
-												<li><a href="#messages-{{feed.id}}" data-toggle="tab">Tags <span class="badge rounded-2x badge-blue">{{feed.tagsData.length}}</span></a></li>
+												<li><a href="#profile-{{feed.id}}" data-toggle="tab">Comentarios
+														<span class="badge rounded-2x badge-blue">{{feed.comments.length}}</span>
+												</a></li>
+												<li><a href="#messages-{{feed.id}}" data-toggle="tab">Tags
+														<span class="badge rounded-2x badge-blue">{{feed.tagsData.length+feed.othersTagsData.length}}</span>
+												</a></li>
 											</ul>
 											<div class="tab-content">
 												<div class="tab-pane fade in active" id="home-{{feed.id}}">
@@ -226,14 +232,55 @@
 													</div>
 												</div>
 												<div class="tab-pane fade in" id="messages-{{feed.id}}">
-													<div id="whatever">
+													<div id="onwerTags">
+													 	<p>Tags del creador</p>
 														<button ng-repeat="tag in feed.tagsData"
-															class="btn-u btn-brd btn-brd-hover rounded-2x btn-u-sm"
+															class="btn-u rounded-2x btn-u-sm"
 															ng-class="{'btn-u-blue':tag.rootTag,'btn-u-default':!tag.rootTag }"
 															type="button">
 															<i class="fa fa-tag"></i> {{tag.name}}
 														</button>
 													</div>
+													<hr class="devider devider-dashed hr-custom">
+													<div id="othersTags">
+														<p>Tags de otros usuarios</p>
+														<button ng-repeat="tag in feed.othersTagsData"
+															class="btn-u rounded-2x btn-u-sm"
+															ng-class="{'btn-u-blue':tag.rootTag,'btn-u-default':!tag.rootTag }"
+															type="button">
+															<i class="fa fa-tag"></i> {{tag.name}}
+														</button>
+													</div>
+													<hr class="devider devider-dashed hr-custom">
+													<form:form
+														action='${pageContext.request.contextPath}/ajax/add_tag'
+														modelAttribute="feed"
+														class="sky-form sky-form-panel tag-form">
+														<div class="hidden">
+															<form:input path="user"
+																value="${pageContext.request.userPrincipal.name}" />
+															<form:input path="id" value="{{feed.id}}" />
+														</div>
+														<div class="tags-form">
+															<div class="tag-info">
+																<input type="text" list="list" class="newTag">
+																<datalist id="list">
+																	<c:forEach items="${listTags}" var="tag">
+																		<option value="${tag.name}"></option>
+																	</c:forEach>
+																</datalist>
+																<button class="btn rounded-2x btn-sm btn-add-tag"
+																	type="button">
+																	<i class="fa fa-plus"></i>
+																</button>
+															</div>
+															<ul class="tag-cloud-form"></ul>
+														</div>
+														<br/>
+														<div class="text-center">
+															<button type=submit class="btn-u btn-u-xs rounded">Asociar</button>
+														</div>
+													</form:form>
 												</div>
 											</div>
 										</div>
@@ -321,6 +368,10 @@
 	<script
 		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"/>"></script>
 
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/soa/jquery.json-2.3.min.js"/>"></script>
+	<script type="text/javascript"
+		src="/CoupledObjectWebServer/resources/js/sync.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/app.js"/>"></script>
@@ -344,6 +395,8 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/microblogging/microblogging.js"/>"></script>
 	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/forms.js"/>"></script>
+	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/microblogging/appAngular.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/plugins/jquery.tagcloud.js"/>"></script>
@@ -357,6 +410,10 @@
 		src="<c:url value="/resources/assets/js/arbor/arbor.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/arbor/site.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/synchronizer.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/scroll-nav.js"/>"></script>
 
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>

@@ -43,6 +43,8 @@ public class FeedVO implements Serializable {
 	
 	private List<TagVO> tagsData;
 	
+	private List<TagVO> othersTagsData;
+	
 	public FeedVO(){
 		this.location=new LocationVO();
 	}
@@ -184,6 +186,14 @@ public class FeedVO implements Serializable {
 
 	public void setTagsData(List<TagVO> tagsData) {
 		this.tagsData = tagsData;
+	}
+
+	public List<TagVO> getOthersTagsData() {
+		return othersTagsData;
+	}
+
+	public void setOthersTagsData(List<TagVO> othersTagsData) {
+		this.othersTagsData = othersTagsData;
 	}
 	
 }

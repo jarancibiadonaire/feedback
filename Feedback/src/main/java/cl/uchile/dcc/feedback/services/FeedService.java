@@ -91,6 +91,11 @@ public class FeedService implements FeedServiceRemote {
 				t.setName(tag);
 				t.setVisibility(visibilityRepo.findByType("Privado"));
 				tagRepo.save(t);
+			}else{
+				FeedTag oldFeedTag=feedTagRepo.findByFeedIdAndTagId(feed.getId(), t.getId());
+				if(oldFeedTag!=null){
+					continue;
+				}
 			}
 			FeedTag ft=new FeedTag();
 			ft.setFeed(feed);
@@ -171,7 +176,7 @@ public class FeedService implements FeedServiceRemote {
 	}
 	@Override
 	public List<TagVO> getAllTags(){
-		List<Tag> tags=tagRepo.findByVisibilityId(2);
+		List<Tag> tags=(List<Tag>) tagRepo.findAll();
 		List<TagVO> list=new ArrayList<TagVO>();
 		TagMapper mapper=new TagMapper();
 		for(Tag t:tags)
@@ -214,5 +219,34 @@ public class FeedService implements FeedServiceRemote {
 		graph.setNodes(nodes);
 		graph.setEdges(edges);		
 		return graph;			
+	}
+	@Override
+	public Integer addTags(FeedVO feedVO){
+		if(feedVO==null)
+			return null;
+		User u=userRepo.findByUserName(feedVO.getUser());
+		Feed feed=feedRepo.findOne(feedVO.getId());	
+		for(String tag:feedVO.getTags()){
+			Tag t=tagRepo.findByNameIgnoreCase(tag);
+			if(t==null){
+				t=new Tag();
+				t.setName(tag);
+				t.setVisibility(visibilityRepo.findByType("Privado"));
+				tagRepo.save(t);
+			}else{
+				FeedTag oldFeedTag=feedTagRepo.findByFeedIdAndTagId(feed.getId(), t.getId());
+				if(oldFeedTag!=null){
+					continue;
+				}
+			}
+			FeedTag ft=new FeedTag();
+			ft.setFeed(feed);
+			ft.setTag(t);
+			ft.setUser(u);
+			ft.setVisibility(visibilityRepo.findByType("Público"));
+			ft.setCreatedDate(new Date());
+			feedTagRepo.save(ft);
+		}
+		return feedVO.getId();
 	}
 }

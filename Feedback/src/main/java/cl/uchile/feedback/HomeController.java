@@ -121,4 +121,14 @@ public class HomeController {
 		FeedGraphVO graph=feedService.getFeedGraph();
 		return graph;
 	}
+	
+	@RequestMapping(value = "/ajax/add_tag", method = RequestMethod.POST)
+	public @ResponseBody FeedVO addTagAJAX(@ModelAttribute("feed") FeedVO feed,
+			BindingResult result) {
+		if(feed.getId()==null || feed.getUser()==null || feed.getUser().compareTo("")==0 
+				|| feed.getTags()==null || feed.getTags().size()<1)
+			return null;
+		Integer id=feedService.addTags(feed);		
+		return feedService.findFeedById(id);
+	}
 }

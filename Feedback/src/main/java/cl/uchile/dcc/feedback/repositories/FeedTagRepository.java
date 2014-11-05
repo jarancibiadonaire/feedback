@@ -9,5 +9,6 @@ import cl.uchile.dcc.feedback.entities.FeedTag;
 public interface FeedTagRepository extends CrudRepository<FeedTag, Integer> {
 	
 	List<FeedTag> findByTagIdAndTagVisibilityId(Integer id,Integer vid);
+	FeedTag findByFeedIdAndTagId(Integer fid,Integer tid);
 
 }

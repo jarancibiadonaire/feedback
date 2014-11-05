@@ -9,10 +9,13 @@ var drawingManager=new google.maps.drawing.DrawingManager();
 var geocoder = new google.maps.Geocoder();
 var santiago = new google.maps.LatLng(-33.43711, -70.634185);
 var drawingShow=false;
-
+var synchronizer;
 function initialize() {
-	$("#map").width(.55 * $(window).width());
-	$("#map").height(.40 * $(window).height());
+	if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		$("#map").width(.55 * $(window).width());
+		$("#map").height(.40 * $(window).height());		
+	}
+	$(".contentHolder-leftPanel").height(.85 * $(window).height());
 	var mapOptions = {
 		zoom : 13,
 		center : santiago
@@ -103,7 +106,7 @@ function getDrawingManager(){
 }
 function getFeeds(){
 	$.ajax({
-		  url: 'http://localhost:8080/feedback/home/feeds/1',
+		  url: window.location.protocol + "//" + window.location.host+'/feedback/home/feeds/1',
 		  type: 'get',
 		  async: true,
 		  success: loadFeeds,
@@ -113,19 +116,13 @@ function getFeeds(){
 function loadFeeds(message){
 	feeds=message;
 	for(var i=0;i<feeds.length;i++){
-		var ll=new google.maps.LatLng(feeds[i].location.lat, feeds[i].location.lng);
-		var newMark={marker:new google.maps.Marker({
-								map : map,
-								animation : google.maps.Animation.DROP,
-								position : ll
-							}),
-					feed:feeds[i].id};
-		markers.push(newMark);
+		var newMark=addMarker(feeds[i]);
 		putHandlers(newMark);		
 	}
 	var a=angular.element($(".home-container")).scope();
 	a.$apply(function(){a.feeds=feeds;});
 	$(".contentHolder-leftPanel").removeClass("hidden");
+	synchronizer=new Synchronizer("feedback");
 }
 function error(message){
 	console.log("error",message);
@@ -170,94 +167,15 @@ function handleNoGeolocation(){
 function clickMap(){
 	google.maps.event.trigger(map, 'click');
 }
-$("#feed-form").submit(function(e){
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax({
-    	url : formURL,
-		type: "POST",
-		data : postData,
-		success:function(data, textStatus, jqXHR){
-			if(data!=""){				
-				var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
-				var newMark={marker:new google.maps.Marker({
-										map : map,
-										animation : google.maps.Animation.DROP,
-										position : ll
-									}),
-							feed:data.id};
-				markers.unshift(newMark);
-				var a=angular.element($(".home-container")).scope();
-				a.$apply(function(){a.addFeed(data)});
-				putHandlers(newMark);				
-				$("#title").val("");
-				$("#description").val("");
-				$("#tag-cloud").empty();
-				activeDrawingManager();
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-		    console.log(jqXHR);    
-		}
-	});
-	e.preventDefault();
-});
-$(".comment-form").live('submit',function(e){
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax({
-    	url : formURL,
-		type: "POST",
-		data : postData,
-		success:function(data, textStatus, jqXHR){
-			if(data!=""){
-				var a=angular.element($(".home-container")).scope();
-				a.$apply(function(){a.addComment(data)});
-				$(".comment").val("");
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-		    console.log(jqXHR);    
-		}
-	});
-    e.preventDefault();
-});
-$(".like-form").live('submit',function(e){
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax({
-    	url : formURL,
-		type: "POST",
-		data : postData,
-		success:function(data, textStatus, jqXHR){
-			if(data!=""){
-				var a=angular.element($(".home-container")).scope();
-				a.$apply(function(){a.reloadRating(data)});
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-		    console.log(jqXHR);    
-		}
-	});
-    e.preventDefault();
-});
-$(".dislike-form").live('submit',function(e){
-    var postData = $(this).serializeArray();
-    var formURL = $(this).attr("action");
-    $.ajax({
-    	url : formURL,
-		type: "POST",
-		data : postData,
-		success:function(data, textStatus, jqXHR){
-			if(data!=""){
-				var a=angular.element($(".home-container")).scope();
-				a.$apply(function(){a.reloadRating(data)});
-			}
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-		    console.log(jqXHR);    
-		}
-	});
-    e.preventDefault();
-});
+function addMarker(data){
+	var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
+	var newMark={marker:new google.maps.Marker({
+							map : map,
+							animation : google.maps.Animation.DROP,
+							position : ll
+						}),
+				feed:data.id};
+	markers.unshift(newMark);
+	return newMark;
+}
 google.maps.event.addDomListener(window, 'load', initialize);
