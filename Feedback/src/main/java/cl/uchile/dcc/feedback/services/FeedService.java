@@ -179,20 +179,26 @@ public class FeedService implements FeedServiceRemote {
 		return comment;
 	}
 	@Override 
-	public FeedGraphVO getFeedGraph(){
+	public FeedGraphVO getFeedGraph(List<Integer> feedIds){
 		FeedGraphVO graph=new FeedGraphVO();
 		List<NodeVO> nodes=new ArrayList<NodeVO>();
 		List<EdgeVO> edges=new ArrayList<EdgeVO>();
 		Set<String> set = new HashSet<String>();
 		List<Tag> tags=tagRepo.findByVisibilityId(2);
 		for(Tag t:tags){
+			//por cada tag se agrega un nodo
 			nodes.add(new NodeVO(t.getName(), -1));
 			List<FeedTag> feedTags=feedTagRepo.findByTagIdAndTagVisibilityId(t.getId(), 2);
 			if(feedTags!=null && feedTags.size()>0){
 				List<String> list=new ArrayList<String>();
 				for(FeedTag ft:feedTags){
-					set.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
-					list.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");					
+					//si nos entregaron una lista de feeds, agregamos los feeds que estan ahi
+					if(feedIds!=null){
+						if(feedIds.contains(ft.getFeed().getId())){
+							set.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+							list.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+						}
+					}
 				}
 				edges.add(new EdgeVO(t.getName(), list));				
 			}

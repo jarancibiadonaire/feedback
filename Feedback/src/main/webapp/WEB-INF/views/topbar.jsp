@@ -21,7 +21,7 @@
 			<form action='${pageContext.request.contextPath}/welcome'
 				id="search-form" class="sky-form without-border">
 				<div class="input-group search-bar">
-					<label class="input"> <input type="text"
+					<label class="input"> <input type="text" id="search-q" value="${param['q']}"
 						class="form-control" placeholder="Busca lo que necesitas ..."
 						name="q" />
 					</label>

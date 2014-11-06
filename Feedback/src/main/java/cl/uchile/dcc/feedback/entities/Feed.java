@@ -18,14 +18,25 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.ContainedIn;
+import org.apache.solr.analysis.LowerCaseFilterFactory;
+import org.apache.solr.analysis.SnowballPorterFilterFactory;
+import org.apache.solr.analysis.StandardTokenizerFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Parameter;
 import org.hibernate.search.annotations.Store;
 
+@AnalyzerDef(name = "customanalyzer",
+tokenizer = @org.hibernate.search.annotations.TokenizerDef(factory = StandardTokenizerFactory.class),
+filters = {
+	@org.hibernate.search.annotations.TokenFilterDef(factory = LowerCaseFilterFactory.class),
+	@org.hibernate.search.annotations.TokenFilterDef(factory = SnowballPorterFilterFactory.class, params = {
+    @Parameter(name = "language", value = "Spanish")
+  })
+})
 @Entity
 @Table(name="feed")
 @Indexed
@@ -39,11 +50,13 @@ public class Feed implements Serializable{
 	private Integer id;
 	
 	@Column
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Field(index=Index.YES, store=Store.NO)
+	@Analyzer(definition = "customanalyzer")
 	private String title;
 	
 	@Column
-	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+	@Field(index=Index.YES, store=Store.NO)
+	@Analyzer(definition = "customanalyzer")
 	private String description;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -72,7 +85,6 @@ public class Feed implements Serializable{
 	@OneToMany(mappedBy = "feed")
 	private List<Media> medias;
 	
-	@ContainedIn
 	@OneToMany(mappedBy = "feed")
 	private List<Comment> comments;
 	

@@ -276,11 +276,13 @@ function addNode(feed){
   function errorGraph(message){
 	  console.log(message);
   }  
-  $(document).ready(function(){
+  $("#sitemap").on("reload",function(){
 	  $.ajax({
-		  url: 'http://localhost:8080/feedback/ajax/feed_graph',
+		  dataType: "json",
+		  contentType: 'application/json',
+		  url: window.location.protocol + "//" + window.location.host+'/feedback/ajax/feed_graph',
 		  type: 'GET',
-		  async: true,
+		  data: {feedIds:getFeedIds()},
 		  success: loadGraph,
 		  error: errorGraph
 		});

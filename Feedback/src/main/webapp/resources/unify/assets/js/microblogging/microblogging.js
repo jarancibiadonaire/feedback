@@ -148,6 +148,7 @@ function loadFeeds(message){
 	a.$apply(function(){a.feeds=feeds;});
 	$(".contentHolder-leftPanel").removeClass("hidden");
 	synchronizer=new Synchronizer("feedback");
+	$("#sitemap").trigger("reload");
 }
 function error(message){
 	console.log("error",message);
@@ -208,6 +209,12 @@ function getMarkers(){
 		result.push(markers[i].marker);
 	}
 	return result;
+}
+function getFeedIds(){
+	var result="";
+	for(var i=0;i<markers.length;i++)
+		result+=","+markers[i].feed;
+	return result.substring(1);	
 }
 function getURLParameter(name) {
 	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null

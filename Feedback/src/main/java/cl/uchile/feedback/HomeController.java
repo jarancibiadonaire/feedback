@@ -1,5 +1,6 @@
 package cl.uchile.feedback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -118,8 +119,22 @@ public class HomeController {
 		}
 	}
 	@RequestMapping(value="/ajax/feed_graph", method=RequestMethod.GET)
-	public @ResponseBody FeedGraphVO getGraph(){
-		FeedGraphVO graph=feedService.getFeedGraph();
+	public @ResponseBody FeedGraphVO getGraph(@RequestParam String feedIds){
+		List<Integer> ids=null;
+		if(feedIds.compareTo("")!=0){			
+			ids=new ArrayList<Integer>();
+			if(feedIds!=null && feedIds.compareTo("")!=0){
+				for(String s:feedIds.split(",")){
+					try{
+						ids.add(Integer.parseInt(s));
+					}catch(Exception e){
+						e.printStackTrace();
+						return null;
+					}
+				}
+			}
+		}
+		FeedGraphVO graph=feedService.getFeedGraph(ids);
 		return graph;
 	}
 	

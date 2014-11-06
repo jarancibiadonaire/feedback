@@ -1,6 +1,7 @@
 package cl.uchile.dcc.feedback.repositories;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,8 @@ import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
+import cl.uchile.dcc.feedback.comparators.FeedComparator;
+import cl.uchile.dcc.feedback.entities.Comment;
 import cl.uchile.dcc.feedback.entities.Feed;
 import cl.uchile.dcc.feedback.mappers.FeedMapper;
 import cl.uchile.dcc.feedback.model.FeedVO;
@@ -36,17 +39,38 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
 			e.printStackTrace();
 		}
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory()
-				.buildQueryBuilder().forEntity(Feed.class).get();
+				.buildQueryBuilder().forEntity(Feed.class).get();		
+		QueryBuilder qbComment = fullTextEntityManager.getSearchFactory()
+				.buildQueryBuilder().forEntity(Comment.class).get();
+		
 		org.apache.lucene.search.Query query = qb.keyword()
 				.onFields("title", "description").matching(text)
 				.createQuery();
+		org.apache.lucene.search.Query queryComment = qbComment.keyword()
+				.onFields("comment").matching(text)
+				.createQuery();
+		
 		Query persistenceQuery = fullTextEntityManager
 				.createFullTextQuery(query, Feed.class);
+		Query persistenceQueryComment = fullTextEntityManager
+				.createFullTextQuery(queryComment, Comment.class);
+		
 		List<Feed> resultList = persistenceQuery.getResultList();
-		List<FeedVO> result=new ArrayList<FeedVO>();
+		List<Comment> resultListComment = persistenceQueryComment.getResultList();
+		List<Integer> ids=new ArrayList<Integer>();
+		for(Feed f:resultList)
+			ids.add(f.getId());
+		for(Comment c:resultListComment){
+			if(!ids.contains(c.getFeed().getId())){
+				resultList.add(c.getFeed());
+				ids.add(c.getFeed().getId());
+			}
+		}		
+		List<FeedVO> result=new ArrayList<FeedVO>();		
 		FeedMapper mapper=new FeedMapper();
 		for(Feed f:resultList)
 			result.add(mapper.getBasic(f));
+		Collections.sort(result, new FeedComparator());
 		return result;
 	}
 	
