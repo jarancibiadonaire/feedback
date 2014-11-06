@@ -33,5 +33,6 @@ public interface FeedServiceRemote {
 	CommentVO findCommentById(Integer id);
 	FeedGraphVO getFeedGraph();
 	Integer addTags(FeedVO feedVO);
+	List<FeedVO> searchFeedsByText(String text);
 
 }

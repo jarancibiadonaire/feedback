@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -130,5 +131,13 @@ public class HomeController {
 			return null;
 		Integer id=feedService.addTags(feed);		
 		return feedService.findFeedById(id);
+	}
+	
+	@RequestMapping(value = "/ajax/search_feeds", method = RequestMethod.GET)
+	public @ResponseBody List<FeedVO> searchFeedsAJAX(@RequestParam("q") String q) {
+		if(q==null)
+			return null;
+		else
+			return feedService.searchFeedsByText(q);
 	}
 }

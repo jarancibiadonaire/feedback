@@ -379,11 +379,14 @@
 		src="<c:url value="/resources/assets/js/forms/publish_feed.js"/>"></script>
 	<script
 		src="<c:url value="/resources/assets/js/forms/comment_feed.js"/>"></script>
+	<script
+		src="<c:url value="/resources/assets/js/forms/search.js"/>"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
 			FeedForm.initFeedForm();
 			CommentForm.initCommentForm();
+			//SearchForm.initSearchForm();
 			"use strict";
 			$('.contentHolder').perfectScrollbar();
 		});
@@ -414,6 +417,8 @@
 		src="<c:url value="/resources/assets/js/microblogging/synchronizer.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/plugins/scroll-nav.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/markerclusterer_compiled.js"/>"></script>
 
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>

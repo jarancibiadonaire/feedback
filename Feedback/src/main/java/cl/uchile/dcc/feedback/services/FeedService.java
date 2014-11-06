@@ -20,7 +20,6 @@ import cl.uchile.dcc.feedback.entities.Tag;
 import cl.uchile.dcc.feedback.entities.User;
 import cl.uchile.dcc.feedback.entities.Visibility;
 import cl.uchile.dcc.feedback.mappers.CommentMapper;
-import cl.uchile.dcc.feedback.mappers.FeedMapper;
 import cl.uchile.dcc.feedback.mappers.TagMapper;
 import cl.uchile.dcc.feedback.model.CommentVO;
 import cl.uchile.dcc.feedback.model.EdgeVO;
@@ -118,13 +117,7 @@ public class FeedService implements FeedServiceRemote {
 	
 	@Override
 	public List<FeedVO> getAllFeeds(){
-		List<FeedVO> feeds=new ArrayList<FeedVO>();
-		FeedMapper mapper=new FeedMapper();
-		Iterable<Feed> f=feedRepo.findByVisibilityIdOrderByCreatedDateDesc(2);
-		for(Feed feed:f){
-			FeedVO fvo=mapper.getBasic(feed);			
-			feeds.add(fvo);
-		}		
+		List<FeedVO> feeds=feedRepo.getFeedsOpt();
 		return feeds;
 	}
 	
@@ -149,15 +142,10 @@ public class FeedService implements FeedServiceRemote {
 	public FeedVO findFeedById(Integer id){
 		if(id==null)
 			return null;
-		Feed f=feedRepo.findById(id);
-		if(f!=null){
-			FeedMapper mapper=new FeedMapper();			
-			return mapper.getBasic(f);		
-		}else{
-			return null;
-		}
-		
+		FeedVO f=feedRepo.getFeedOpt(id);
+		return f;		
 	}
+	
 	@Override
 	public Integer voteFeed(RatingVO rating){
 		if(rating==null || rating.getScore()==null || rating.getFeed()==null || rating.getUser()==null)
@@ -248,5 +236,13 @@ public class FeedService implements FeedServiceRemote {
 			feedTagRepo.save(ft);
 		}
 		return feedVO.getId();
+	}
+	
+	@Override
+	public List<FeedVO> searchFeedsByText(String text){
+		if(text==null || text.compareTo("")==0)
+			return null;
+		List<FeedVO> feeds=feedRepo.searchFeedsByTextOpt(text);
+		return feeds;
 	}
 }

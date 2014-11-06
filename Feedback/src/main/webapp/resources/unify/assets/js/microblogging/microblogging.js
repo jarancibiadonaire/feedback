@@ -10,6 +10,16 @@ var geocoder = new google.maps.Geocoder();
 var santiago = new google.maps.LatLng(-33.43711, -70.634185);
 var drawingShow=false;
 var synchronizer;
+var markerCluster;
+var mcOptions = {gridSize: 50, maxZoom: 15};
+$(window).resize(function(){
+	if($(window).width()>992){
+		$("#map").width(.55 * $(window).width());
+		$("#map").height(.40 * $(window).height());	
+		$(".contentHolder-leftPanel").height(.85 * $(window).height());
+	}
+});
+
 function initialize() {
 	if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		$("#map").width(.55 * $(window).width());
@@ -29,7 +39,11 @@ function initialize() {
 	drawingManager.setMap(map);
 	setDrawingListener();
 	getCurrentPosition();
-	getFeeds();	
+	var q=getURLParameter('q');
+	if(q==null)
+		getFeeds();
+	else
+		searchFeeds(q);
 }
 function setDrawingListener(){
 	 google.maps.event.addListener(drawingManager, 'overlaycomplete', function(event) {
@@ -113,12 +127,23 @@ function getFeeds(){
 		  error: error
 		});
 }
+function searchFeeds(q){
+	$.ajax({
+		  url: window.location.protocol + "//" + window.location.host+'/feedback/ajax/search_feeds',
+		  type: 'get',
+		  data:{q:q},
+		  async: true,
+		  success: loadFeeds,
+		  error: error
+		});
+}
 function loadFeeds(message){
 	feeds=message;
 	for(var i=0;i<feeds.length;i++){
 		var newMark=addMarker(feeds[i]);
 		putHandlers(newMark);		
 	}
+	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
 	var a=angular.element($(".home-container")).scope();
 	a.$apply(function(){a.feeds=feeds;});
 	$(".contentHolder-leftPanel").removeClass("hidden");
@@ -126,7 +151,7 @@ function loadFeeds(message){
 }
 function error(message){
 	console.log("error",message);
-	alert("Ha ocurrido un error, por favor recargue la página.");
+	alert("Ha ocurrido un error, reintente por favor.");
 }
 function putHandlers(marker,id){
 	google.maps.event.addListener(marker.marker, 'click', function(event) {
@@ -170,12 +195,21 @@ function clickMap(){
 function addMarker(data){
 	var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
 	var newMark={marker:new google.maps.Marker({
-							map : map,
 							animation : google.maps.Animation.DROP,
 							position : ll
 						}),
 				feed:data.id};
 	markers.unshift(newMark);
 	return newMark;
+}
+function getMarkers(){
+	var result=[];
+	for(var i=0;i<markers.length;i++){
+		result.push(markers[i].marker);
+	}
+	return result;
+}
+function getURLParameter(name) {
+	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
 }
 google.maps.event.addDomListener(window, 'load', initialize);

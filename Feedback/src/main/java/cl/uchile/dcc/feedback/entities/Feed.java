@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +18,17 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.ContainedIn;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Store;
+
 @Entity
 @Table(name="feed")
+@Indexed
 public class Feed implements Serializable{
 
 	private static final long serialVersionUID = 5546407254241348577L;
@@ -31,9 +39,11 @@ public class Feed implements Serializable{
 	private Integer id;
 	
 	@Column
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String title;
 	
 	@Column
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String description;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,19 +66,20 @@ public class Feed implements Serializable{
 	@ManyToOne
 	private Visibility visibility;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "feed")
+	@OneToMany(mappedBy = "feed")
 	private List<Note> notes;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "feed")
+	@OneToMany(mappedBy = "feed")
 	private List<Media> medias;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
+	@ContainedIn
+	@OneToMany(mappedBy = "feed")
 	private List<Comment> comments;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
+	@OneToMany(mappedBy = "feed")
 	private List<Rating> rates;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "feed")
+	@OneToMany(mappedBy = "feed")
 	private List<FeedTag> feedTags;
 
 	public Integer getId() {

@@ -1,6 +1,7 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="topbar wrapper">
 	<div class="container margin-bottom-20">
 		<!-- Topbar Navigation -->
@@ -17,15 +18,20 @@
 			</a>
 		</div>
 		<sec:authorize access="isAuthenticated()">
-			<div class="input-group search-bar">
-				<input type="text" class="form-control"
-					placeholder="Busca lo que necesitas ..."> <span
-					class="input-group-btn">
-					<button class="btn-u" type="button">
-						<i class="fa fa-search"></i>
-					</button>
-				</span>
-			</div>
+			<form action='${pageContext.request.contextPath}/welcome'
+				id="search-form" class="sky-form without-border">
+				<div class="input-group search-bar">
+					<label class="input"> <input type="text"
+						class="form-control" placeholder="Busca lo que necesitas ..."
+						name="q" />
+					</label>
+					 <span class="input-group-btn">
+						<button class="btn-u" type="submit">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</div>
+			</form>
 		</sec:authorize>
 		<ul class="loginbar pull-right">
 			<sec:authorize access="isAuthenticated()">
