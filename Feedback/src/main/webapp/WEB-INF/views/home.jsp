@@ -85,11 +85,13 @@
 			<!-- End Navbar -->
 		</div>
 		<!--=== Content Part ===-->
+		<div class="Fullscreen"></div>
 		<div class="container content content-without-padding home-container"
 			ng-app="myApp" ng-controller="homeController">
 			<div class="row">
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-4">
+					<div class="pull-right"><span>Se han encontrado {{feeds.length}} Feeds.</span></div>
 					<button class="btn btn-xs rounded-4x btn-plus" type="button"
 						ng-click="clickAddFeed()">
 						<i class="fa fa-plus" ng-class="btnClass"></i>

@@ -272,6 +272,7 @@ function addNode(feed){
 	  	//sys.parameters()
 		sys.renderer = Renderer("#sitemap")
 		sys.graft(theUI)
+		$(".Fullscreen").addClass("hidden");
   }
   function errorGraph(message){
 	  console.log(message);
