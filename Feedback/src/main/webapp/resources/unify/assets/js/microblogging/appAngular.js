@@ -6,6 +6,7 @@ app.controller("homeController", function($scope) {
 	$scope.currentFeed = undefined;
 	$scope.currentMarker = undefined;
 	$scope.btnClass = 'fa-plus';
+	$scope.rated=undefined;
 	$scope.clickAddFeed = function() {
 		$("#newFeed").removeClass("hidden");
 		if (!$scope.show_panel) {
@@ -34,6 +35,7 @@ app.controller("homeController", function($scope) {
 				+ $scope.currentFeed.title + "</div>");
 		infowindow.open(map, $scope.currentMarker);
 		map.panTo($scope.currentMarker.getPosition());
+		map.setZoom(15);
 		$(".tab-v2").find(".tab-content").removeClass("select-div");
 		$("#feed-" + $scope.currentFeed.id).find(".tab-content").addClass(
 				"select-div");
@@ -65,6 +67,7 @@ app.controller("homeController", function($scope) {
 			if ($scope.feeds[i].id == feed.id) {
 				$scope.feeds[i].totalLikes = feed.totalLikes;
 				$scope.feeds[i].totalDislikes = feed.totalDislikes;
+				$scope.rated.push(feed.id);
 				return;
 			}
 		}
@@ -78,4 +81,11 @@ app.controller("homeController", function($scope) {
 		}
 		addNode(feed);
 	}
+	$scope.checkRated = function(id){
+		for(var i=0; i<$scope.rated.length;i++){
+			if($scope.rated[i]==id)
+				return true;
+		}
+		return false;
+	}	
 });

@@ -251,4 +251,13 @@ public class FeedService implements FeedServiceRemote {
 		List<FeedVO> feeds=feedRepo.searchFeedsByTextOpt(text);
 		return feeds;
 	}
+	
+	@Override
+	public List<Integer> getFeedsIdsRatingByUsername(String username){
+		if(username==null || username.compareTo("")==0)
+			return null;
+		User u=userRepo.findByUserName(username);
+		List<Integer> ids=ratingRepo.findFeedsIdsRatingByUserId(u.getId());
+		return ids;
+	}
 }

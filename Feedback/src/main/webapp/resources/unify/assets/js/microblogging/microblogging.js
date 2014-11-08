@@ -39,6 +39,8 @@ function initialize() {
 	drawingManager.setMap(map);
 	setDrawingListener();
 	getCurrentPosition();
+	/*obtener el resto de los objetos:feeds,graph,etc*/
+	getRatingFeeds();
 	var q=getURLParameter('q');
 	if(q==null)
 		getFeeds();
@@ -118,6 +120,25 @@ function getDrawingManager(){
           },
       });
 }
+function getRatingFeeds(){
+	var username = $("#username").val();
+	$.ajax({
+		url : window.location.protocol + "//" + window.location.host+'/feedback/ajax/get_feeds_rated',
+		type : "get",
+		data : {username:username},
+		success : function(data, textStatus, jqXHR) {
+			if (data != "") {
+				console.log(data);
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.rated=data;});
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR);
+		}
+	});
+}
+
 function getFeeds(){
 	$.ajax({
 		  url: window.location.protocol + "//" + window.location.host+'/feedback/home/feeds/1',

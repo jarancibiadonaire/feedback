@@ -113,7 +113,7 @@
 														class="sky-form without-border" id="feed-form"
 														modelAttribute="feed">
 														<div class="hidden">
-															<form:input path="user"
+															<form:input path="user" id="username"
 																value="${pageContext.request.userPrincipal.name}" />
 															<form:input path="origin" value="feedback" />
 															<form:input path="location.lat" id="lat" />
@@ -299,7 +299,8 @@
 												<form:input name="user" path="user"
 													value="${pageContext.request.userPrincipal.name}"
 													class="hidden" />
-												<button class="btn-link likes" type="submit">
+												<button class="btn-link likes" type="submit"
+													ng-disabled="checkRated(feed.id)">
 													<i class="fa fa-thumbs-up">{{feed.totalLikes}} </i>
 												</button>
 											</form:form>
@@ -314,7 +315,8 @@
 												<form:input name="user" path="user"
 													value="${pageContext.request.userPrincipal.name}"
 													class="hidden" />
-												<button class="btn-link likes" type="submit">
+												<button class="btn-link likes" type="submit"
+													ng-disabled="checkRated(feed.id)">
 													<i class="fa fa-thumbs-down">{{feed.totalDislikes}}</i>
 												</button>
 											</form:form>

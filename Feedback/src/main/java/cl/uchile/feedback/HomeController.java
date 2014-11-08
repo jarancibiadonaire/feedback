@@ -29,16 +29,13 @@ public class HomeController {
 	
 	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView home(String var) {
-		List<FeedVO> feeds=feedService.getAllFeeds();
 		List<TagVO> listTags=feedService.getAllTags();
 		ModelAndView model =  new ModelAndView();
 		model.setViewName("home");
 		model.addObject("feed", new FeedVO());
 		model.addObject("comment", new CommentVO());
 		model.addObject("rating", new RatingVO());
-		model.addObject("feeds", feeds);
 		model.addObject("listTags", listTags);
-		model.addObject("var", var);
 		return model;
 	}
 	
@@ -154,5 +151,13 @@ public class HomeController {
 			return null;
 		else
 			return feedService.searchFeedsByText(q);
+	}
+	
+	@RequestMapping(value = "/ajax/get_feeds_rated", method = RequestMethod.GET)
+	public @ResponseBody List<Integer> getRatingFeedsAJAX(@RequestParam("username") String username) {
+		if(username==null)
+			return null;
+		else
+			return feedService.getFeedsIdsRatingByUsername(username);
 	}
 }
