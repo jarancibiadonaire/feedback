@@ -35,7 +35,6 @@ app.controller("homeController", function($scope) {
 				+ $scope.currentFeed.title + "</div>");
 		infowindow.open(map, $scope.currentMarker);
 		map.panTo($scope.currentMarker.getPosition());
-		map.setZoom(15);
 		$(".tab-v2").find(".tab-content").removeClass("select-div");
 		$("#feed-" + $scope.currentFeed.id).find(".tab-content").addClass(
 				"select-div");

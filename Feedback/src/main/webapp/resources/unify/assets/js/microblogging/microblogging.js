@@ -128,7 +128,6 @@ function getRatingFeeds(){
 		data : {username:username},
 		success : function(data, textStatus, jqXHR) {
 			if (data != "") {
-				console.log(data);
 				var a=angular.element($(".home-container")).scope();
 				a.$apply(function(){a.rated=data;});
 			}

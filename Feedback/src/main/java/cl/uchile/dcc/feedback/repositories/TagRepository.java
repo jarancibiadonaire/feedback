@@ -12,4 +12,5 @@ public interface TagRepository extends CrudRepository<Tag, Integer> {
 	List<Tag> findByDescription(String name);
 	List<Tag> findByDescriptionContainingIgnoreCase(String name);
 	List<Tag> findByVisibilityId(Integer id);
+	List<Tag> findByIdIn(List<Integer> ids);
 }

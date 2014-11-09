@@ -86,12 +86,58 @@
 		</div>
 		<!--=== Content Part ===-->
 		<div class="Fullscreen"></div>
+		<div class="modal fade" id="responsive" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Configuración de
+							tags</h4>
+					</div>
+					<form:form action='${pageContext.request.contextPath}/config_tag'
+						class="sky-form without-border" id="config-tag-form"
+						modelAttribute="configTag">
+						<div class="modal-body">
+							<div class="row">
+								<form:input path="username"
+									value="${pageContext.request.userPrincipal.name}"
+									class="hidden" />
+								<h5>Selecciona los tags que deseas seguir:</h5>
+								<ul class="ul-tags">
+									<c:forEach items="${listTags}" var="tag">
+										<li><div class="margin-bottom-5 inline">
+												<form:checkbox name="tag-config" value="${tag.id}"
+													path="tagsIds" />
+												<button
+													class="btn-u rounded-2x btn-u-sm ${tag.rootTag ? 'btn-u-blue' : 'btn-u-default'}"
+													type="button">
+													<i class="fa fa-tag"></i>${tag.name}
+												</button>
+											</div></li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn-u btn-u-default"
+								data-dismiss="modal">Cerrar</button>
+							<button type="submit" class="btn-u btn-u-primary">Guardar
+								cambios</button>
+						</div>
+					</form:form>
+				</div>
+			</div>
+		</div>
 		<div class="container content content-without-padding home-container"
 			ng-app="myApp" ng-controller="homeController">
 			<div class="row">
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-4">
-					<div class="pull-right"><span>Se han encontrado {{feeds.length}} Feeds.</span></div>
+					<div class="pull-right">
+						<span>Se han encontrado {{feeds.length}} Feeds.</span>
+					</div>
 					<button class="btn btn-xs rounded-4x btn-plus" type="button"
 						ng-click="clickAddFeed()">
 						<i class="fa fa-plus" ng-class="btnClass"></i>
@@ -235,7 +281,7 @@
 												</div>
 												<div class="tab-pane fade in" id="messages-{{feed.id}}">
 													<div id="onwerTags">
-													 	<p>Tags del creador</p>
+														<p>Tags del creador</p>
 														<button ng-repeat="tag in feed.tagsData"
 															class="btn-u rounded-2x btn-u-sm"
 															ng-class="{'btn-u-blue':tag.rootTag,'btn-u-default':!tag.rootTag }"
@@ -278,7 +324,7 @@
 															</div>
 															<ul class="tag-cloud-form"></ul>
 														</div>
-														<br/>
+														<br />
 														<div class="text-center">
 															<button type=submit class="btn-u btn-u-xs rounded">Asociar</button>
 														</div>
@@ -383,8 +429,7 @@
 		src="<c:url value="/resources/assets/js/forms/publish_feed.js"/>"></script>
 	<script
 		src="<c:url value="/resources/assets/js/forms/comment_feed.js"/>"></script>
-	<script
-		src="<c:url value="/resources/assets/js/forms/search.js"/>"></script>
+	<script src="<c:url value="/resources/assets/js/forms/search.js"/>"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();

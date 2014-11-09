@@ -1,6 +1,7 @@
 package cl.uchile.dcc.feedback.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import cl.uchile.dcc.feedback.cassandra.repositories.UserTagSessionRepository;
+import cl.uchile.dcc.feedback.comparators.TagComparator;
 import cl.uchile.dcc.feedback.entities.Comment;
 import cl.uchile.dcc.feedback.entities.Feed;
 import cl.uchile.dcc.feedback.entities.FeedTag;
@@ -63,6 +66,8 @@ public class FeedService implements FeedServiceRemote {
 	FeedTagRepository feedTagRepo;
 	@Autowired
 	TagRepository tagRepo;
+	@Autowired
+	UserTagSessionRepository userTagRepo;
 	
 	@Override
 	public Integer createFeed(FeedVO feedVO){
@@ -169,8 +174,18 @@ public class FeedService implements FeedServiceRemote {
 		TagMapper mapper=new TagMapper();
 		for(Tag t:tags)
 			list.add(mapper.getBasic(t));
+		Collections.sort(list, new TagComparator());
 		return list;
 	}
+	@Override
+	public List<Integer> getFollowingTags(String username){
+		if(username==null || username.compareTo("")==0)
+			return null;
+		User u=userRepo.findByUserName(username);
+		List<Integer> ids=userTagRepo.getTagsIdsByUserId(u.getId());
+		return ids;
+	}
+	
 	@Override
 	public CommentVO findCommentById(Integer id){
 		Comment c=commentRepo.findOne(id);
@@ -257,7 +272,39 @@ public class FeedService implements FeedServiceRemote {
 		if(username==null || username.compareTo("")==0)
 			return null;
 		User u=userRepo.findByUserName(username);
+		if(u==null)
+			return null;
 		List<Integer> ids=ratingRepo.findFeedsIdsRatingByUserId(u.getId());
 		return ids;
+	}
+	
+	@Override
+	public List<TagVO> getTagsByUsername(String username){
+		if(username==null || username.compareTo("")==0)
+			return null;
+		User u=userRepo.findByUserName(username);
+		if(u==null)
+			return null;
+		List<Integer> ids=userTagRepo.getTagsIdsByUserId(u.getId());
+		if(ids!=null && ids.size()>0){
+			TagMapper mapper=new TagMapper();
+			List<Tag> tagsList=tagRepo.findByIdIn(ids);
+			List<TagVO> result=new ArrayList<TagVO>();
+			for(Tag t:tagsList)
+				result.add(mapper.getBasic(t));
+			return result;
+		}else{
+			return null;
+		}					
+	}
+	
+	@Override 
+	public void configFollowTags(String username,List<Integer> ids){
+		if(username==null || username.compareTo("")==0 || ids==null)
+			return;
+		User u=userRepo.findByUserName(username);
+		if(u!=null){
+			userTagRepo.addTagsToUser(ids, u.getId());
+		}
 	}
 }

@@ -87,7 +87,7 @@
 .search-bar{
 	width: 30%;
 	position: absolute;
-	margin-left: 27%;
+	margin-left: 25%;
 }
 .tag-cloud-form{
 	margin-left:-10%;
@@ -109,3 +109,12 @@
     /* Optional - just for DIV)*/
     background: url('bx_loader.gif') 50% 50% no-repeat #F8F8F8;
  }
+ .button-topbar{
+ 	position: fixed;
+	margin-left: 62%;
+ }
+.ul-tags {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}

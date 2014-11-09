@@ -17,7 +17,7 @@ public class TagVO implements Serializable {
 	private Boolean rootTag;
 	
 	private Boolean byOwner;
-
+	
 	public Integer getId() {
 		return id;
 	}

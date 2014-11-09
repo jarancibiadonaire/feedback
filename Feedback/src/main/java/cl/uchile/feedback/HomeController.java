@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.uchile.dcc.feedback.model.CommentVO;
+import cl.uchile.dcc.feedback.model.ConfigTagVO;
 import cl.uchile.dcc.feedback.model.FeedGraphVO;
 import cl.uchile.dcc.feedback.model.FeedVO;
 import cl.uchile.dcc.feedback.model.RatingVO;
@@ -29,13 +32,20 @@ public class HomeController {
 	
 	@RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView home(String var) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
 		List<TagVO> listTags=feedService.getAllTags();
+		List<Integer> tagsFollow=feedService.getFollowingTags(username);
+		ConfigTagVO configTag= new ConfigTagVO();
+		if(tagsFollow!=null && tagsFollow.size()>0)
+			configTag.setTagsIds(tagsFollow);
 		ModelAndView model =  new ModelAndView();
 		model.setViewName("home");
 		model.addObject("feed", new FeedVO());
 		model.addObject("comment", new CommentVO());
 		model.addObject("rating", new RatingVO());
 		model.addObject("listTags", listTags);
+		model.addObject("configTag", configTag);
 		return model;
 	}
 	
@@ -51,6 +61,16 @@ public class HomeController {
 		else
 			return home("success");
 	}
+	
+	@RequestMapping(value = "/config_tag", method = RequestMethod.POST)
+	public ModelAndView configTags(@ModelAttribute("configTag") ConfigTagVO config,
+			BindingResult result) {
+		if(config.getTagsIds()==null || config.getUsername().compareTo("")==0)
+			return home("error");
+		feedService.configFollowTags(config.getUsername(), config.getTagsIds());
+		return home("success");
+	}
+	
 	
 	@RequestMapping(value = "/home/comment_feed", method = RequestMethod.POST)
 	public ModelAndView commentFeed(@ModelAttribute("feed") CommentVO comment,
@@ -159,5 +179,13 @@ public class HomeController {
 			return null;
 		else
 			return feedService.getFeedsIdsRatingByUsername(username);
+	}
+	
+	@RequestMapping(value = "/ajax/get_tags", method = RequestMethod.GET)
+	public @ResponseBody List<TagVO> getTagsAJAX(@RequestParam("username") String username) {
+		if(username==null)
+			return null;
+		else
+			return feedService.getTagsByUsername(username);
 	}
 }

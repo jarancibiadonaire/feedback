@@ -21,17 +21,25 @@
 			<form action='${pageContext.request.contextPath}/welcome'
 				id="search-form" class="sky-form without-border">
 				<div class="input-group search-bar">
-					<label class="input"> <input type="text" id="search-q" value="${param['q']}"
-						class="form-control" placeholder="Busca lo que necesitas ..."
-						name="q" />
-					</label>
-					 <span class="input-group-btn">
+					<label class="input"> <input type="text" id="search-q"
+						value="${param['q']}" class="form-control"
+						placeholder="Busca lo que necesitas ..." name="q" />
+					</label> <span class="input-group-btn">
 						<button class="btn-u" type="submit">
 							<i class="fa fa-search"></i>
 						</button>
 					</span>
 				</div>
 			</form>
+			<div class="button-topbar">
+				<button class="btn-u rounded btn-u-sm" type="button"
+					data-toggle="modal" data-target="#responsive">
+					<i class="fa fa-cogs"></i>
+				</button>
+				<button class="btn-u rounded btn-u-sm" type="button">
+					<i class="fa fa-bar-chart-o"></i>
+				</button>
+			</div>
 		</sec:authorize>
 		<ul class="loginbar pull-right">
 			<sec:authorize access="isAuthenticated()">

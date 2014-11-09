@@ -13,16 +13,7 @@ import cl.uchile.dcc.feedback.model.VisibilityVO;
 
 @Component
 public interface FeedServiceRemote {
-	static public enum Origin_enum{
-		FEEDBACK(1),FACEBOOK(2),TWITTER(3),FOURSQUARE(4);
-		private int id;
-		private Origin_enum(int id){
-			this.id=id;
-		}
-		public int getId(){
-			return id;	
-		}
-	}
+	
 	Integer createFeed(FeedVO feed);
 	List<VisibilityVO> getVisibilities();
 	List<FeedVO> getAllFeeds();
@@ -35,5 +26,8 @@ public interface FeedServiceRemote {
 	Integer addTags(FeedVO feedVO);
 	List<FeedVO> searchFeedsByText(String text);
 	List<Integer> getFeedsIdsRatingByUsername(String username);
+	List<TagVO> getTagsByUsername(String username);
+	void configFollowTags(String username, List<Integer> ids);
+	List<Integer> getFollowingTags(String username);
 
 }
