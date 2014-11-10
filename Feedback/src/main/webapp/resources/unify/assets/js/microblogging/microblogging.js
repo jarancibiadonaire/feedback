@@ -39,8 +39,10 @@ function initialize() {
 	drawingManager.setMap(map);
 	setDrawingListener();
 	getCurrentPosition();
-	/*obtener el resto de los objetos:feeds,graph,etc*/
+	/*obtener el resto de los objetos:feeds,graph,followingfeeds,ownfeeds,etc*/
 	getRatingFeeds();
+	getFollowingTags();
+	getOwnTags();
 	var q=getURLParameter('q');
 	if(q==null)
 		getFeeds();
@@ -137,6 +139,40 @@ function getRatingFeeds(){
 		}
 	});
 }
+function getFollowingTags(){
+	var username = $("#username").val();
+	$.ajax({
+		url : window.location.protocol + "//" + window.location.host+'/feedback/ajax/get_following_tags',
+		type : "get",
+		data : {username:username},
+		success : function(data, textStatus, jqXHR) {
+			if (data != "") {
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.followingTags=data;});
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR);
+		}
+	});
+}
+function getOwnTags(){
+	var username = $("#username").val();
+	$.ajax({
+		url : window.location.protocol + "//" + window.location.host+'/feedback/ajax/get_own_tags',
+		type : "get",
+		data : {username:username},
+		success : function(data, textStatus, jqXHR) {
+			if (data != "") {
+				var a=angular.element($(".home-container")).scope();
+				a.$apply(function(){a.ownTags=data;});
+			}
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			console.log(jqXHR);
+		}
+	});
+}
 
 function getFeeds(){
 	$.ajax({
@@ -164,8 +200,9 @@ function loadFeeds(message){
 		putHandlers(newMark);		
 	}
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
-	var a=angular.element($(".home-container")).scope();
+	var a=angular.element($(".home-container")).scope();	
 	a.$apply(function(){a.feeds=feeds;});
+	a.$apply(function(){a.allFeeds=feeds;});
 	$(".contentHolder-leftPanel").removeClass("hidden");
 	synchronizer=new Synchronizer("feedback");
 	$("#sitemap").trigger("reload");
@@ -179,6 +216,18 @@ function putHandlers(marker,id){
 		var a=angular.element($(".home-container")).scope();
 		a.$apply(function(){a.toggle(marker.feed);});				
 	  });
+}
+function updateMap(message){
+	markerCluster.clearMarkers();
+	markers=[];
+	feeds=message;
+	for(var i=0;i<feeds.length;i++){
+		var newMark=addMarker(feeds[i]);
+		putHandlers(newMark);		
+	}
+	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
+//	dropAllNodes();
+//	$("#sitemap").trigger("reload");
 }
 function getCurrentPosition(){
     if(navigator.geolocation) {

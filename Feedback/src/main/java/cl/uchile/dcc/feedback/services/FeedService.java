@@ -279,23 +279,14 @@ public class FeedService implements FeedServiceRemote {
 	}
 	
 	@Override
-	public List<TagVO> getTagsByUsername(String username){
+	public List<Integer> getTagsByUsername(String username){
 		if(username==null || username.compareTo("")==0)
 			return null;
 		User u=userRepo.findByUserName(username);
 		if(u==null)
 			return null;
-		List<Integer> ids=userTagRepo.getTagsIdsByUserId(u.getId());
-		if(ids!=null && ids.size()>0){
-			TagMapper mapper=new TagMapper();
-			List<Tag> tagsList=tagRepo.findByIdIn(ids);
-			List<TagVO> result=new ArrayList<TagVO>();
-			for(Tag t:tagsList)
-				result.add(mapper.getBasic(t));
-			return result;
-		}else{
-			return null;
-		}					
+		List<Integer> ft=feedTagRepo.findByUserId(u.getId());
+		return ft;
 	}
 	
 	@Override 

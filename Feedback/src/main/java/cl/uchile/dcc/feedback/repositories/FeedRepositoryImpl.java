@@ -33,11 +33,11 @@ public class FeedRepositoryImpl implements FeedRepositoryCustom {
 			return null;
 		FullTextEntityManager fullTextEntityManager = Search
 				.getFullTextEntityManager(em);
-//		try {
-//			fullTextEntityManager.createIndexer().startAndWait();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			fullTextEntityManager.createIndexer().startAndWait();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		QueryBuilder qb = fullTextEntityManager.getSearchFactory()
 				.buildQueryBuilder().forEntity(Feed.class).get();		
 		QueryBuilder qbComment = fullTextEntityManager.getSearchFactory()

@@ -14,6 +14,15 @@
 	<logger name="cl.uchile.feedback">
 		<level value="info" />
 	</logger>
+	<logger name="cl.uchile.dcc.feedback.cassandra.repositories">
+		<level value="info" />
+	</logger>
+	<logger name="cl.uchile.dcc.feedback.repositories">
+		<level value="info" />
+	</logger>
+	<logger name="cl.uchile.dcc.feedback.social">
+		<level value="info" />
+	</logger>
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.social">

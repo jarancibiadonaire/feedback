@@ -2,7 +2,10 @@ var app = angular.module("myApp", []);
 
 app.controller("homeController", function($scope) {
 	$scope.show_panel = false;
+	$scope.allFeeds = undefined;
 	$scope.feeds = undefined;
+	$scope.followingTags = undefined;
+	$scope.ownTags = undefined;
 	$scope.currentFeed = undefined;
 	$scope.currentMarker = undefined;
 	$scope.btnClass = 'fa-plus';
@@ -38,9 +41,12 @@ app.controller("homeController", function($scope) {
 		$(".tab-v2").find(".tab-content").removeClass("select-div");
 		$("#feed-" + $scope.currentFeed.id).find(".tab-content").addClass(
 				"select-div");
-		if (panel == undefined)
+		//click desde concept map, panel!=undefined click desde el panel
+		if (panel == undefined){
 			$("#feed-" + $scope.currentFeed.id).closest("li")[0]
-					.scrollIntoView(false);
+					.scrollIntoView(true);
+			window.scrollTo(0,0);
+		}
 		clickNode($scope.currentFeed.title, $scope.currentFeed.id);
 	};
 	$scope.reset = function() {
@@ -86,5 +92,55 @@ app.controller("homeController", function($scope) {
 				return true;
 		}
 		return false;
-	}	
+	}
+	$scope.filterByTag = function(option){
+		if(option=='all'){
+			$scope.feeds=$scope.allFeeds;
+		}else if(option=='following'){
+			var aux=[];
+			for(var i=0;i<$scope.allFeeds.length;i++){
+				var ctrl=false;
+				for(var j=0;j<$scope.allFeeds[i].tagsData.length;j++){
+					if($scope.followingTags.indexOf($scope.allFeeds[i].tagsData[j].id)!=-1){
+						aux.push($scope.allFeeds[i]);
+						ctrl=true;
+						break;
+					}
+				}
+				if(!ctrl){
+					for(var j=0;j<$scope.allFeeds[i].othersTagsData.length;j++){
+						if($scope.followingTags.indexOf($scope.allFeeds[i].othersTagsData[j].id)!=-1){
+							aux.push($scope.allFeeds[i]);
+							break;
+						}
+					}
+				}
+				
+			}
+			$scope.feeds=aux;
+		}else if(option=='own'){
+			var aux=[];
+			for(var i=0;i<$scope.allFeeds.length;i++){
+				var ctrl=false;
+				for(var j=0;j<$scope.allFeeds[i].tagsData.length;j++){
+					if($scope.ownTags.indexOf($scope.allFeeds[i].tagsData[j].id)!=-1){
+						aux.push($scope.allFeeds[i]);
+						ctrl=true;
+						break;
+					}
+				}
+				if(!ctrl){
+					for(var j=0;j<$scope.allFeeds[i].othersTagsData.length;j++){
+						if($scope.ownTags.indexOf($scope.allFeeds[i].othersTagsData[j].id)!=-1){
+							aux.push($scope.allFeeds[i]);
+							break;
+						}
+					}
+				}
+				
+			}
+			$scope.feeds=aux;
+		}
+		updateMap($scope.feeds);
+	}
 });

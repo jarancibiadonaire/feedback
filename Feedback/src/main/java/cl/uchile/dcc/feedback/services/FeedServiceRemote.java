@@ -26,7 +26,7 @@ public interface FeedServiceRemote {
 	Integer addTags(FeedVO feedVO);
 	List<FeedVO> searchFeedsByText(String text);
 	List<Integer> getFeedsIdsRatingByUsername(String username);
-	List<TagVO> getTagsByUsername(String username);
+	List<Integer> getTagsByUsername(String username);
 	void configFollowTags(String username, List<Integer> ids);
 	List<Integer> getFollowingTags(String username);
 

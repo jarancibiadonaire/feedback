@@ -65,9 +65,12 @@ public class HomeController {
 	@RequestMapping(value = "/config_tag", method = RequestMethod.POST)
 	public ModelAndView configTags(@ModelAttribute("configTag") ConfigTagVO config,
 			BindingResult result) {
-		if(config.getTagsIds()==null || config.getUsername().compareTo("")==0)
+		if(config.getUsername().compareTo("")==0)
 			return home("error");
-		feedService.configFollowTags(config.getUsername(), config.getTagsIds());
+		if(config.getTagsIds()==null)
+			feedService.configFollowTags(config.getUsername(), new ArrayList<Integer>());
+		else
+			feedService.configFollowTags(config.getUsername(), config.getTagsIds());
 		return home("success");
 	}
 	
@@ -181,11 +184,21 @@ public class HomeController {
 			return feedService.getFeedsIdsRatingByUsername(username);
 	}
 	
-	@RequestMapping(value = "/ajax/get_tags", method = RequestMethod.GET)
-	public @ResponseBody List<TagVO> getTagsAJAX(@RequestParam("username") String username) {
+	@RequestMapping(value = "/ajax/get_following_tags", method = RequestMethod.GET)
+	public @ResponseBody List<Integer> getFollowingTagsAJAX(@RequestParam("username") String username) {
 		if(username==null)
 			return null;
-		else
+		else{
+			return feedService.getFollowingTags(username);
+		}
+	}
+	
+	@RequestMapping(value = "/ajax/get_own_tags", method = RequestMethod.GET)
+	public @ResponseBody List<Integer> getOwnTagsAJAX(@RequestParam("username") String username) {
+		if(username==null)
+			return null;
+		else{
 			return feedService.getTagsByUsername(username);
+		}
 	}
 }

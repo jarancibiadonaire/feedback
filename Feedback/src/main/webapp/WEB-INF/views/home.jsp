@@ -135,6 +135,12 @@
 			<div class="row">
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-4">
+					<div>
+						<input type="radio" name="filter" value="0" ng-click="filterByTag('all')"
+							checked /> Todos los tags <input type="radio" name="filter"
+							value="1" ng-click="filterByTag('following')" /> Tags que sigo <input
+							type="radio" name="filter" value="2" ng-click="filterByTag('own')" /> Mis tags
+					</div>
 					<div class="pull-right">
 						<span>Se han encontrado {{feeds.length}} Feeds.</span>
 					</div>
