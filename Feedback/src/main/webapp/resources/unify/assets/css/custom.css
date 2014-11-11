@@ -118,3 +118,19 @@
   -webkit-columns: 2;
   -moz-columns: 2;
 }
+.toggle-bar{
+	position:absolute;
+}
+.panel {
+    position: fixed;
+    left: -15.625em; /*left or right and the width of your navigation panel*/
+    width: 15.625em; /*should match the above value*/
+    z-index:1;
+    background-color:#F8F8F8";
+}
+.wrap { 
+    position: relative; 
+}
+.panel-options{
+	margin-top:35%;
+}

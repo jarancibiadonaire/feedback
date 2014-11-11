@@ -105,7 +105,7 @@
 									value="${pageContext.request.userPrincipal.name}"
 									class="hidden" />
 								<h5>Selecciona los tags que deseas seguir:</h5>
-								<ul class="ul-tags">
+								<ul id="pageStuff" class="ul-tags">
 									<c:forEach items="${listTags}" var="tag">
 										<li><div class="margin-bottom-5 inline">
 												<form:checkbox name="tag-config" value="${tag.id}"
@@ -118,6 +118,11 @@
 											</div></li>
 									</c:forEach>
 								</ul>
+								<div class="span6 text-center">
+									<div class="pagination">
+										<ul class="pager"></ul>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -133,13 +138,29 @@
 		<div class="container content content-without-padding home-container"
 			ng-app="myApp" ng-controller="homeController">
 			<div class="row">
+				<nav id="menu" class="panel" role="navigation">
+					<ul class="panel-options nav nav-pills nav-stacked">
+						<li><a href='<c:url value="/welcome"/>'> <i
+								class="fa fa-home"></i> Inicio
+						</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#responsive">
+								<i class="fa fa-cogs"></i> Tags
+						</a></li>
+						<li><a href='<c:url value="/statistics"/>'> <i
+								class="fa fa-bar-chart-o"></i> Estadística
+						</a></li>
+					</ul>
+				</nav>
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-4">
 					<div>
-						<input type="radio" name="filter" value="0" ng-click="filterByTag('all')"
-							checked /> Todos los tags <input type="radio" name="filter"
-							value="1" ng-click="filterByTag('following')" /> Tags que sigo <input
-							type="radio" name="filter" value="2" ng-click="filterByTag('own')" /> Mis tags
+						<input type="radio" name="filter" value="0"
+							ng-click="filterByTag('all')" checked /> Sin filtro de tags <input
+							type="radio" name="filter" value="1"
+							ng-click="filterByTag('following')" /> <span class="tooltips"
+							data-toggle="tooltip"
+							data-original-title="Muestra los feeds asociados a los tags que sigues">
+							Tags que sigues </span>
 					</div>
 					<div class="pull-right">
 						<span>Se han encontrado {{feeds.length}} Feeds.</span>
@@ -444,7 +465,8 @@
 			//SearchForm.initSearchForm();
 			"use strict";
 			$('.contentHolder').perfectScrollbar();
-		});
+			$('.menu-link').bigSlide();
+		});		
 	</script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3kOYMhNbartGm75c_O2XioYUTnbiEsu4&sensor=true&libraries=drawing,places"></script>
@@ -474,6 +496,10 @@
 		src="<c:url value="/resources/assets/js/plugins/scroll-nav.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/plugins/markerclusterer_compiled.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/bigSlide.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/plugins/paginator.js"/>"></script>
 
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>

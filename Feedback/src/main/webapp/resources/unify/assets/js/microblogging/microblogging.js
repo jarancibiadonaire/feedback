@@ -226,8 +226,8 @@ function updateMap(message){
 		putHandlers(newMark);		
 	}
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
-//	dropAllNodes();
-//	$("#sitemap").trigger("reload");
+	$("#sitemap").trigger("delete");
+	$("#sitemap").trigger("reloadFilter");
 }
 function getCurrentPosition(){
     if(navigator.geolocation) {

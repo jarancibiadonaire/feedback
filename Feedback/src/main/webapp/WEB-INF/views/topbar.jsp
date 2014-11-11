@@ -5,17 +5,17 @@
 <div class="topbar wrapper">
 	<div class="container margin-bottom-20">
 		<!-- Topbar Navigation -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-responsive-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="fa fa-bars"></span>
-			</button>
+		<div class="navbar-header">			
 			<a class="navbar-brand" href='<c:url value="/"/>'> <img
 				id="logo-header"
 				src="<c:url value="/resources/assets/img/logo1-default.png"/>"
-				alt="Logo" class="logo-header">
+				alt="Logo" class="logo-header">			 
 			</a>
+			<sec:authorize access="isAuthenticated()">
+				<a href="#menu" class="btn btn-u toggle-bar menu-link"> <span
+					class="fa fa-bars"></span>
+				</a>
+			</sec:authorize>			
 		</div>
 		<sec:authorize access="isAuthenticated()">
 			<form action='${pageContext.request.contextPath}/welcome'
@@ -31,15 +31,6 @@
 					</span>
 				</div>
 			</form>
-			<div class="button-topbar">
-				<button class="btn-u rounded btn-u-sm" type="button"
-					data-toggle="modal" data-target="#responsive">
-					<i class="fa fa-cogs"></i>
-				</button>
-				<button class="btn-u rounded btn-u-sm" type="button">
-					<i class="fa fa-bar-chart-o"></i>
-				</button>
-			</div>
 		</sec:authorize>
 		<ul class="loginbar pull-right">
 			<sec:authorize access="isAuthenticated()">

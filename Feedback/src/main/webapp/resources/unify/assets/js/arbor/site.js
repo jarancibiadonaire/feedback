@@ -37,7 +37,7 @@ function addNode(feed){
 }
 (function($){  
 	var tagsArray=[];
-  var Renderer = function(elt){
+	var Renderer = function(elt){
     var dom = $(elt)
     var canvas = dom.get(0)
     var ctx = canvas.getContext("2d");
@@ -108,6 +108,7 @@ function addNode(feed){
       },
       
       switchSection:function(newSection){
+    	  if(sys.getEdgesFrom(newSection)[0]==undefined) return false
         var parent = sys.getEdgesFrom(newSection)[0].source
         var children = $.map(sys.getEdgesFrom(newSection), function(edge){
           return edge.target
@@ -144,8 +145,8 @@ function addNode(feed){
             var pos = $(canvas).offset();
             _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
             nearest = sys.nearest(_mouseP);
-
-            if (!nearest.node) return false
+            
+            if (nearest==undefined || !nearest.node) return false
 
             if (nearest.node.data.shape!='dot'){
               selected = (nearest.distance < 50) ? nearest : null
@@ -274,9 +275,39 @@ function addNode(feed){
 		sys.graft(theUI)
 		$(".Fullscreen").addClass("hidden");
   }
+  function loadGraphFilter(graph){	  
+	  var n={};
+	  for(var i=0;i<graph.nodes.length;i++){
+		  if(graph.nodes[i].feed==-1)
+			  n[graph.nodes[i].name]={color:CLR.branch, shape:"dot", alpha:1};
+		  else
+			  n[graph.nodes[i].name]={color:CLR.feed, alpha:0,link:'/'+graph.nodes[i].feed};
+		  tagsArray.push(graph.nodes[i].name);
+	  }
+	  var e={};
+	  for(var j=0;j<graph.edges.length;j++){
+		  var ed=graph.edges[j];
+		  var sub={};
+		  for(var k=0;k<ed.edges.length;k++){
+			  sub[ed.edges[k]]={length:10};
+		  }
+		  e[ed.name]=sub;
+	  }
+	  var theUI = {
+			  nodes:n,
+		      edges:e
+		    }
+		sys.graft(theUI)
+  }
   function errorGraph(message){
 	  console.log(message);
-  }  
+  }
+  $("#sitemap").on("delete",function(){
+	  sys.eachNode(function(node){
+			sys.pruneNode(node);
+		});
+	  tagsArray=[];
+  })    
   $("#sitemap").on("reload",function(){
 	  $.ajax({
 		  dataType: "json",
@@ -285,6 +316,17 @@ function addNode(feed){
 		  type: 'GET',
 		  data: {feedIds:getFeedIds()},
 		  success: loadGraph,
+		  error: errorGraph
+		});
+  })
+   $("#sitemap").on("reloadFilter",function(){
+	  $.ajax({
+		  dataType: "json",
+		  contentType: 'application/json',
+		  url: window.location.protocol + "//" + window.location.host+'/feedback/ajax/feed_graph',
+		  type: 'GET',
+		  data: {feedIds:getFeedIds()},
+		  success: loadGraphFilter,
 		  error: errorGraph
 		});
   })

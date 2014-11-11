@@ -97,6 +97,12 @@ app.controller("homeController", function($scope) {
 		if(option=='all'){
 			$scope.feeds=$scope.allFeeds;
 		}else if(option=='following'){
+			//si no seguimos ningun tags
+			if($scope.followingTags==undefined || $scope.followingTags.length<1){ 
+				$scope.feeds=[];
+				updateMap($scope.feeds);
+				return;
+			}
 			var aux=[];
 			for(var i=0;i<$scope.allFeeds.length;i++){
 				var ctrl=false;
