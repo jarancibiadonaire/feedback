@@ -202,21 +202,25 @@ public class FeedService implements FeedServiceRemote {
 		List<Tag> tags=tagRepo.findByVisibilityId(2);
 		for(Tag t:tags){
 			//por cada tag se agrega un nodo
-			nodes.add(new NodeVO(t.getName(), -1));
-			List<FeedTag> feedTags=feedTagRepo.findByTagIdAndTagVisibilityId(t.getId(), 2);
-			if(feedTags!=null && feedTags.size()>0){
-				List<String> list=new ArrayList<String>();
-				for(FeedTag ft:feedTags){
-					//si nos entregaron una lista de feeds, agregamos los feeds que estan ahi
-					if(feedIds!=null){
-						if(feedIds.contains(ft.getFeed().getId())){
-							set.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
-							list.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+			NodeVO node=new NodeVO(t.getName(), -1);	
+			if(feedIds!=null && feedIds.size()>0){
+				List<FeedTag> feedTags=feedTagRepo.findByTagIdAndTagVisibilityIdAndFeedIdIn(t.getId(), 2,feedIds);
+				node.setnFeeds(feedTags.size());
+				if(feedTags!=null && feedTags.size()>0){
+					List<String> list=new ArrayList<String>();
+					for(FeedTag ft:feedTags){
+						//si nos entregaron una lista de feeds, agregamos los feeds que estan ahi
+						if(feedIds!=null){
+							if(feedIds.contains(ft.getFeed().getId())){
+								set.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+								list.add(ft.getFeed().getTitle()+" ["+ft.getFeed().getId()+"]");
+							}
 						}
 					}
+					edges.add(new EdgeVO(t.getName(), list));				
 				}
-				edges.add(new EdgeVO(t.getName(), list));				
 			}
+			nodes.add(node);
 		}
 		for(String s:set){
 			Matcher m=Pattern.compile("\\[([^\\]]+)]").matcher(s);

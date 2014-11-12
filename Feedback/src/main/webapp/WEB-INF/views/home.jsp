@@ -142,12 +142,12 @@
 					<ul class="panel-options nav nav-pills nav-stacked">
 						<li><a href='<c:url value="/welcome"/>'> <i
 								class="fa fa-home"></i> Inicio
+						</a></li>						
+						<li><a href='<c:url value="/statistics"/>'> <i
+								class="fa fa-bar-chart-o"></i> Estadística
 						</a></li>
 						<li><a href="#" data-toggle="modal" data-target="#responsive">
 								<i class="fa fa-cogs"></i> Tags
-						</a></li>
-						<li><a href='<c:url value="/statistics"/>'> <i
-								class="fa fa-bar-chart-o"></i> Estadística
 						</a></li>
 					</ul>
 				</nav>
@@ -464,7 +464,7 @@
 			CommentForm.initCommentForm();
 			//SearchForm.initSearchForm();
 			"use strict";
-			$('.contentHolder').perfectScrollbar();
+			$('.contentHolder').perfectScrollbar({suppressScrollX:true});
 			$('.menu-link').bigSlide();
 		});		
 	</script>

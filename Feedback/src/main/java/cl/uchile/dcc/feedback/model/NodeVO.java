@@ -10,6 +10,8 @@ public class NodeVO implements Serializable {
 	
 	private Integer feed;
 	
+	private Integer nFeeds;
+	
 	public NodeVO(String name,Integer feed){
 		this.name=name;
 		this.feed=feed;
@@ -29,6 +31,14 @@ public class NodeVO implements Serializable {
 
 	public void setFeed(Integer feed) {
 		this.feed = feed;
+	}
+
+	public Integer getnFeeds() {
+		return nFeeds;
+	}
+
+	public void setnFeeds(Integer nFeeds) {
+		this.nFeeds = nFeeds;
 	}
 
 }

@@ -83,9 +83,11 @@ function addNode(feed){
           var w = Math.max(20, 20+gfx.textWidth(node.name) )
           if (node.data.alpha===0) return
           if (node.data.shape=='dot'){
-            gfx.oval(pt.x-w/2, pt.y-w/2, w, w, {fill:node.data.color, alpha:node.data.alpha})
-            gfx.text(node.name, pt.x, pt.y+7, {color:"white", align:"center", font:"Arial", size:12})
-            gfx.text(node.name, pt.x, pt.y+7, {color:"white", align:"center", font:"Arial", size:12})
+        	  var w2=Math.min(100,10*(node.data.size+2));
+            gfx.oval(pt.x-w2/2, pt.y-w2/2, w2, w2, {fill:node.data.color, alpha:node.data.alpha})
+            //gfx.rect(pt.x-w/2, pt.y-8, w, 20, 4, {fill:node.data.color, alpha:node.data.alpha})
+            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:12})
+            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:12})
           }else{
             gfx.rect(pt.x-w/2, pt.y-8, w, 20, 4, {fill:node.data.color, alpha:node.data.alpha})
             gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"Arial", size:12})
@@ -246,11 +248,11 @@ function addNode(feed){
     
     return that
   }
-  function loadGraph(graph){	  
+  function loadGraph(graph){	
 	  var n={};
 	  for(var i=0;i<graph.nodes.length;i++){
 		  if(graph.nodes[i].feed==-1)
-			  n[graph.nodes[i].name]={color:CLR.branch, shape:"dot", alpha:1};
+			  n[graph.nodes[i].name]={color:CLR.branch, shape:"dot", alpha:1,size:graph.nodes[i].nFeeds};
 		  else
 			  n[graph.nodes[i].name]={color:CLR.feed, alpha:0,link:'/'+graph.nodes[i].feed};
 		  tagsArray.push(graph.nodes[i].name);
@@ -279,7 +281,7 @@ function addNode(feed){
 	  var n={};
 	  for(var i=0;i<graph.nodes.length;i++){
 		  if(graph.nodes[i].feed==-1)
-			  n[graph.nodes[i].name]={color:CLR.branch, shape:"dot", alpha:1};
+			  n[graph.nodes[i].name]={color:CLR.branch, shape:"dot", alpha:1,size:graph.nodes[i].nFeeds};
 		  else
 			  n[graph.nodes[i].name]={color:CLR.feed, alpha:0,link:'/'+graph.nodes[i].feed};
 		  tagsArray.push(graph.nodes[i].name);

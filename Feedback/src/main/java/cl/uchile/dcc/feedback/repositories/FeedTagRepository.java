@@ -10,7 +10,7 @@ import cl.uchile.dcc.feedback.entities.FeedTag;
 
 public interface FeedTagRepository extends CrudRepository<FeedTag, Integer> {
 	
-	List<FeedTag> findByTagIdAndTagVisibilityId(Integer id,Integer vid);
+	List<FeedTag> findByTagIdAndTagVisibilityIdAndFeedIdIn(Integer id,Integer vid,List<Integer> lf);
 	FeedTag findByFeedIdAndTagId(Integer fid,Integer tid);
 	@Query("select distinct ft.tag.id from FeedTag ft where ft.user.id=:id")
 	List<Integer> findByUserId(@Param("id") Integer id);
