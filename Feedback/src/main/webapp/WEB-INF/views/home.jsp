@@ -86,71 +86,17 @@
 		</div>
 		<!--=== Content Part ===-->
 		<div class="Fullscreen"></div>
-		<div class="modal fade" id="responsive" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Configuración de
-							tags</h4>
-					</div>
-					<form:form action='${pageContext.request.contextPath}/config_tag'
-						class="sky-form without-border" id="config-tag-form"
-						modelAttribute="configTag">
-						<div class="modal-body">
-							<div class="row">
-								<form:input path="username"
-									value="${pageContext.request.userPrincipal.name}"
-									class="hidden" />
-								<h5>Selecciona los tags que deseas seguir:</h5>
-								<ul id="pageStuff" class="ul-tags">
-									<c:forEach items="${listTags}" var="tag">
-										<li><div class="margin-bottom-5 inline">
-												<form:checkbox name="tag-config" value="${tag.id}"
-													path="tagsIds" />
-												<button
-													class="btn-u rounded-2x btn-u-sm ${tag.rootTag ? 'btn-u-blue' : 'btn-u-default'}"
-													type="button">
-													<i class="fa fa-tag"></i>${tag.name}
-												</button>
-											</div></li>
-									</c:forEach>
-								</ul>
-								<div class="span6 text-center">
-									<div class="pagination">
-										<ul class="pager"></ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn-u btn-u-default"
-								data-dismiss="modal">Cerrar</button>
-							<button type="submit" class="btn-u btn-u-primary">Guardar
-								cambios</button>
-						</div>
-					</form:form>
-				</div>
-			</div>
-		</div>
+		<!-- modal tags -->	
+		<jsp:include page="tags.jsp">
+			<jsp:param name="url" value="config_tag"/>
+		</jsp:include>	
+		<!-- modal tags -->	
 		<div class="container content content-without-padding home-container"
 			ng-app="myApp" ng-controller="homeController">
-			<div class="row">
-				<nav id="menu" class="panel" role="navigation">
-					<ul class="panel-options nav nav-pills nav-stacked">
-						<li><a href='<c:url value="/welcome"/>'> <i
-								class="fa fa-home"></i> Inicio
-						</a></li>						
-						<li><a href='<c:url value="/statistics"/>'> <i
-								class="fa fa-bar-chart-o"></i> Estadística
-						</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#responsive">
-								<i class="fa fa-cogs"></i> Tags
-						</a></li>
-					</ul>
-				</nav>
+			<div class="row">			
+				<!-- left panel -->
+				<jsp:include page="panel.jsp"></jsp:include>
+				<!-- left panel -->				
 				<!-- Begin Sidebar Menu -->
 				<div class="col-md-4">
 					<div>

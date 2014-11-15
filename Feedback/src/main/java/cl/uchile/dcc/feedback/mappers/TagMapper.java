@@ -19,6 +19,8 @@ public class TagMapper implements Mapper<Tag, TagVO> {
 		tag.setName(entity.getName());
 		tag.setDescription(entity.getDescription());
 		tag.setVisibility(entity.getVisibility().getType());
+		if(entity.getUser()!=null)
+			tag.setUser(entity.getUser().getUserName());
 		if(entity.getVisibility().getId()==2)
 			tag.setRootTag(true);
 		else

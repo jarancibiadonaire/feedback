@@ -94,6 +94,7 @@ public class FeedService implements FeedServiceRemote {
 				t=new Tag();
 				t.setName(tag);
 				t.setVisibility(visibilityRepo.findByType("Privado"));
+				t.setUser(userRepo.findByUserName(feedVO.getUser()));
 				tagRepo.save(t);
 			}else{
 				FeedTag oldFeedTag=feedTagRepo.findByFeedIdAndTagId(feed.getId(), t.getId());

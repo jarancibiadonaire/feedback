@@ -31,6 +31,10 @@ public class Tag implements Serializable {
 	@JoinColumn(name="visibility")
 	@OneToOne
 	private Visibility visibility;
+	
+	@JoinColumn(name="user_id")
+	@OneToOne
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -62,6 +66,14 @@ public class Tag implements Serializable {
 
 	public void setVisibility(Visibility visibility) {
 		this.visibility = visibility;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

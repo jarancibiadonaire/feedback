@@ -85,184 +85,85 @@
 			<!-- End Navbar -->
 		</div>
 		<!--=== Content Part ===-->
-		<div class="modal fade" id="responsive" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Configuración de
-							tags</h4>
-					</div>
-					<form:form
-						action='${pageContext.request.contextPath}/statistics/config_tag'
-						class="sky-form without-border" id="config-tag-form"
-						modelAttribute="configTag">
-						<div class="modal-body">
-							<div class="row">
-								<form:input path="username"
-									value="${pageContext.request.userPrincipal.name}"
-									class="hidden" />
-								<h5>Selecciona los tags que deseas seguir:</h5>
-								<ul id="pageStuff" class="ul-tags">
-									<c:forEach items="${listTags}" var="tag">
-										<li><div class="margin-bottom-5 inline">
-												<form:checkbox name="tag-config" value="${tag.id}"
-													path="tagsIds" />
-												<button
-													class="btn-u rounded-2x btn-u-sm ${tag.rootTag ? 'btn-u-blue' : 'btn-u-default'}"
-													type="button">
-													<i class="fa fa-tag"></i>${tag.name}
-												</button>
-											</div></li>
-									</c:forEach>
-								</ul>
-								<div class="span6 text-center">
-									<div class="pagination">
-										<ul class="pager"></ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn-u btn-u-default"
-								data-dismiss="modal">Cerrar</button>
-							<button type="submit" class="btn-u btn-u-primary">Guardar
-								cambios</button>
-						</div>
-					</form:form>
-				</div>
-			</div>
-		</div>
-		<div class="container content content-without-padding home-container"
-			ng-app="myApp" ng-controller="homeController">
+		<!-- modal tags -->
+		<jsp:include page="tags.jsp">
+			<jsp:param name="url" value="statistics/config_tag" />
+		</jsp:include>
+		<!-- modal tags -->
+		<div class="container content content-without-padding home-container">
 			<div class="row">
-				<nav id="menu" class="panel" role="navigation">
-					<ul class="panel-options nav nav-pills nav-stacked">
-						<li><a href='<c:url value="/welcome"/>'> <i
-								class="fa fa-home"></i> Inicio
-						</a></li>
-						<li><a href='<c:url value="/statistics"/>'> <i
-								class="fa fa-bar-chart-o"></i> Estadística
-						</a></li>
-						<li><a href="#" data-toggle="modal" data-target="#responsive">
-								<i class="fa fa-cogs"></i> Tags
-						</a></li>
-					</ul>
-				</nav>
+				<!-- left panel -->
+				<jsp:include page="panel.jsp"></jsp:include>
+				<!-- left panel -->
 				<div class="col-md-12">
 					<div class="tag-box tag-box-v3">
-						<div class="headline">
-							<h2>Pie Charts</h2>
-						</div>
-						<p>
-							Please note you should use four pie charts in the first version.
-							Otherwise you need to change settings from
-							<code>circles-master.js</code>
-							However, you are able use second version of pie charts for easy
-							self control.
-						</p>
-						<br> <br>
-
-						<!-- Pie Charts v1 -->
-						<div class="row pie-progress-charts margin-bottom-60">
-							<div class="inner-pchart col-md-3">
-								<div class="circle" id="circles-1"></div>
-								<h3 class="circle-title">Consulting</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-							</div>
-							<div class="inner-pchart col-md-3">
-								<div class="circle" id="circles-2"></div>
-								<h3 class="circle-title">Marketing</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-							</div>
-							<div class="inner-pchart col-md-3">
-								<div class="circle" id="circles-3"></div>
-								<h3 class="circle-title">Branding</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-							</div>
-							<div class="inner-pchart col-md-3">
-								<div class="circle" id="circles-4"></div>
-								<h3 class="circle-title">Copywriting</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing</p>
-							</div>
-						</div>
-						<!-- End Pie Charts v1 -->
-
-						<div class="margin-bottom-60">
-							<hr>
-						</div>
-
-						<!-- Pie Charts v2 -->
-						<div class="row pie-progress-charts margin-bottom-60">
-							<div class="inner-pchart col-md-4">
-								<div class="circle" id="circle-1"></div>
-								<h3 class="circle-title">UI Design</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-							<div class="inner-pchart col-md-4">
-								<div class="circle" id="circle-2"></div>
-								<h3 class="circle-title">Web Development</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-							<div class="inner-pchart col-md-4">
-								<div class="circle" id="circle-3"></div>
-								<h3 class="circle-title">JavaScript</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-						</div>
-						<!-- End Pie Charts v2 -->
-
-						<!-- Counters -->
-						<div class="main-counters margin-bottom-40">
+						<div class="margin-bottom-40">
 							<div class="headline">
-								<h2>Counters</h2>
+								<h2>Tags</h2>
 							</div>
-
-							<div class="row margin-bottom-40">
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter">52147</span>
-									<h4>Code Lines</h4>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter">24583</span>
-									<h4>Projects</h4>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter">7349</span>
-									<h4>Working Hours</h4>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter">87904</span>
-									<h4>Job Offers</h4>
-								</div>
-							</div>
-
-							<div class="margin-bottom-50">
-								<hr>
-							</div>
-
-							<div class="row">
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter-icon"><i class="fa fa-gift rounded"></i></span>
-									<span class="counter">3254</span>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter-icon"><i
-										class="fa fa-coffee rounded"></i></span> <span class="counter">7068</span>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter-icon"><i
-										class="fa fa-thumbs-up rounded"></i></span> <span class="counter">5389</span>
-								</div>
-								<div class="counters col-md-3 col-sm-3">
-									<span class="counter-icon"><i
-										class="fa fa-comments rounded"></i></span> <span class="counter">9172</span>
-								</div>
+							<div>
+								<table id="datatable" class="hidden">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Frecuencia</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${statSummary.tagsData.tagsFrecuency}"
+											var="tagFrec">
+											<tr>
+												<th>${tagFrec.data}</th>
+												<td>${tagFrec.value}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<div id="chart"></div>
+								<table id="datatable2" class="hidden">
+									<thead>
+										<tr>
+											<th></th>
+											<th>Frecuencia</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${statSummary.tagsData.tagsCommented}"
+											var="tagComment">
+											<tr>
+												<th>${tagComment.data}</th>
+												<td>${tagComment.value}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<div id="chart2"></div>
 							</div>
 						</div>
-						<!-- End Counters -->
+						<div class="margin-bottom-40">
+							<div class="headline">
+								<h2>Feeds</h2>
+							</div>
+							<p>
+								Please note you should use four pie charts in the first version.
+								Otherwise you need to change settings from
+								<code>circles-master.js</code>
+								However, you are able use second version of pie charts for easy
+								self control.
+							</p>
+						</div>
+						<div class="margin-bottom-40">
+							<div class="headline">
+								<h2>Usuarios</h2>
+							</div>
+							<p>
+								Please note you should use four pie charts in the first version.
+								Otherwise you need to change settings from
+								<code>circles-master.js</code>
+								However, you are able use second version of pie charts for easy
+								self control.
+							</p>
+						</div>
 					</div>
 				</div>
 
@@ -303,12 +204,6 @@
 	<script
 		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"/>"></script>
 
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/counter/waypoints.min.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
-	<script type="text/javascript"
-		src="<c:url value="/resources/assets/plugins/circles-master/circles.js"/>"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/app.js"/>"></script>
@@ -317,10 +212,66 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
-			App.initCounter();
-			CirclesMaster.initCirclesMaster1();
-			CirclesMaster.initCirclesMaster2();
 			$('.menu-link').bigSlide();
+			$('#chart').highcharts({
+		        data: {
+		            table: document.getElementById('datatable')
+		        },
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Tags más asociados en Feedback'
+		        },
+		        xAxis: {
+		            type: 'category',
+		            labels: {
+		                rotation: -45
+		            }
+		        },
+		        yAxis: {
+		            allowDecimals: false,
+		            title: {
+		                text: 'Frecuencia'
+		            }
+		        },
+		        tooltip: {
+		            formatter: function () {
+		                return '<b>' + this.series.name + '</b><br/>' +
+		                    this.point.y + ' asociaciones';
+		            }
+		        }
+		    });
+			$('#chart2').highcharts({
+		        data: {
+		            table: document.getElementById('datatable2')
+		        },
+		        chart: {
+		            type: 'column'
+		        },
+		        title: {
+		            text: 'Tags más comentados en Feedback'
+		        },
+		        xAxis: {
+		            type: 'category',
+		            labels: {
+		                rotation: -45
+		            }
+		        },
+		        yAxis: {
+		            allowDecimals: false,
+		            title: {
+		                text: 'N° Comentarios'
+		            }
+		        },
+		        tooltip: {
+		            formatter: function () {
+		                return '<b>' + this.series.name + '</b><br/>' +
+		                    this.point.y + ' comentarios';
+		            }
+		        }
+		    });
+			
 		});
 	</script>
 	<script type="text/javascript"
@@ -335,6 +286,9 @@
 		src="<c:url value="/resources/assets/js/plugins/bigSlide.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/assets/js/plugins/paginator.js"/>"></script>
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/data.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
 
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>

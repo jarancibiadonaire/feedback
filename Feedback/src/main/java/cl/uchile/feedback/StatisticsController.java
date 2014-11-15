@@ -14,14 +14,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.uchile.dcc.feedback.model.ConfigTagVO;
+import cl.uchile.dcc.feedback.model.StatisticsDataVO;
+import cl.uchile.dcc.feedback.model.StatisticsSummaryVO;
+import cl.uchile.dcc.feedback.model.StatisticsTagsVO;
 import cl.uchile.dcc.feedback.model.TagVO;
+import cl.uchile.dcc.feedback.repositories.StatisticsRepository;
 import cl.uchile.dcc.feedback.services.FeedServiceRemote;
+import cl.uchile.dcc.feedback.services.StatisticsService;
 
 @Controller
 public class StatisticsController {	
 	
 	@Autowired
 	FeedServiceRemote feedService;
+	
+	@Autowired
+	StatisticsService statService;
 
 	@RequestMapping(value = { "/statistics"}, method = RequestMethod.GET)
 	public ModelAndView statistics() {
@@ -32,9 +40,13 @@ public class StatisticsController {
 		ConfigTagVO configTag= new ConfigTagVO();
 		if(tagsFollow!=null && tagsFollow.size()>0)
 			configTag.setTagsIds(tagsFollow);
+		StatisticsTagsVO tagsData=statService.getStatisticsTags();
+		StatisticsSummaryVO stat=new StatisticsSummaryVO();
+		stat.setTagsData(tagsData);
 		ModelAndView model = new ModelAndView();
 		model.addObject("listTags", listTags);
-		model.addObject("configTag", configTag);		
+		model.addObject("configTag", configTag);
+		model.addObject("statSummary", stat);
 		model.setViewName("statistics");
 		return model;
 	}

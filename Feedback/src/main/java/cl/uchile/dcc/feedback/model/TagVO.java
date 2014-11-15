@@ -18,6 +18,8 @@ public class TagVO implements Serializable {
 	
 	private Boolean byOwner;
 	
+	private String user;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -64,6 +66,14 @@ public class TagVO implements Serializable {
 
 	public void setByOwner(Boolean byOwner) {
 		this.byOwner = byOwner;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 

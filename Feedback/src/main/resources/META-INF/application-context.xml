@@ -75,7 +75,8 @@
 
 	<context:component-scan
 		base-package="cl.uchile.dcc.feedback.cassandra.repositories,
-										cl.uchile.dcc.feedback.services" />
+										cl.uchile.dcc.feedback.services
+										cl.uchile.dcc.feedback.repositories" />
 	<context:component-scan base-package="cl.uchile.dcc.feedback.social" />
 
 </beans>

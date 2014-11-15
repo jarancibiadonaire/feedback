@@ -54,7 +54,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="error-v4">
 					<a href="#"><img
-						src="<c:url value="/resources/assets/img/logo2-default.png"/>"
+						src="<c:url value="/resources/assets/img/logo1-default.png"/>"
 						alt=""></a>
 					<h1>403</h1>
 					<span class="sorry">Acceso denegado! Usted no tiene permisos
