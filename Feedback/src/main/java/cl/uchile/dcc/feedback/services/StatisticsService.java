@@ -7,7 +7,10 @@ import org.springframework.stereotype.Component;
 
 import cl.uchile.dcc.feedback.model.IndexSummaryVO;
 import cl.uchile.dcc.feedback.model.StatisticsDataVO;
+import cl.uchile.dcc.feedback.model.StatisticsFeedsVO;
+import cl.uchile.dcc.feedback.model.StatisticsSerieVO;
 import cl.uchile.dcc.feedback.model.StatisticsTagsVO;
+import cl.uchile.dcc.feedback.model.StatisticsUserVO;
 import cl.uchile.dcc.feedback.repositories.CommentRepository;
 import cl.uchile.dcc.feedback.repositories.FeedRepository;
 import cl.uchile.dcc.feedback.repositories.StatisticsRepository;
@@ -46,9 +49,25 @@ public class StatisticsService implements StatisticsServiceRemote {
 	public StatisticsTagsVO getStatisticsTags(){
 		StatisticsTagsVO result=new StatisticsTagsVO();
 		List<StatisticsDataVO> tagsFrec=statisticsRepo.getFreqTag(20);
-		List<StatisticsDataVO> tagsCommented=statisticsRepo.getCommentTag(20);
 		result.setTagsFrecuency(tagsFrec);
-		result.setTagsCommented(tagsCommented);
+		return result;
+	}
+	
+	@Override
+	public StatisticsFeedsVO getStatisticsFeed(){
+		StatisticsFeedsVO result=new StatisticsFeedsVO();
+		List<StatisticsDataVO> commented=statisticsRepo.getCommentFeed(20);
+		result.setCommentedFeed(commented);
+		List<StatisticsSerieVO> rated=statisticsRepo.getRatedFeed(6);
+		result.setRatedFeed(rated);
+		return result;
+	}
+	
+	@Override
+	public StatisticsUserVO getStatisticsUser(){
+		StatisticsUserVO result=new StatisticsUserVO();
+		List<StatisticsDataVO> users=statisticsRepo.getFreqUser(8);
+		result.setUserFreq(users);
 		return result;
 	}
 	

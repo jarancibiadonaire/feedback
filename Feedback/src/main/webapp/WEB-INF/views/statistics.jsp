@@ -120,6 +120,13 @@
 									</tbody>
 								</table>
 								<div id="chart"></div>
+							</div>
+						</div>
+						<div class="margin-bottom-40">
+							<div class="headline">
+								<h2>Feeds</h2>
+							</div>
+							<div>
 								<table id="datatable2" class="hidden">
 									<thead>
 										<tr>
@@ -128,41 +135,56 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${statSummary.tagsData.tagsCommented}"
-											var="tagComment">
+										<c:forEach items="${statSummary.feedsData.commentedFeed}"
+											var="feedComment">
 											<tr>
-												<th>${tagComment.data}</th>
-												<td>${tagComment.value}</td>
+												<th>${feedComment.data}</th>
+												<td>${feedComment.value}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 								<div id="chart2"></div>
+								<br>
+								<h2 class="text-center">Tags más votados</h2>
+								<c:forEach items="${statSummary.feedsData.ratedFeed}"
+									var="serie">
+									<div class="col-md-4 serie">
+										<table class="datatableN hidden">
+											<thead>
+												<tr>
+													<th></th>
+													<th class="serie-name">${serie.name}</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${serie.values}" var="v">
+													<tr>
+														<th class="data">${v.data}</th>
+														<td class="value">${v.value}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+										<div class="chartN"></div>
+									</div>
+								</c:forEach>
 							</div>
-						</div>
-						<div class="margin-bottom-40">
-							<div class="headline">
-								<h2>Feeds</h2>
-							</div>
-							<p>
-								Please note you should use four pie charts in the first version.
-								Otherwise you need to change settings from
-								<code>circles-master.js</code>
-								However, you are able use second version of pie charts for easy
-								self control.
-							</p>
 						</div>
 						<div class="margin-bottom-40">
 							<div class="headline">
 								<h2>Usuarios</h2>
 							</div>
-							<p>
-								Please note you should use four pie charts in the first version.
-								Otherwise you need to change settings from
-								<code>circles-master.js</code>
-								However, you are able use second version of pie charts for easy
-								self control.
-							</p>
+							<h2 class="text-center">Usuarios con más feeds</h2>
+							<br>
+							<div class="row">
+								<c:forEach items="${statSummary.userData.userFreq}" var="user">
+									<div class="counters col-md-3 col-sm-3">
+										<span class="counter-icon"><i
+											class="fa fa-user rounded">${user.data}</i></span> <span class="counter">${user.value}</span>
+									</div>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -203,6 +225,10 @@
 		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery-ui.min.js"/>"></script>
 	<script
 		src="<c:url value="/resources/assets/plugins/sky-forms/version-2.0.1/js/jquery.form.min.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/plugins/counter/waypoints.min.js"/>"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/plugins/counter/jquery.counterup.min.js"/>"></script>
 
 	<!-- JS Page Level -->
 	<script type="text/javascript"
@@ -212,66 +238,8 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
+			App.initCounter();
 			$('.menu-link').bigSlide();
-			$('#chart').highcharts({
-		        data: {
-		            table: document.getElementById('datatable')
-		        },
-		        chart: {
-		            type: 'column'
-		        },
-		        title: {
-		            text: 'Tags más asociados en Feedback'
-		        },
-		        xAxis: {
-		            type: 'category',
-		            labels: {
-		                rotation: -45
-		            }
-		        },
-		        yAxis: {
-		            allowDecimals: false,
-		            title: {
-		                text: 'Frecuencia'
-		            }
-		        },
-		        tooltip: {
-		            formatter: function () {
-		                return '<b>' + this.series.name + '</b><br/>' +
-		                    this.point.y + ' asociaciones';
-		            }
-		        }
-		    });
-			$('#chart2').highcharts({
-		        data: {
-		            table: document.getElementById('datatable2')
-		        },
-		        chart: {
-		            type: 'column'
-		        },
-		        title: {
-		            text: 'Tags más comentados en Feedback'
-		        },
-		        xAxis: {
-		            type: 'category',
-		            labels: {
-		                rotation: -45
-		            }
-		        },
-		        yAxis: {
-		            allowDecimals: false,
-		            title: {
-		                text: 'N° Comentarios'
-		            }
-		        },
-		        tooltip: {
-		            formatter: function () {
-		                return '<b>' + this.series.name + '</b><br/>' +
-		                    this.point.y + ' comentarios';
-		            }
-		        }
-		    });
-			
 		});
 	</script>
 	<script type="text/javascript"
@@ -289,7 +257,8 @@
 	<script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/modules/data.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
+	<script type="text/javascript"
+		src="<c:url value="/resources/assets/js/microblogging/statistics.js"/>"></script>
 	<!--[if lt IE 9]>
     <script src="<c:url value="/resources/assets/plugins/respond.js"/>"></script>
 <![endif]-->

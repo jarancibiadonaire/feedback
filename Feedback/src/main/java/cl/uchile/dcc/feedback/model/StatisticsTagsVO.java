@@ -11,7 +11,7 @@ public class StatisticsTagsVO implements Serializable {
 	
 	private List<StatisticsDataVO> tagsCommented;
 	
-	private List<StatisticsDataVO> tagsRated;
+	private List<StatisticsSerieVO> tagsRated;
 
 	public List<StatisticsDataVO> getTagsFrecuency() {
 		return tagsFrecuency;
@@ -29,11 +29,11 @@ public class StatisticsTagsVO implements Serializable {
 		this.tagsCommented = tagsCommented;
 	}
 
-	public List<StatisticsDataVO> getTagsRated() {
+	public List<StatisticsSerieVO> getTagsRated() {
 		return tagsRated;
 	}
 
-	public void setTagsRated(List<StatisticsDataVO> tagsRated) {
+	public void setTagsRated(List<StatisticsSerieVO> tagsRated) {
 		this.tagsRated = tagsRated;
 	}
 

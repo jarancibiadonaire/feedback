@@ -27,7 +27,7 @@ function initialize() {
 	}
 	$(".contentHolder-leftPanel").height(.85 * $(window).height());
 	var mapOptions = {
-		zoom : 13,
+		zoom : 14,
 		center : santiago
 	};
 	map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -195,11 +195,15 @@ function searchFeeds(q){
 }
 function loadFeeds(message){
 	feeds=message;
+	bounds=new google.maps.LatLngBounds();
+	bounds.extend(santiago);
 	for(var i=0;i<feeds.length;i++){
 		var newMark=addMarker(feeds[i]);
+		bounds.extend(newMark.marker.getPosition());
 		putHandlers(newMark);		
-	}
+	}	
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
+	map.fitBounds(bounds);
 	var a=angular.element($(".home-container")).scope();	
 	a.$apply(function(){a.feeds=feeds;});
 	a.$apply(function(){a.allFeeds=feeds;});
@@ -221,11 +225,15 @@ function updateMap(message){
 	markerCluster.clearMarkers();
 	markers=[];
 	feeds=message;
+	bounds=new google.maps.LatLngBounds();
+	bounds.extend(santiago);
 	for(var i=0;i<feeds.length;i++){
 		var newMark=addMarker(feeds[i]);
 		putHandlers(newMark);		
+		bounds.extend(newMark.marker.getPosition());
 	}
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
+	map.fitBounds(bounds);
 	$("#sitemap").trigger("delete");
 	$("#sitemap").trigger("reloadFilter");
 }
@@ -247,7 +255,6 @@ function getCurrentPosition(){
                     });
           else
               marker.setPosition(pos);
-          map.setCenter(marker.getPosition());
         }, function() {
           handleNoGeolocation();
         });

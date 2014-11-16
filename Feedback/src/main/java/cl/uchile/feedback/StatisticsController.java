@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import cl.uchile.dcc.feedback.model.ConfigTagVO;
-import cl.uchile.dcc.feedback.model.StatisticsDataVO;
+import cl.uchile.dcc.feedback.model.StatisticsFeedsVO;
 import cl.uchile.dcc.feedback.model.StatisticsSummaryVO;
 import cl.uchile.dcc.feedback.model.StatisticsTagsVO;
+import cl.uchile.dcc.feedback.model.StatisticsUserVO;
 import cl.uchile.dcc.feedback.model.TagVO;
-import cl.uchile.dcc.feedback.repositories.StatisticsRepository;
 import cl.uchile.dcc.feedback.services.FeedServiceRemote;
 import cl.uchile.dcc.feedback.services.StatisticsService;
 
@@ -41,8 +41,12 @@ public class StatisticsController {
 		if(tagsFollow!=null && tagsFollow.size()>0)
 			configTag.setTagsIds(tagsFollow);
 		StatisticsTagsVO tagsData=statService.getStatisticsTags();
+		StatisticsFeedsVO feedData=statService.getStatisticsFeed();
+		StatisticsUserVO userData=statService.getStatisticsUser();
 		StatisticsSummaryVO stat=new StatisticsSummaryVO();
 		stat.setTagsData(tagsData);
+		stat.setFeedsData(feedData);
+		stat.setUserData(userData);
 		ModelAndView model = new ModelAndView();
 		model.addObject("listTags", listTags);
 		model.addObject("configTag", configTag);
