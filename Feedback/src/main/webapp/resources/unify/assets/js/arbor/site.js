@@ -1,6 +1,6 @@
 var sys;
 var CLR = {
-	      branch:"#3498db",
+	      branch:"#81DAF5",
 	      feed:"#72c02c",
 	      selected:"#C6FFAB"
 	    }

@@ -53,7 +53,7 @@ public class HomeController {
 	public ModelAndView publishFeed(@ModelAttribute("feed") FeedVO feed,
 			BindingResult result) {
 		if(feed.getTitle()==null || feed.getUser()==null || 
-				feed.getTitle().compareTo("")==0 || feed.getUser().compareTo("")==0)
+				feed.getTitle().isEmpty() || feed.getUser().isEmpty())
 			return home("error");
 		Integer var=feedService.createFeed(feed);
 		if(var==null)
@@ -65,7 +65,7 @@ public class HomeController {
 	@RequestMapping(value = "/config_tag", method = RequestMethod.POST)
 	public ModelAndView configTags(@ModelAttribute("configTag") ConfigTagVO config,
 			BindingResult result) {
-		if(config.getUsername().compareTo("")==0)
+		if(config.getUsername().isEmpty())
 			return home("error");
 		if(config.getTagsIds()==null)
 			feedService.configFollowTags(config.getUsername(), new ArrayList<Integer>());
@@ -106,7 +106,7 @@ public class HomeController {
 	public @ResponseBody FeedVO publishFeedAJAX(@ModelAttribute("feed") FeedVO feed,
 			BindingResult result) {
 		if(feed.getTitle()==null || feed.getUser()==null || 
-				feed.getTitle().compareTo("")==0 || feed.getUser().compareTo("")==0)
+				feed.getTitle().isEmpty() || feed.getUser().isEmpty())
 			return null;
 		Integer var=feedService.createFeed(feed);
 		if(var==null)
@@ -119,7 +119,7 @@ public class HomeController {
 	public @ResponseBody CommentVO commentFeedAJAX(@ModelAttribute("feed") CommentVO comment,
 			BindingResult result) {
 		if(comment.getFeed()==null || comment.getComment()==null || 
-				comment.getComment().compareTo("")==0|| comment.getUser()==null)
+				comment.getComment().isEmpty()|| comment.getUser()==null)
 			return null;
 		Integer id=feedService.commentFeed(comment);
 		if(id!=null)
@@ -141,17 +141,15 @@ public class HomeController {
 	@RequestMapping(value="/ajax/feed_graph", method=RequestMethod.GET)
 	public @ResponseBody FeedGraphVO getGraph(@RequestParam String feedIds){
 		List<Integer> ids=null;
-		if(feedIds.compareTo("")!=0){			
+		if(feedIds!=null && !feedIds.isEmpty()){			
 			ids=new ArrayList<Integer>();
-			if(feedIds!=null && feedIds.compareTo("")!=0){
-				for(String s:feedIds.split(",")){
-					try{
-						ids.add(Integer.parseInt(s));
-					}catch(Exception e){
-						e.printStackTrace();
-						return null;
-					}
-				}
+			for(String s:feedIds.split(",")){
+				try{
+					ids.add(Integer.parseInt(s));
+				}catch(Exception e){
+					e.printStackTrace();
+					return null;
+				}				
 			}
 		}
 		FeedGraphVO graph=feedService.getFeedGraph(ids);
@@ -161,7 +159,7 @@ public class HomeController {
 	@RequestMapping(value = "/ajax/add_tag", method = RequestMethod.POST)
 	public @ResponseBody FeedVO addTagAJAX(@ModelAttribute("feed") FeedVO feed,
 			BindingResult result) {
-		if(feed.getId()==null || feed.getUser()==null || feed.getUser().compareTo("")==0 
+		if(feed.getId()==null || feed.getUser()==null || feed.getUser().isEmpty()
 				|| feed.getTags()==null || feed.getTags().size()<1)
 			return null;
 		Integer id=feedService.addTags(feed);		
