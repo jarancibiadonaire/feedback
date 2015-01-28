@@ -88,6 +88,8 @@ app.controller("homeController", function($scope) {
 		addNode(feed);
 	}
 	$scope.checkRated = function(id){
+		if($scope.rated==undefined)
+			return false;
 		for(var i=0; i<$scope.rated.length;i++){
 			if($scope.rated[i]==id)
 				return true;

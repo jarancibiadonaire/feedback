@@ -32,14 +32,14 @@ public class TagRepositoryTest {
 	public void test() {
 		Visibility v=visibilityRepo.findByTypeIgnoreCase("público");
 		Tag t=new Tag();
-		t.setName("test 1");
-		t.setDescription("probando app-context");
+		t.setName("agua");
+		t.setDescription("Temas relacionados con el recurso natural");
 		t.setVisibility(v);
 		tagRepo.save(t);
 		
-		Tag t2=tagRepo.findByNameIgnoreCase("test 1");
+		Tag t2=tagRepo.findByNameIgnoreCase("agua");
 		assertNotNull(t2);
-		assertTrue(t2.getDescription().contains("prob"));
+		assertTrue(t2.getDescription().contains("rec"));
 		
 	}
 

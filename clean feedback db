@@ -1,0 +1,9 @@
+﻿delete from media;
+delete from note;
+delete from comment;
+delete from category_tag;
+delete from feed_tag;
+delete from rating;
+delete from feed;
+delete from location_table;
+delete from tag;

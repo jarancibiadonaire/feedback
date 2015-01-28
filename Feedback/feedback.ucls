@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="cl.uchile.dcc.feedback.entities.Category" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Category.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="613" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="cl.uchile.dcc.feedback.entities.Role" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Role.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6606" y="320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="cl.uchile.dcc.feedback.entities.Feed" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Feed.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6434" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="cl.uchile.dcc.feedback.entities.Tag" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Tag.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6694" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="cl.uchile.dcc.feedback.entities.Comuna" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Comuna.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6166" y="320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="cl.uchile.dcc.feedback.entities.FeedTag" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/FeedTag.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6840" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="cl.uchile.dcc.feedback.entities.Origin" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Origin.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6342" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="cl.uchile.dcc.feedback.entities.Location" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Location.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6166" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="cl.uchile.dcc.feedback.entities.Region" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Region.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6166" y="411"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="cl.uchile.dcc.feedback.entities.Note" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Note.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6664" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="cl.uchile.dcc.feedback.entities.Comment" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Comment.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6126" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="cl.uchile.dcc.feedback.entities.Media" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Media.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6488" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="cl.uchile.dcc.feedback.entities.User" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6518" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="cl.uchile.dcc.feedback.entities.Rating" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Rating.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6312" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="cl.uchile.dcc.feedback.entities.Sex" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Sex.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6430" y="320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="cl.uchile.dcc.feedback.entities.Visibility" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/entities/Visibility.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="136" x="6694" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="cl.uchile.dcc.feedback.repositories.FeedRepositoryImpl" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/FeedRepositoryImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="5461" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="18" language="java" name="cl.uchile.dcc.feedback.repositories.SexRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/SexRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="2952" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="19" language="java" name="cl.uchile.dcc.feedback.repositories.OriginRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/OriginRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="4734" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="20" language="java" name="cl.uchile.dcc.feedback.repositories.UserRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/UserRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="3958" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="21" language="java" name="cl.uchile.dcc.feedback.repositories.FeedTagRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/FeedTagRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="5510" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="22" language="java" name="cl.uchile.dcc.feedback.repositories.LocationRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/LocationRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="4928" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="23" language="java" name="cl.uchile.dcc.feedback.repositories.TagRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/TagRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="4152" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="24" language="java" name="cl.uchile.dcc.feedback.repositories.MediaRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/MediaRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="2594" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="25" language="java" name="cl.uchile.dcc.feedback.repositories.NoteRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/NoteRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="2058" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="26" language="java" name="cl.uchile.dcc.feedback.repositories.StatisticsRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/StatisticsRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="3764" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="27" language="java" name="cl.uchile.dcc.feedback.repositories.RoleRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/RoleRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="2758" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="28" language="java" name="cl.uchile.dcc.feedback.repositories.VisibilityRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/VisibilityRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="5316" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="29" language="java" name="cl.uchile.dcc.feedback.repositories.FeedRepositoryCustom" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/FeedRepositoryCustom.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="160" x="5097" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="30" language="java" name="cl.uchile.dcc.feedback.repositories.RatingRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/RatingRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="5704" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="31" language="java" name="cl.uchile.dcc.feedback.repositories.StatisticsRepositoryImpl" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/StatisticsRepositoryImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="165" x="3742" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="32" language="java" name="cl.uchile.dcc.feedback.repositories.FeedRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/FeedRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="4540" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="33" language="java" name="cl.uchile.dcc.feedback.repositories.CategoryRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/CategoryRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="922" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="34" language="java" name="cl.uchile.dcc.feedback.repositories.RegionRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/RegionRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="221" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="35" language="java" name="cl.uchile.dcc.feedback.repositories.CommentRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/CommentRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="4346" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="36" language="java" name="cl.uchile.dcc.feedback.repositories.ComunaRepository" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/repositories/ComunaRepository.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="154" x="5122" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="37" language="java" name="cl.uchile.dcc.feedback.services.UserServiceRemote" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/UserServiceRemote.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="141" x="3146" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="38" language="java" name="cl.uchile.dcc.feedback.services.StatisticsService" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/StatisticsService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="141" x="4289" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="39" language="java" name="cl.uchile.dcc.feedback.services.StatisticsServiceRemote" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/StatisticsServiceRemote.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="167" x="3557" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="40" language="java" name="cl.uchile.dcc.feedback.services.FeedServiceRemote" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/FeedServiceRemote.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="141" x="3376" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="cl.uchile.dcc.feedback.services.FeedService" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/FeedService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="141" x="4734" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="cl.uchile.dcc.feedback.services.UserService" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/services/UserService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="141" x="2872" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="cl.uchile.dcc.feedback.model.IndexSummaryVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/IndexSummaryVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="3659" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="cl.uchile.dcc.feedback.model.NodeVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/NodeVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="4118" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="cl.uchile.dcc.feedback.model.SexVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/SexVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="2423" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="cl.uchile.dcc.feedback.model.TagVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/TagVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="7062" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="cl.uchile.dcc.feedback.model.ConfigTagVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/ConfigTagVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="2252" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="cl.uchile.dcc.feedback.model.StatisticsTagsVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsTagsVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="5879" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="cl.uchile.dcc.feedback.model.StatisticsUserVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsUserVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="6221" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="cl.uchile.dcc.feedback.model.CommentVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/CommentVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="7404" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="cl.uchile.dcc.feedback.model.UserVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/UserVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="6891" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="cl.uchile.dcc.feedback.model.RatingVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/RatingVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="7575" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="cl.uchile.dcc.feedback.model.LocationVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/LocationVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="7233" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="cl.uchile.dcc.feedback.model.NoteVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/NoteVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="6891" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="cl.uchile.dcc.feedback.model.StatisticsSummaryVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsSummaryVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="151" x="5935" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="cl.uchile.dcc.feedback.model.StatisticsDataVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsDataVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="5940" y="320"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="cl.uchile.dcc.feedback.model.FeedGraphVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/FeedGraphVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="4023" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="cl.uchile.dcc.feedback.model.StatisticsSerieVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsSerieVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="5940" y="229"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="cl.uchile.dcc.feedback.model.StatisticsFeedsVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/StatisticsFeedsVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="6050" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="cl.uchile.dcc.feedback.model.FeedVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/FeedVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="7204" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="cl.uchile.dcc.feedback.model.VisibilityVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/VisibilityVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="1519" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="cl.uchile.dcc.feedback.model.EdgeVO" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/model/EdgeVO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="131" x="3947" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="cl.uchile.dcc.feedback.mappers.CommentMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/CommentMapper.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="4733" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="cl.uchile.dcc.feedback.mappers.NoteMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/NoteMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="4369" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="cl.uchile.dcc.feedback.mappers.LocationMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/LocationMapper.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="5097" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="cl.uchile.dcc.feedback.mappers.TagMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/TagMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="5279" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="67" language="java" name="cl.uchile.dcc.feedback.mappers.Mapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/Mapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="4915" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="68" language="java" name="cl.uchile.dcc.feedback.mappers.FeedMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/FeedMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="4551" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="cl.uchile.dcc.feedback.mappers.UserMapper" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/mappers/UserMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="142" x="4915" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="cl.uchile.dcc.feedback.comparators.TagComparator" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/comparators/TagComparator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="158" x="2788" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="cl.uchile.dcc.feedback.comparators.CommentComparator" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/comparators/CommentComparator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="158" x="415" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="cl.uchile.dcc.feedback.comparators.FeedComparator" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/comparators/FeedComparator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="158" x="1860" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="cl.uchile.dcc.feedback.social.SimpleSignInAdapter" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/social/SimpleSignInAdapter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="144" x="3475" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="cl.uchile.dcc.feedback.social.AuthenticationUserIdExtractor" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/social/AuthenticationUserIdExtractor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="199" x="2986" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="cl.uchile.dcc.feedback.social.FacebookAuthenticationService" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/social/FacebookAuthenticationService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="207" x="1116" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="cl.uchile.dcc.feedback.social.SignInUtils" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/social/SignInUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="130" x="1690" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="cl.uchile.dcc.feedback.social.SimpleSocialUsersDetailService" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/dcc/feedback/social/SimpleSocialUsersDetailService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="51" width="210" x="3225" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="cl.uchile.feedback.SignupController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/SignupController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="120" x="3053" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="cl.uchile.feedback.IndexController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/IndexController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="112" x="3414" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="cl.uchile.feedback.ConceptMapController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/ConceptMapController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="153" x="3830" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="cl.uchile.feedback.SignupForm" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/SignupForm.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="93" x="789" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="cl.uchile.feedback.MicrobloggingController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/MicrobloggingController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="161" x="3213" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="cl.uchile.feedback.TimelineController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/TimelineController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="129" x="52" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="cl.uchile.feedback.StatisticsController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/StatisticsController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="135" x="4194" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="cl.uchile.feedback.HomeController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/HomeController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="115" x="3566" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="86" language="java" name="cl.uchile.feedback.SigninController" project="Feedback" 
+    file="/Feedback/src/main/java/cl/uchile/feedback/SigninController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="51" width="116" x="1363" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <association id="87">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="88" name="values"/>      
+      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="91" name="feed"/>      
+      <multiplicity id="92" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="94" name="feed"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="97" name="statService"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="100" name="tagsRated"/>      
+      <multiplicity id="101" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="102">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="103">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="104" name="edges"/>      
+      <multiplicity id="105" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="62" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="107" name="sexRepo"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="78" navigable="false">      
+      <attribute id="110" name="userService"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="112">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="113" name="visibility"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="115">    
+    <bendpoint x="6621" y="138"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="116" name="visibility"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="119" name="user"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="122" name="user"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="125" name="nodes"/>      
+      <multiplicity id="126" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="128" name="comunaRepo"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <bendpoint x="6101" y="229"/>    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="131" name="commentedFeed"/>      
+      <multiplicity id="132" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <bendpoint x="5888" y="229"/>    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="134" name="tagsFrecuency"/>      
+      <multiplicity id="135" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="137" name="feed"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <bendpoint x="6600" y="138"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="140" name="user"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <bendpoint x="6642" y="138"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="143" name="visibility"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="146" name="originRepo"/>      
+      <multiplicity id="147" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <bendpoint x="6382" y="138"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="149" name="user"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="152" name="comuna"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="154">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="155">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="156" name="origin"/>      
+      <multiplicity id="157" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="158">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="159" name="tag"/>      
+      <multiplicity id="160" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="161">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="162" name="ratingRepo"/>      
+      <multiplicity id="163" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="164">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="165" name="medias"/>      
+      <multiplicity id="166" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="167">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="168" name="userRepo"/>      
+      <multiplicity id="169" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="170">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="171" name="location"/>      
+      <multiplicity id="172" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="173">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="174" name="user"/>      
+      <multiplicity id="175" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="176">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="177" name="commentRepo"/>      
+      <multiplicity id="178" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="180" name="feedTagRepo"/>      
+      <multiplicity id="181" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="183" name="visibilityRepo"/>      
+      <multiplicity id="184" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="185">    
+    <end type="SOURCE" refId="69"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="186">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="187" name="comments"/>      
+      <multiplicity id="188" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="189">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="190" name="ratedFeed"/>      
+      <multiplicity id="191" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="192">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="193">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="194" name="roleRepo"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="197" name="tagsData"/>      
+      <multiplicity id="198" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="199">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <association id="200">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="201" name="tagRepo"/>      
+      <multiplicity id="202" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="203">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="204" name="locationRepo"/>      
+      <multiplicity id="205" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="206">    
+    <end type="SOURCE" refId="79" navigable="false">      
+      <attribute id="207" name="statService"/>      
+      <multiplicity id="208" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="209">    
+    <bendpoint x="5909" y="229"/>    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="210" name="tagsCommented"/>      
+      <multiplicity id="211" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="212">    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="213" name="tagsData"/>      
+      <multiplicity id="214" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="215">    
+    <end type="SOURCE" refId="82" navigable="false">      
+      <attribute id="216" name="userService"/>      
+      <multiplicity id="217" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="218">    
+    <end type="SOURCE" refId="79" navigable="false">      
+      <attribute id="219" name="userService"/>      
+      <multiplicity id="220" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="221">    
+    <bendpoint x="3711" y="138"/>    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="222" name="feedService"/>      
+      <multiplicity id="223" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="224">    
+    <bendpoint x="6122" y="229"/>    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="225" name="userFreq"/>      
+      <multiplicity id="226" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="227">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="228" name="tagRepo"/>      
+      <multiplicity id="229" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="230">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="26"/>  
+  </realization>  
+  <association id="231">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="232" name="commentRepo"/>      
+      <multiplicity id="233" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="234">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="235" name="feed"/>      
+      <multiplicity id="236" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="237">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="238" name="feedTags"/>      
+      <multiplicity id="239" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="240">    
+    <end type="SOURCE" refId="85" navigable="false">      
+      <attribute id="241" name="feedService"/>      
+      <multiplicity id="242" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="243">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="244" name="othersTagsData"/>      
+      <multiplicity id="245" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="246">    
+    <bendpoint x="6403" y="138"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="247" name="user"/>      
+      <multiplicity id="248" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="249">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="250" name="responseTo"/>      
+      <multiplicity id="251" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="252">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="253" name="userRepo"/>      
+      <multiplicity id="254" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="255">    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="256" name="feedsData"/>      
+      <multiplicity id="257" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="258">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="259" name="feedRepo"/>      
+      <multiplicity id="260" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="261">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="262" name="roles"/>      
+      <multiplicity id="263" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="264">    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="265" name="userData"/>      
+      <multiplicity id="266" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="267">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="268" name="location"/>      
+      <multiplicity id="269" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="270">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="271" name="region"/>      
+      <multiplicity id="272" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="273">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="274" name="comments"/>      
+      <multiplicity id="275" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="276">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <association id="277">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="278" name="sex"/>      
+      <multiplicity id="279" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="280">    
+    <bendpoint x="6860" y="138"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="281" name="visibility"/>      
+      <multiplicity id="282" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="283">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="29"/>  
+  </realization>  
+  <realization id="284">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="285">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="286" name="feed"/>      
+      <multiplicity id="287" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="288">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="289" name="visibility"/>      
+      <multiplicity id="290" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="291">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="292" name="notes"/>      
+      <multiplicity id="293" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="294">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="295" name="statisticsRepo"/>      
+      <multiplicity id="296" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="297">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <association id="298">    
+    <bendpoint x="6663" y="138"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="299" name="user"/>      
+      <multiplicity id="300" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="301">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="302" name="feedRepo"/>      
+      <multiplicity id="303" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="304">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="305" name="notes"/>      
+      <multiplicity id="306" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="307">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="308" name="rates"/>      
+      <multiplicity id="309" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="310">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="311" name="ratings"/>      
+      <multiplicity id="312" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="313">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="314" name="userRepo"/>      
+      <multiplicity id="315" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="316">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <realization id="317">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <association id="318">    
+    <end type="SOURCE" refId="82" navigable="false">      
+      <attribute id="319" name="feedService"/>      
+      <multiplicity id="320" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
