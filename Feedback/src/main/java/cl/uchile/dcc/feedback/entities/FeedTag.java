@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,7 +26,7 @@ public class FeedTag implements Serializable {
 	private Integer id;
 
 	@JoinColumn(name="feed")
-	@OneToOne
+	@ManyToOne
 	private Feed feed;
 	
 	@JoinColumn(name="tag")

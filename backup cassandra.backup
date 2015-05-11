@@ -1,0 +1,34 @@
+create table location_session(
+	location_id int,
+	session_id int,
+	time timestamp,
+	PRIMARY KEY (location_id,session_id,time)
+);
+
+create table tag_session(
+	tag_id int,
+	session_id int,
+	time timestamp,
+	PRIMARY KEY (tag_id,session_id,time)
+);
+
+create table time_session(
+	time_id int,
+	session_id int,
+	time timestamp,
+	PRIMARY KEY (time_id,session_id,time)
+);
+
+create table user_session(
+	user_id int,
+	session_id int,
+	time timestamp,
+	PRIMARY KEY (user_id,session_id,time)
+);
+
+create table user_tag_session(
+	user_id int,
+	tag_id int,
+	date timestamp,
+	PRIMARY KEY (user_id,tag_id)
+);

@@ -41,7 +41,7 @@ public class Comment implements Serializable {
 	private User user;
 	
 	@JoinColumn(name="feed")
-	@OneToOne
+	@ManyToOne
 	private Feed feed;
 	
 	@Temporal(TemporalType.TIMESTAMP)

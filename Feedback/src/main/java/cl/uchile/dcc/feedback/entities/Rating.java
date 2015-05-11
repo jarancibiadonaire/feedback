@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,11 +25,11 @@ public class Rating implements Serializable {
 	private Integer id;
 	
 	@JoinColumn(name="user_id")
-	@ManyToOne	
+	@ManyToOne
 	private User user;
 	
 	@JoinColumn(name="feed")
-	@OneToOne
+	@ManyToOne
 	private Feed feed;
 	
 	@Column(name="score")
