@@ -1,8 +1,8 @@
 var sys;
 var CLR = {
 	      branch:"#81DAF5",
-	      feed:"#72c02c",
-	      selected:"#C6FFAB"
+	      feed:"#009C1F",
+	      selected:"#27DF4C	"
 	    }
 function clickNode(title,id){
 	var feed=sys.getNode(title+" ["+id+"]");
@@ -86,12 +86,12 @@ function addNode(feed){
         	  var w2=Math.min(100,10*(node.data.size+2));
             gfx.oval(pt.x-w2/2, pt.y-w2/2, w2, w2, {fill:node.data.color, alpha:node.data.alpha})
             //gfx.rect(pt.x-w/2, pt.y-8, w, 20, 4, {fill:node.data.color, alpha:node.data.alpha})
-            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:12})
-            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:12})
+            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:14})
+            gfx.text(node.name, pt.x, pt.y+7, {color:"#6E6E6E", align:"center", font:"Arial", size:14})
           }else{
             gfx.rect(pt.x-w/2, pt.y-8, w, 20, 4, {fill:node.data.color, alpha:node.data.alpha})
-            gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"Arial", size:12})
-            gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"Arial", size:12})
+            gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"Arial", size:14})
+            gfx.text(node.name, pt.x, pt.y+9, {color:"white", align:"center", font:"Arial", size:14})
           }
         })
       },
@@ -121,12 +121,12 @@ function addNode(feed){
 
           var nowVisible = ($.inArray(node, children)>=0)
           var newAlpha = (nowVisible) ? 1 : 0
-          var dt = (nowVisible) ? .5 : .5
-          sys.tweenNode(node, dt, {alpha:newAlpha})
+          var dt = (nowVisible) ? .001 : .001
+          sys.tweenNode(node, dt, {alpha:newAlpha,length:1})
 
           if (newAlpha==1){
-            node.p.x = parent.p.x + .05*Math.random() - .025
-            node.p.y = parent.p.y + .05*Math.random() - .025
+            //node.p.x = parent.p.x + .05*Math.random() - .025
+            //node.p.y = parent.p.y + .05*Math.random() - .025
             node.tempMass = .001
           }
         })
@@ -151,7 +151,7 @@ function addNode(feed){
             if (nearest==undefined || !nearest.node) return false
 
             if (nearest.node.data.shape!='dot'){
-              selected = (nearest.distance < 50) ? nearest : null
+              selected = (nearest.distance < 30) ? nearest : null
               if (selected){
                  dom.addClass('linkable')
                  window.status = selected.node.data.link.replace(/^\//,"http://"+window.location.host+"/").replace(/^#/,'')
@@ -271,7 +271,7 @@ function addNode(feed){
 		      edges:e
 		    }
 
-	  	sys = arbor.ParticleSystem({stiffness:5000, repulsion:10000,gravity:false,friction:0.9, dt:0.015})
+	  	sys = arbor.ParticleSystem({stiffness:100, repulsion:0,gravity:false,friction:0, dt:0.015,precision:0.5})
 	  	//sys.parameters()
 		sys.renderer = Renderer("#sitemap")
 		sys.graft(theUI)

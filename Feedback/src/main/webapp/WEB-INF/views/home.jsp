@@ -204,9 +204,9 @@
 													<ul class="list-unstyled list-inline blog-info">
 														<li><i class="fa fa-user"></i> {{feed.user}}</li>
 														<li class="pull-right">
-															<button class="btn-u btn-u-xs rounded"
+															<button class="btn-u btn-u-xs rounded" 
 																ng-click="toggle(feed.id,true)">
-																<i class="fa fa-map-marker"></i>
+																<i class="fa fa-thumb-tack"></i>
 															</button> <span class="label rounded label-u likes">{{feed.location.comuna}}</span>
 														</li>
 													</ul>

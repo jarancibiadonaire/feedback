@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="topbar wrapper">
-	<div class="container margin-bottom-20">
+	<div class="topbar container margin-bottom-20">
 		<!-- Topbar Navigation -->
 		<div class="navbar-header">			
 			<a class="navbar-brand" href='<c:url value="/"/>'> <img

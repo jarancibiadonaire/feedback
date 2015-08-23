@@ -199,8 +199,10 @@ function loadFeeds(message){
 	bounds.extend(santiago);
 	for(var i=0;i<feeds.length;i++){
 		var newMark=addMarker(feeds[i]);
-		bounds.extend(newMark.marker.getPosition());
-		putHandlers(newMark);		
+		if(feeds[i].location!=null){			
+			bounds.extend(newMark.marker.getPosition());
+			putHandlers(newMark);	
+		}			
 	}	
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
 	map.fitBounds(bounds);
@@ -270,11 +272,15 @@ function clickMap(){
 	google.maps.event.trigger(map, 'click');
 }
 function addMarker(data){
-	var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
-	var newMark={marker:new google.maps.Marker({
-							animation : google.maps.Animation.DROP,
-							position : ll
-						}),
+	var markerAux=null;
+	if(data.location!=null){
+		var ll=new google.maps.LatLng(data.location.lat, data.location.lng);
+		markerAux=new google.maps.Marker({
+			animation : google.maps.Animation.DROP,
+			position : ll
+		});
+	}	
+	var newMark={marker:markerAux,
 				feed:data.id};
 	markers.unshift(newMark);
 	return newMark;

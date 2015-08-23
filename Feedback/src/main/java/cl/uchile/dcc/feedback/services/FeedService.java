@@ -72,17 +72,19 @@ public class FeedService implements FeedServiceRemote {
 	@Override
 	public Integer createFeed(FeedVO feedVO){
 		if(feedVO==null)
-			return null;
-		Location location=new Location();
-		location.setLat(feedVO.getLocation().getLat());
-		location.setLng(feedVO.getLocation().getLng());
-		location.setAddress(feedVO.getLocation().getAddress());
-		location.setComuna(comunaRepo.findByNameIgnoreCase(feedVO.getLocation().getComuna()));
-		location.setCreatedDate(new Date());
+			return null;		
 		Feed feed=new Feed();
 		feed.setTitle(feedVO.getTitle());
 		feed.setDescription(feedVO.getDescription());
-		feed.setLocation(location);
+		if(feedVO.getLocation()!=null && feedVO.getLocation().getLat()!=null && feedVO.getLocation().getLng()!=null){		
+			Location location=new Location();
+			location.setLat(feedVO.getLocation().getLat());
+			location.setLng(feedVO.getLocation().getLng());
+			location.setAddress(feedVO.getLocation().getAddress());
+			location.setComuna(comunaRepo.findByNameIgnoreCase(feedVO.getLocation().getComuna()));
+			location.setCreatedDate(new Date());
+			feed.setLocation(location);
+		}
 		feed.setUser(userRepo.findByUserName(feedVO.getUser()));
 		feed.setVisibility(visibilityRepo.findByType(feedVO.getVisibility()));
 		feed.setOrigin(originRepo.findByTypeIgnoreCase(feedVO.getOrigin()));

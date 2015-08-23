@@ -30,10 +30,10 @@ function loadPosition(position) {
 				myLng=latlng.lng();
 				myAddress=address;
 				myComuna=comuna;
-				$("#lat").val(latlng.lat());
-				$("#lng").val(latlng.lng());
-				$("#address").val(address);
-				$("#comuna").val(comuna);
+//				$("#lat").val(latlng.lat());
+//				$("#lng").val(latlng.lng());
+//				$("#address").val(address);
+//				$("#comuna").val(comuna);
 			}
 		} else {
 			alert("Problemas al realizar geocoding: " + status);

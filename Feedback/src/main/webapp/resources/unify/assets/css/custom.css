@@ -87,7 +87,8 @@
 .search-bar{
 	width: 30%;
 	position: absolute;
-	margin-left: 25%;
+	margin-right: 33%;
+    margin-left: 33%;
 }
 .tag-cloud-form{
 	margin-left:-10%;
@@ -133,4 +134,12 @@
 }
 .panel-options{
 	margin-top:35%;
+}
+.home-container{
+	width:85%;
+}
+.topbar{
+	width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 }

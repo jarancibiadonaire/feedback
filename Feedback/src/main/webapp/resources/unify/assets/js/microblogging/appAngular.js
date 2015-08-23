@@ -28,17 +28,21 @@ app.controller("homeController", function($scope) {
 				break;
 			}
 		}
-		for (var j = 0; j < markers.length; j++) {
-			if (markers[j].feed == id) {
-				$scope.currentMarker = markers[j].marker;
-				break;
+		if($scope.currentFeed.location!=null){
+			for (var j = 0; j < markers.length; j++) {
+				if (markers[j].feed == id) {
+					$scope.currentMarker = markers[j].marker;
+					break;
+				}
 			}
-		}
-		infowindow.setContent("<div class='scrollFix'>"
-				+ $scope.currentFeed.title + "</div>");
-		infowindow.open(map, $scope.currentMarker);
-		map.panTo($scope.currentMarker.getPosition());
-		map.setZoom(16);
+			infowindow.setContent("<div class='scrollFix'>"
+					+ $scope.currentFeed.title + "</div>");
+			infowindow.open(map, $scope.currentMarker);
+			map.panTo($scope.currentMarker.getPosition());
+			map.setZoom(16);
+		}else{
+			infowindow.close();
+		}		
 		$(".tab-v2").find(".tab-content").removeClass("select-div");
 		$("#feed-" + $scope.currentFeed.id).find(".tab-content").addClass(
 				"select-div");
