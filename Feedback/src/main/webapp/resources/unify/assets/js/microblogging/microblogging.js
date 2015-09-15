@@ -199,9 +199,9 @@ function loadFeeds(message){
 	bounds.extend(santiago);
 	for(var i=0;i<feeds.length;i++){
 		var newMark=addMarker(feeds[i]);
-		if(feeds[i].location!=null){			
-			bounds.extend(newMark.marker.getPosition());
-			putHandlers(newMark);	
+		if(feeds[i].location!=null){	
+			putHandlers(newMark);
+			bounds.extend(newMark.marker.getPosition());				
 		}			
 	}	
 	markerCluster = new MarkerClusterer(map, getMarkers(),mcOptions);
@@ -288,7 +288,8 @@ function addMarker(data){
 function getMarkers(){
 	var result=[];
 	for(var i=0;i<markers.length;i++){
-		result.push(markers[i].marker);
+		if(markers[i].marker!=null)
+			result.push(markers[i].marker);
 	}
 	return result;
 }

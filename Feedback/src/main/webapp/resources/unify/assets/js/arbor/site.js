@@ -15,6 +15,7 @@ function clickNode(title,id){
 	if(feed!=null){		
 	    feed.data.alpha=1;
 	    feed.data.color=CLR.selected;
+	    sys.tweenNode(feed, 0.01, {alpha:1,length:1})
 	}else{
 		console.log("feed sin tag!");
 	}
