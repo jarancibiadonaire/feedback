@@ -21,6 +21,7 @@ import cl.uchile.dcc.feedback.entities.Location;
 import cl.uchile.dcc.feedback.entities.Rating;
 import cl.uchile.dcc.feedback.entities.Tag;
 import cl.uchile.dcc.feedback.entities.User;
+import cl.uchile.dcc.feedback.entities.UserTag;
 import cl.uchile.dcc.feedback.entities.Visibility;
 import cl.uchile.dcc.feedback.mappers.CommentMapper;
 import cl.uchile.dcc.feedback.mappers.TagMapper;
@@ -41,6 +42,7 @@ import cl.uchile.dcc.feedback.repositories.OriginRepository;
 import cl.uchile.dcc.feedback.repositories.RatingRepository;
 import cl.uchile.dcc.feedback.repositories.TagRepository;
 import cl.uchile.dcc.feedback.repositories.UserRepository;
+import cl.uchile.dcc.feedback.repositories.UserTagRepository;
 import cl.uchile.dcc.feedback.repositories.VisibilityRepository;
 
 @Component
@@ -66,8 +68,11 @@ public class FeedService implements FeedServiceRemote {
 	FeedTagRepository feedTagRepo;
 	@Autowired
 	TagRepository tagRepo;
+	//@Autowired
+	//UserTagSessionRepository userTagRepo;
 	@Autowired
-	UserTagSessionRepository userTagRepo;
+	UserTagRepository userTagRepo;
+	
 	
 	@Override
 	public Integer createFeed(FeedVO feedVO){
@@ -184,9 +189,13 @@ public class FeedService implements FeedServiceRemote {
 	public List<Integer> getFollowingTags(String username){
 		if(username==null || username.compareTo("")==0)
 			return null;
-		User u=userRepo.findByUserName(username);
-		List<Integer> ids=userTagRepo.getTagsIdsByUserId(u.getId());
-		return ids;
+		//User u=userRepo.findByUserName(username);
+		//List<Integer> ids=userTagRepo.getTagsIdsByUserId(u.getId());
+		List<Integer> result=new ArrayList<Integer>();
+		List<Tag> list= userTagRepo.findByUserName(username);
+		for(Tag t:list)
+			result.add(t.getId());
+		return result;
 	}
 	
 	@Override
@@ -302,7 +311,18 @@ public class FeedService implements FeedServiceRemote {
 			return;
 		User u=userRepo.findByUserName(username);
 		if(u!=null){
-			userTagRepo.addTagsToUser(ids, u.getId());
+			//userTagRepo.addTagsToUser(ids, u.getId());
+			List<UserTag> list=userTagRepo.findByUserId(u.getId());
+			for(UserTag ut:list)
+				userTagRepo.delete(ut);
+			for(Integer i:ids){
+				UserTag ut=new UserTag();
+				ut.setUser(u);
+				ut.setTag(tagRepo.findOne(i));
+				ut.setFollowDate(new Date());
+				userTagRepo.save(ut);
+			}
+			
 		}
 	}
 }
