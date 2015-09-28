@@ -41,22 +41,22 @@
 		in placeholders in the bean definitions -->
 
 	<!-- REQUIRED: The Cassandra Cluster -->
-	<cassandra:cluster contact-points="${cassandra.contactpoints}"
-		port="${cassandra.port}" />
+	<!-- <cassandra:cluster contact-points="${cassandra.contactpoints}"
+		port="${cassandra.port}" /> -->
 
 	<!-- REQUIRED: The Cassandra Session, built from the Cluster, and attaching 
 		to a keyspace -->
-	<cassandra:session keyspace-name="${cassandra.keyspace}" />
+	<!-- <cassandra:session keyspace-name="${cassandra.keyspace}" /> -->
 
 	<!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
-	<cassandra:mapping />
+	<!-- <cassandra:mapping /> -->
 
 	<!-- REQUIRED: The Default Cassandra Converter used by CassandraTemplate -->
-	<cassandra:converter />
+	<!-- <cassandra:converter /> -->
 
 	<!-- REQUIRED: The Cassandra Template is the building block of all Spring 
 		Data Cassandra -->
-	<cassandra:template id="cassandraTemplate" />
+	<!-- <cassandra:template id="cassandraTemplate" /> -->
 
 	<!-- OPTIONAL: If you are using Spring Data Cassandra Repositories, add 
 		your base packages to scan here <cassandra:repositories base-package="cl.uchile.dcc.feedback.cassandra.repositories" 
@@ -74,9 +74,8 @@
 		base-package="org.springframework.social.connect.jpa.hibernate" />
 
 	<context:component-scan
-		base-package="cl.uchile.dcc.feedback.cassandra.repositories,
-										cl.uchile.dcc.feedback.services
-										cl.uchile.dcc.feedback.repositories" />
+		base-package="cl.uchile.dcc.feedback.services
+					cl.uchile.dcc.feedback.repositories" />
 	<context:component-scan base-package="cl.uchile.dcc.feedback.social" />
 
 </beans>

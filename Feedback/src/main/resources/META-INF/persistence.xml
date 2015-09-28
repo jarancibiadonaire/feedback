@@ -13,6 +13,7 @@
 			<property name="hibernate.search.default.directory_provider"
 				value="filesystem" />
 			<property name="hibernate.search.default.indexBase" value="/home/jarancibia/lucene/indexes" />
+			<!-- <property name="hibernate.search.default.indexBase" value="/home/2015/jarancib/lucene/indexes" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>
