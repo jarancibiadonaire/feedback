@@ -13,8 +13,17 @@ public class UserMapper implements Mapper<User,UserVO> {
 
 	@Override
 	public UserVO getBasic(User entity) {
-		// TODO Auto-generated method stub
-		return null;
+		if(entity==null)
+			return null;
+		UserVO u=new UserVO();
+		u.setFirstName(entity.getFirstName());
+		u.setLastName(entity.getLastName());
+		u.setEmail(entity.getEmail());
+		u.setCreatedDate(entity.getCreatedDate());
+		u.setUserName(entity.getUserName());
+		if(entity.getSex()!=null)
+			u.setSexName(entity.getSex().getDescription());
+		return u;
 	}
 
 	@Override

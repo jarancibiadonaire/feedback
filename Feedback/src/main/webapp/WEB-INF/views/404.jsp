@@ -59,7 +59,7 @@
 							alt=""></a>
 					</div>
 					<h1>404</h1>
-					<span class="sorry">Ups, la página que buscas no se
+					<span class="sorry">Ups, la p&#225;gina que buscas no se
 						encuentra!</span>
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3">

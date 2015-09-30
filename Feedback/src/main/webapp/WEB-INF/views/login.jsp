@@ -76,8 +76,8 @@
 						data-original-title="Linkedin" href="#"></a></li>
 				</ul>
 				<p>
-					¿No tienes cuenta aún? <a class="color-green"
-						href="<c:url value="/registration"/>">Regístrate aquí.</a>
+					¿No tienes cuenta a&#250;n? <a class="color-green"
+						href="<c:url value="/registration"/>">Reg&#237;strate aqu&#237;.</a>
 				</p>
 			</div>
 
@@ -93,7 +93,7 @@
 				</div>
 				<div class="input-group margin-bottom-20">
 					<span class="input-group-addon"><i class="fa fa-lock"></i></span> <input
-						type="password" class="form-control" placeholder="Contraseña"
+						type="password" class="form-control" placeholder="Contrase&#241;a"
 						name="password">
 				</div>
 				<c:if test="${not empty error}">

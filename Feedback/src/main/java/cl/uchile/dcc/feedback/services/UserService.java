@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import cl.uchile.dcc.feedback.entities.Role;
 import cl.uchile.dcc.feedback.entities.Sex;
 import cl.uchile.dcc.feedback.entities.User;
+import cl.uchile.dcc.feedback.mappers.UserMapper;
 import cl.uchile.dcc.feedback.model.SexVO;
 import cl.uchile.dcc.feedback.model.UserVO;
 import cl.uchile.dcc.feedback.repositories.RoleRepository;
@@ -82,9 +83,9 @@ public class UserService implements UserServiceRemote{
 	@Override
 	public UserVO findUserByUserName(String userName){
 		User u=userRepo.findByUserName(userName);
-		System.out.println("username"+u);
+		UserMapper mapper=new UserMapper();
 		if(u!=null)
-			return new UserVO();
+			return mapper.getBasic(u);
 		else
 			return null;
 	}

@@ -1,6 +1,7 @@
 package cl.uchile.dcc.feedback.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class UserVO implements Serializable {
 
@@ -18,9 +19,13 @@ public class UserVO implements Serializable {
 
 	private Integer sex;
 	
+	private String sexName;
+	
 	private String password;
 	
 	private String repassword;
+	
+	private Date createdDate;
 
 	public Integer getId() {
 		return id;
@@ -84,6 +89,22 @@ public class UserVO implements Serializable {
 
 	public void setRepassword(String repassword) {
 		this.repassword = repassword;
+	}
+
+	public String getSexName() {
+		return sexName;
+	}
+
+	public void setSexName(String sexName) {
+		this.sexName = sexName;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }

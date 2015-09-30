@@ -75,14 +75,14 @@
 						<div class="tp-caption revolution-ch1 sft start" data-x="center"
 							data-hoffset="0" data-y="100" data-speed="1500" data-start="500"
 							data-easing="Back.easeInOut" data-endeasing="Power1.easeIn"
-							data-endspeed="300">¡Descubre tu ciudad!</div> <!-- LAYER -->
+							data-endspeed="300">&#161;Descubre tu ciudad&#33;</div> <!-- LAYER -->
 						<div class="tp-caption revolution-ch2 sft" data-x="center"
 							data-hoffset="0" data-y="190" data-speed="1400" data-start="2000"
 							data-easing="Power4.easeOut" data-endspeed="300"
 							data-endeasing="Power1.easeIn" data-captionhidden="off"
 							style="z-index: 6">
-							En feedback podrás encontrar distintos puntos de interés.<br />
-							Además agrega los lugares que desees y compartir con tus amigos.
+							En feedback podr&#225;s encontrar distintos puntos de inter&#233;s.<br />
+							Adem&#225;s agrega los lugares que desees y compartir con tus amigos.
 						</div> <!-- LAYER -->
 						<div class="tp-caption sft" data-x="center" data-hoffset="0"
 							data-y="310" data-speed="1600" data-start="2800"
@@ -91,7 +91,7 @@
 							style="z-index: 6">
 							<a href="login" class="btn-u btn-brd btn-brd-hover btn-u-light">Ingresa</a>
 							<a href="registration"
-								class="btn-u btn-brd btn-brd-hover btn-u-light">Regístrate</a>
+								class="btn-u btn-brd btn-brd-hover btn-u-light">Reg&#237;strate</a>
 						</div>
 					</li>
 					<!-- END SLIDE -->
@@ -106,14 +106,14 @@
 						<div class="tp-caption revolution-ch1 sft start" data-x="center"
 							data-hoffset="0" data-y="100" data-speed="1500" data-start="500"
 							data-easing="Back.easeInOut" data-endeasing="Power1.easeIn"
-							data-endspeed="300">¡Descubre tu ciudad!</div> <!-- LAYER -->
+							data-endspeed="300">&#161;Descubre tu ciudad&#33;</div> <!-- LAYER -->
 						<div class="tp-caption revolution-ch2 sft" data-x="center"
 							data-hoffset="0" data-y="190" data-speed="1400" data-start="2000"
 							data-easing="Power4.easeOut" data-endspeed="300"
 							data-endeasing="Power1.easeIn" data-captionhidden="off"
 							style="z-index: 6">
-							En feedback podrás encontrar distintos puntos de interés.<br />
-							Además agrega los lugares que desees y compartir con tus amigos.
+							En feedback podr&#225;s encontrar distintos puntos de inter&#233;s.<br />
+							Adem&#225;s agrega los lugares que desees y compartir con tus amigos.
 						</div> <!-- LAYER -->
 						<div class="tp-caption sft" data-x="center" data-hoffset="0"
 							data-y="310" data-speed="1600" data-start="2800"
@@ -122,7 +122,7 @@
 							style="z-index: 6">
 							<a href="login" class="btn-u btn-brd btn-brd-hover btn-u-light">Ingresa</a>
 							<a href="registration"
-								class="btn-u btn-brd btn-brd-hover btn-u-light">Regístrate</a>
+								class="btn-u btn-brd btn-brd-hover btn-u-light">Reg&#237;strate</a>
 						</div>
 					</li>
 					<!-- END SLIDE -->
@@ -137,14 +137,14 @@
 						<div class="tp-caption revolution-ch1 sft start" data-x="center"
 							data-hoffset="0" data-y="100" data-speed="1500" data-start="500"
 							data-easing="Back.easeInOut" data-endeasing="Power1.easeIn"
-							data-endspeed="300">¡Descubre tu ciudad!</div> <!-- LAYER -->
+							data-endspeed="300">&#161;Descubre tu ciudad&#33;</div> <!-- LAYER -->
 						<div class="tp-caption revolution-ch2 sft" data-x="center"
 							data-hoffset="0" data-y="190" data-speed="1400" data-start="2000"
 							data-easing="Power4.easeOut" data-endspeed="300"
 							data-endeasing="Power1.easeIn" data-captionhidden="off"
 							style="z-index: 6">
-							En feedback podrás encontrar distintos puntos de interés.<br />
-							Además agrega los lugares que desees y compartir con tus amigos.
+							En feedback podr&#225;s encontrar distintos puntos de inter&#233;s.<br />
+							Adem&#225;s agrega los lugares que desees y compartir con tus amigos.
 						</div> <!-- LAYER -->
 						<div class="tp-caption sft" data-x="center" data-hoffset="0"
 							data-y="310" data-speed="1600" data-start="2800"
@@ -153,7 +153,7 @@
 							style="z-index: 6">
 							<a href="login" class="btn-u btn-brd btn-brd-hover btn-u-light">Ingresa</a>
 							<a href="registration"
-								class="btn-u btn-brd btn-brd-hover btn-u-light">Regístrate</a>
+								class="btn-u btn-brd btn-brd-hover btn-u-light">Reg&#237;strate</a>
 						</div>
 					</li>
 					<!-- END SLIDE -->
@@ -169,7 +169,7 @@
 			<div class="shadow-wrapper">
 				<div class="tag-box tag-box-v1 box-shadow shadow-effect-2">
 					<h2>Feeds</h2>
-					<p>Comparte los puntos de interés de tu ciudad a con los feeds.
+					<p>Comparte los puntos de inter&#233;s de tu ciudad a con los feeds.
 						Puedes asociarle fotos, comentar, rankear, compartir, etc. Tu
 						creas tu propia ciudad de feeds.</p>
 				</div>
@@ -184,7 +184,7 @@
 					<div class="servive-block servive-block-default">
 						<i class="icon-custom rounded-x icon-bg-dark fa fa-map-marker"></i>
 						<h2 class="heading-md">Microblogging</h2>
-						<p>Publicar nuevos sitios de interés desde el mapa de Google
+						<p>Publicar nuevos sitios de inter&#233;s desde el mapa de Google
 							Maps.</p>
 					</div>
 				</div>
@@ -192,7 +192,7 @@
 					<div class="servive-block servive-block-default">
 						<i class="icon-custom rounded-x icon-bg-dark fa fa-history"></i>
 						<h2 class="heading-md">Timeline</h2>
-						<p>Visualiza los último feeds registrados en feedback desde el
+						<p>Visualiza los &#250;ltimo feeds registrados en feedback desde el
 							Timeline, tal como Facebook o Twitter.</p>
 					</div>
 				</div>
@@ -201,14 +201,14 @@
 						<i class="icon-custom rounded-x icon-bg-dark fa fa-link"></i>
 						<h2 class="heading-md">ConceptMap</h2>
 						<p>Relaciona los feeds con etiquetas para personalizar tus
-							puntos de interés.</p>
+							puntos de inter&#233;s.</p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="servive-block servive-block-default">
 						<i class="icon-custom rounded-x icon-bg-dark icon-line icon-graph"></i>
-						<h2 class="heading-md">Estadística</h2>
-						<p>Te informamos de la estadística de los puntos de interés
+						<h2 class="heading-md">Estad&#237;stica</h2>
+						<p>Te informamos de la estad&#237;stica de los puntos de inter&#233;s
 							publicado por los usuarios.</p>
 					</div>
 				</div>
@@ -259,7 +259,7 @@
 							href="http://creativecommons.org/licenses/by/4.0/"><img
 							alt="Licencia de Creative Commons" style="border-width: 0"
 							src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> Este
-						obra está bajo una <a rel="license"
+						obra est&#225; bajo una <a rel="license"
 							href="http://creativecommons.org/licenses/by/4.0/">licencia
 							de Creative Commons Reconocimiento 4.0 Internacional</a>.
 					</p>

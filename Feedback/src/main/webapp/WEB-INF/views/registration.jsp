@@ -69,11 +69,11 @@
 		<!--Reg Block-->
 		<div class="reg-block">
 			<div class="reg-block-header">
-				<h2>Regístrate en Feedback</h2>
+				<h2>Reg&#237;strate en Feedback</h2>
 				<p>
-					¿Ya estás registrado? <a class="color-green"
-						href="<c:url value="/login"/>">Ingresa aquí</a> para iniciar
-					sesión.
+					¿Ya est&#250;s registrado? <a class="color-green"
+						href="<c:url value="/login"/>">Ingresa aqu&#237;</a> para iniciar
+					sesi&#243;n.
 				</p>
 			</div>
 			<form:form
@@ -122,7 +122,7 @@
 				<div class="input-group margin-bottom-15">
 					<label class="checkbox"> <input name="terms" id="terms"
 						type="checkbox" /> <i></i>Acepto los <a target="_blank"
-						href="page_terms.html">Términos y condiciones</a></label>
+						href="page_terms.html">T&#233;rminos y condiciones</a></label>
 				</div>
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">

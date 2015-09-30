@@ -47,7 +47,7 @@
 				</script>
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
 					<i class="fa fa-user"></i>
-					<li>Bienvenid@ <span class="green">${pageContext.request.userPrincipal.name}</span></li>
+					<li>Bienvenid&#64; <a href="<c:url value='/profile'/>"><span class="green">${pageContext.request.userPrincipal.name}</span> </a></li>
 					<li class="topbar-devider"></li>
 					<li><a href="javascript:formSubmit()" class="green"> Salir</a></li>
 				</c:if>
@@ -63,7 +63,7 @@
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password"
-								placeholder="Contraseña">
+								placeholder="Contrase&#241;a">
 						</div>
 						<button type="submit" class="form-group btn-u">Ingresar</button>
 						<input type="hidden" name="${_csrf.parameterName}"
