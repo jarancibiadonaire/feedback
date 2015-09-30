@@ -6,4 +6,5 @@ delete from feed_tag;
 delete from rating;
 delete from feed;
 delete from location_table;
+delete from user_tag;
 delete from tag;
